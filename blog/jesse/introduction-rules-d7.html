@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8" lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/"><!--<![endif]-->
+
+<!-- Mirrored from openconcept.ca/blog/jesse/introduction-rules-d7 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:26:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<!--[if IE]><![endif]-->
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="../../sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<meta name="abstract" content="What can I say?" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="MobileOptimized" content="width" />
+<meta name="robots" content="follow, index" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<meta http-equiv="content-language" content="en" />
+<meta property="fb:admins" content="openconcept" />
+<meta property="fb:admins" content="kik.side" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@openconcept_ca" />
+<meta name="twitter:site:id" content="229468736" />
+<meta name="twitter:creator" content="@openconcept_ca" />
+<meta name="twitter:creator:id" content="229468736" />
+<meta name="twitter:url" content="introduction-rules-d7.html" />
+<meta name="twitter:title" content="Introduction to Rules in D7" />
+<meta name="twitter:description" content="What can I say?" />
+<meta itemprop="name" content="Introduction to Rules in D7" />
+<title>Blog: Introduction to Rules in D7 | OpenConcept</title>
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__Fk6ib8vGzlld1Z-3iMHxBRa3_Z-wnv0p_-pqQEXhv1o__QUdxuXWKI0XTsPl3jjnljuEsAhlG7QC3Qj3tVSTDO_I__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__0kxo9a_7V-NXmMFyEka9ww5_KAh62JvVq0T_opEsnYI__yLupVjjUulT7jR2cTAx-8AnjCJEZttCLm-N5GL51cAg__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__WQ3VIViemVu1z3pxCt1hYihEFTVqdm3SgqDmHAifCF8__8pEWrNOJbuWWcn2CXCq6Id8yS_eivMQaAg37yz85fmk__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato%7CArimo:400,700italic,400italic,700" media="all" />
+
+<!--[if (lt IE 9)&(!IEMobile 7)]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__L_hl_g5koAwf-tcMQbO0rF6TiioG2sSDkJP6VhlrJSE__Jt_t77XXAGMXO_thFaLEyXIrOahPFnRwr5VH4gzy-Wc__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="screen" />
+<![endif]-->
+<style>#sliding-popup.sliding-popup-bottom,#sliding-popup.sliding-popup-bottom .eu-cookie-withdraw-banner,.eu-cookie-withdraw-tab{background:#0779bf}#sliding-popup.sliding-popup-bottom.eu-cookie-withdraw-wrapper{background:transparent}#sliding-popup .popup-content #popup-text h1,#sliding-popup .popup-content #popup-text h2,#sliding-popup .popup-content #popup-text h3,#sliding-popup .popup-content #popup-text p,#sliding-popup label,#sliding-popup div,.eu-cookie-compliance-secondary-button,.eu-cookie-withdraw-tab{color:#fff !important}.eu-cookie-withdraw-tab{border-color:#fff}.eu-cookie-compliance-more-button{color:#fff !important}</style>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","../../sites/default/files/googleanalytics/analyticse5f5.js?qinvx1","ga");ga("create", "UA-190532-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1438 node-type-blog site-name-hidden site-name-openconcept section-blog">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page" class="page">
+
+  <!-- region: Leaderboard -->
+  
+ <div class="focus">
+  <header id="header" class="clearfix" role="banner">
+          <!-- start: Branding -->
+      <div id="branding" class="branding-elements clearfix">
+
+                  <div id="logo">
+            <a href="../../index.html" title="Home page"><img class="site-logo image-style-none" typeof="foaf:Image" src="../../sites/default/files/oclogo_0.png" alt="OpenConcept" /></a>          </div>
+        
+                  <!-- start: Site name and Slogan hgroup -->
+          <hgroup class="element-invisible" id="name-and-slogan">
+
+                          <h1 class="element-invisible" id="site-name"><a href="../../index.html" title="Home page">OpenConcept</a></h1>
+            
+            
+          </hgroup><!-- /end #name-and-slogan -->
+        
+      </div><!-- /end #branding -->
+    
+    <!-- region: Header -->
+    
+  <div id="menu-bar" class="nav clearfix"><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix odd first last block-count-1 block-region-menu-bar block-main-menu"  role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first expanded menu-depth-1 menu-item-777"><a href="../../about.html" title="">About</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-981"><a href="../../who-we-are.html">Who we are</a></li><li class="leaf menu-depth-2 menu-item-782"><a href="../../values.html">Our Values</a></li><li class="leaf menu-depth-2 menu-item-783"><a href="../../community.html" title="Our involement with the BCorp Community.">Community</a></li><li class="last leaf menu-depth-2 menu-item-862"><a href="../../careers.html">Careers</a></li></ul></li><li class="collapsed menu-depth-1 menu-item-778"><a href="../../support.html">Services</a></li><li class="leaf menu-depth-1 menu-item-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="collapsed menu-depth-1 menu-item-1187"><a href="../../drupal.html">Drupal</a></li><li class="expanded menu-depth-1 menu-item-781"><a href="../../news.html" title="">News</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-979"><a href="../../events.html">Events</a></li><li class="leaf menu-depth-2 menu-item-980"><a href="../../blog.html" title="">Blogs</a></li><li class="last leaf menu-depth-2 menu-item-1212"><a href="../../news/news-releases.html">News Releases</a></li></ul></li><li class="last leaf menu-depth-1 menu-item-614"><a href="../../contact.html">Contact Us</a></li></ul>
+  </nav></div>  <div id="primary-menu-bar" class="nav clearfix nav clearfix"><nav  class="primary-menu-wrapper menu-wrapper clearfix primary-menu-wrapper menu-wrapper clearfix"><h2 class="element-invisible">Main menu</h2><ul class="menu primary-menu clearfix"><li class="menu-777 first"><a href="../../about.html" title="">About</a></li><li class="menu-778"><a href="../../support.html">Services</a></li><li class="menu-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="menu-1187"><a href="../../drupal.html">Drupal</a></li><li class="menu-781"><a href="../../news.html" title="">News</a></li><li class="menu-614 last"><a href="../../contact.html">Contact Us</a></li></ul></nav></div>
+  </header>
+ </div>
+
+  <!-- Navigation elements -->
+  
+  <!-- Breadcrumbs -->
+  
+  <!-- Messages and Help -->
+    
+  <!-- region: Secondary Content -->
+  
+  <div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column" role="main">
+      <div class="content-inner">
+
+        <!-- region: Highlighted -->
+        
+
+        <section id="main-content"  class="focus">
+          
+                      <header id="main-content-header" class="clearfix">
+
+
+
+              
+            </header>
+          
+          <!-- region: Main Content -->
+                      <div id="content" class="region">
+              <div id="block-system-main" class="block block-system no-title odd first last block-count-2 block-region-content block-main" >  
+  
+  <div class="panel-display panel-1col clearfix" >
+  <div class="panel-panel panel-col">
+    <div><div class="panel-pane pane-node-title no-title block" id="blog-node-title">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h1>Introduction to Rules in D7</h1>
+    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-node-author block" id="blog-node-author">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">By: </h2>
+        
+    
+    <div class="block-content">
+      <a href="../../users/jesse.html" title="View user profile." class="username" xml:lang="" about="/users/jesse" typeof="sioc:UserAccount" property="foaf:name" datatype="">jesse</a>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-token pane-node-created block" id="blog-node-viewed">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">on </h2>
+        
+    
+    <div class="block-content">
+      October 15, 2012    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-body no-title block" id="blog-body">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even" property="content:encoded"><p>What can I say? rules are a priceless asset when it comes to customizing the functionality of a Drupal site without having to actually code anything. If you embrace them, you will live happier and stress free. Okay, probably an impossible statement considering our field of work, but I have found that knowing how to take advantage of rules effectively inside and out gives me a huge advantage I didn't feel I had before. I have been able to save time, build complex systems faster, and most of all, assess and reduce many of those annoying small customizations requests that threaten to blow a budget, to simple point and click tasks. That last one is a huge advantage and I'll try and give you some good examples in the series of blog post following this one. In this particular post I will go over some rules basics and will try to explain some key concepts. If you've already used rules I do recommend at least skimming over the section "<em>how to NOT break the rules and still be a badass</em>" below.</p>
+<h2>What is rules exactly and what can it do?</h2>
+<ul>
+<li>Rules is a <a href="http://drupal.org/project/rules" target="_self" title="Check out the rules project page.">module</a></li>
+<li>Rules can be simple or even the most complex events/conditions/actions workflows. It is highly flexible.</li>
+<li>Rules can be triggered in several ways: event triggers, Views Bulk Operations, scheduled rules (on cron), rules ui execute link, and from within custom modules. </li>
+<li>Many contrib modules now include integration with rules by providing events, conditions and/or actions that interact with their module's functionality. This gives you the power to extend that module's functionality in almost any imaginable way.</li>
+</ul>
+<h3>Where rules comes in handy</h3>
+<p>How many times has this happened to you? You have finished pretty much everything and the client remembers, "oh yeah we also want ," and you're thinking "yeah..., that does not come out of the box with Drupal and there is nothing that I can think of that easily does that. This may take days." Well it is likely that if that "simple" request involves reacting to an event such as a user logging in, a profile/node/taxonomy/flag or any entity being created, updated, deleted, then you can do it with rules. Or... if that "simple" customization request involves executing an action of any kind like sending mail or acting on any entity in your system then it is likely that rules combined with views and views bulk operations can do it.</p>
+<p>If all else fails, and rules can get you part of the way there, ( for example, say there is an event that would work, but there is no action that meets your needs) then if you can at least take advantage of the rules API then you are likely already half way through your customization task at the outset. Which is way better in my opinion then not being anywhere. By leveraging rules' UI and event, condition, action system you can create your own actions, conditions and/or events that get you the rest of the way without having to code it all yourself.</p>
+<h3>Some rules terms that are good to know</h3>
+<p><strong>Event</strong> - A rules event is what is used to trigger reaction rules. Contrib modules can define events that they then trigger when something happens during the processing of that module's code. An example is the entity integration for rules. Every entity that uses the entity api CRUD integration automatically has several events that will fire when certain CRUD operations are performed on that entity. For example: is viewed, After saving a new , After updating an , Before saving a , and Before deleting a .</p>
+<p><strong>Condition </strong>- A rules condition is essentially a set of if statements. In order for the rule's action to be executed the combination of conditions need to evaluate to TRUE. Conditions can be nested in AND and OR blocks to build what can be considered more complex if statement. So something like:</p>
+<pre>
+<div class="geshifilter"><div class="php geshifilter-php" style="font-family:monospace;"><pre style="font-family: monospace; font-weight: normal; font-style: normal">Conditions<span style="color: #339933;">:</span> 
+Conditiion A 
+Condition B 
+OR 
+  Conditon C 
+  Condition D 
+  AND 
+    Conditon E 
+    Condition F</pre></div>
+</div>
+</pre><p>Could be thought of as the following if statement:</p>
+<p><span class="geshifilter"><code class="php geshifilter-php"><span style="color: #000000; font-weight: bold;">&lt;?php</span> <span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span>Condition A <span style="color: #339933;">&amp;&amp;</span> Condition B <span style="color: #339933;">&amp;&amp;</span><span style="color: #009900;">(</span>Conditon C <span style="color: #339933;">||</span> Conditon D <span style="color: #339933;">||</span> <span style="color: #009900;">(</span>Conditon E <span style="color: #339933;">&amp;&amp;</span> Condition F<span style="color: #009900;">)</span> <span style="color: #009900;">)</span> <span style="color: #009900;">)</span> <span style="color: #009900;">{</span> <span style="color: #339933;">...</span> <span style="color: #009900;">}</span> <span style="color: #000000; font-weight: bold;">?&gt;</span></code></span></p>
+<p><strong>Action</strong> - Essentially a function call. A rules action does something. Everything from sending email and displaying messages to a user, to assigning roles, manipulating field data on entities like nodes, and busting a cap in some mofo's user account.</p>
+<p><strong>Variables in rules:</strong></p>
+<ul>
+<li><strong>Provided</strong> - Provided variables are data, be it simple data types such as a booleans, integers or dates, to complex objects like entities. Events usually provide variables. For example the "content is viewed" event provides the full node object for the node that is being viewed. You can then pass that provided variable to a condition or action as an input parameter.</li>
+<li><strong>Parameter</strong> - You can think of a parameter as a being the same thing as a function parameter or a variable. Parameters are required variables that you must pass to conditions or actions to be evaluated or operated on.</li>
+</ul>
+<p><strong>Reaction rules</strong> - A reaction rule is a set of actions that get triggered by a particular event, given that a set of conditions resolve to true. </p>
+<p><strong>Rules components</strong> - Rules components are basically pieces that can be used to build more complex reaction rules. They come in several flavo(u)rs: </p>
+<ul>
+<li><strong>Rule</strong> - a set of conditions and resulting actions that do not have a particular event that triggers them, but which can be used as actions from other rules. They can also be executed by Views Bulk Operations.</li>
+<li><strong>Rule set</strong> - a set of rule components that do not have a particular event that triggers them, but which can be used as actions from other rules. They can also be executed by Views Bulk Operation.</li>
+<li><strong>Condition</strong> set - a set of conditions that can be used to evaluate whether or not to execute a reaction rule or rule component's actions. They are useful when multiple rules use the same set of conditions. Thus, you build it once and use it in many places. </li>
+<li><strong>Action set</strong> - a set of actions that can be executed by including them as a single action from a reaction rule, rule component or within a rule set rule component. They are useful when you have common tasks that need to be executed from several different places.</li>
+</ul>
+<p><strong>Scheduled rules</strong> - sets of conditions and actions that get executed on a regular basis via cron.</p>
+<p> </p>
+<h2>How to NOT break the rules and still be a badass</h2>
+<p>"Cool guys don't look at explosions. They blow things up and walk away." Badasses are by definition risk takers. They get it done, fast, focused and without looking back. However, to be a badass that survives the fast lane of site development you got to be cold and calculated as well. Using rules to get where you're going fast is wise, but you gotta be mindful of your direction (bundle types) and keep an eye out for pot holes (Null values):</p>
+<h3>Revealing bundle specific fields</h3>
+<p>I have come across numerous posts where people are frustrated that they cannot access their fields on their entities through rules. Most often node fields, but the same goes for all entities in general. This is because when a rule accepts a parameter from an event/action/condition it assumes nothing about it other then its base type. So when we're considering entities that's: node, user, taxonomy, flag, relation, etc. However, nothing about the bundle is included.... most of the time. By default you will have access to all the entity's properties since they are a part of an entities base db table and are directly associated with the entity regardless of  bundle type. However, fields are associated with specific bundles. Thus, you need to use one of two conditions to expose the fields associated with a bundle:</p>
+<ol>
+<li><strong><em>'entity has field'</em></strong> - reveals a specific field. That is provided it is present on the entity parameter input into the condition. If the node does not have the field then the rule will stop execution there. For example you may have a field called 'classified' on the article node type but not on all others. If you have a rule that is triggered on the node created event and you use an 'entity has field' condition and select the 'classified' field, the condition will pass for articles but not others. Immediately after the 'entity has field' condition you will now be able to use that field in other conditions. It will also be made available to the actions that follow.</li>
+<li><em><strong>'data comparison'</strong></em> - Use this condition to compare the 'type' property of an entity and it will reveal all the fields associated with the respective bundle. Most of the time, I guess for consistency, developers use 'type' as the property that defines the bundle type. Sometimes not, as is the case with the relation module; it uses 'relation-type'. Regardless if you use this comparison it will give you all the access you need for your entities. Its almost a default in every entity related rule I create. Immediately after you use this rule in the rules conditions weighted stack you will be able to use all the entities field in further conditions and they will be available for use in the actions that follow.</li>
+<li><em><strong>'entity is of type'</strong></em> - This particular rule is rarely of use except in the case where you may have a generic entity defined as the provided variable for an event or rule component. In this case you can use this to reveal all of the entity's properties. The you can follow it up with a 'data comparison' condition against its bundle type to reveal all its fields. Easy peasy in theory. I have not actually ever come across this in reality.</li>
+</ol>
+<p> </p>
+<h3>Check your data before using it (NULL speed ahead)</h3>
+<p>The absolute killer of any rule is when you use a condition or action to evaluate/modify a parameter that is NULL. If you try to do a data comparison on a field that has no value your rule will throw an exception and grind to an immediate halt (NULL speed). To avoid this you should use the following rule of thumb:</p>
+<ul>
+<li>Always use a <em>'Data value is empty'</em> condition and negate it so you end up with a <em>'<strong>NOT</strong> data value is empty'</em> condition. <strong>Always!</strong></li>
+</ul>
+<p>This checks for "empty" values which includes <em>NULL, 0, FALSE, ARRAY{}, ""</em>, etc. Literally the <em>empty()</em> PHP function. Add it before adding any other conditions or actions that use this field or its sub-fields as an input parameter. If you fail to do this, you will surely be sorry, which sucks. True badasses don't have to apologize because when things get hairy it was all part of the plan and you don't look back. Right?</p>
+<p>In summary: to be a badass, don't break the rules ... module.</p>
+<h2>Further</h2>
+<p>I will be posting some actual examples of how to use rules in a series of follow up blogs. So stay tuned.</p>
+<p> </p>
+<p>Potentially some helpful photos:</p>
+<p>In the following image I reveal all the commerce product fields for the event product bundle by adding a "Data comparison" condition on its type property.</p>
+<p> </p>
+<p>The next image shows the rules UI for the "Data value is empty" negated condition.</p>
+<p><img alt="not_data_value_is_empty.jpg" src="../../sites/oc2014/files/u1/not_data_value_is_empty.html" style="height:432px; width:697px" /></p>
+</div></div></div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-block pane-service-links-service-links block" id="blog-services-links">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Share this article</h2>
+        
+    
+    <div class="block-content">
+      <div class="service-links"><a href="https://www.facebook.com/sharer.php" title="Share this post on Facebook" class="service-links-facebook-share" rel="https://openconcept.ca/blog/jesse/introduction-rules-d7" target="_blank"><span class="element-invisible">Share on Facebook</span></a> <a href="introduction-rules-d7.html" title="Share on Linkedin" class="service-links-linkedin-share-button" rel="nofollow" target="_blank"><span class="element-invisible">Linkedin Share Button</span></a> <a href="introduction-rules-d7.html" title="Plus it" class="service-links-google-plus-one" rel="nofollow" target="_blank"><span class="element-invisible">Google Plus One</span></a> <a href="https://reddit.com/submit?url=https%3A//openconcept.ca/blog/jesse/introduction-rules-d7&amp;title=Introduction%20to%20Rules%20in%20D7" title="Submit this post on reddit.com" class="service-links-reddit" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/reddit.png" alt="Reddit logo" /></a> <a href="https://twitter.com/share?url=https%3A//openconcept.ca/blog/jesse/introduction-rules-d7&amp;text=Introduction%20to%20Rules%20in%20D7" title="Share this on Twitter" class="service-links-twitter" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/twitter.png" alt="Twitter logo" /></a></div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-posts-by-same-author block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Posts By Author</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-posts-by-same-author view-id-posts_by_same_author view-display-id-default view-dom-id-d5a2843028e658e283738719d8f1ca4d">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="oc-spring-vegetable-gardens.html">OC spring Vegetable Gardens</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="multiple-language-domains-made-easy.html">Multiple language domains made easy</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="making-drupal-7-form-field-elements-more-accessible-aria-describedby-links.html">Making Drupal 7 form field elements more</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-comment-wrapper no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <section id="comments" class="comment-wrapper">
+
+  
+  
+  
+</section>
+    </div>
+
+    
+    
+  </div>
+</div>
+</div>
+  </div>
+</div>
+
+  </div>            </div>
+          
+          <!-- Feed icons (RSS, Atom icons etc -->
+          
+          
+        </section><!-- /end #main-content -->
+
+        <!-- region: Content Aside -->
+        
+      </div><!-- /end .content-inner -->
+    </div><!-- /end #content-column -->
+
+    <!-- regions: Sidebar first and Sidebar second -->
+        
+  </div><!-- /end #columns -->
+
+  <!-- region: Tertiary Content -->
+  
+  <!-- region: Footer -->
+     <div id="footer-wrapper">
+    <footer id="footer" class="clearfix" role="contentinfo">
+      <div class="region region-footer"><div class="region-inner clearfix"><div id="block-block-14" class="block block-block no-title odd first block-count-3 block-region-footer block-14" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p> </p>
+<h2 class="rtecenter"><strong>Interested in digital accessibility? <a href="https://mailchi.mp/133e3c60c3f6/accessibility-action" style="color:white;">Sign up today to our monthly Accessibility Action Newsletter!</a></strong></h2>
+<p> </p>
+</div>
+  </div></div><div id="block-panels-mini-location-get-in-touch-follow-us" class="block block-panels-mini no-title even block-count-4 block-region-footer block-location-get-in-touch-follow-us" >  
+  
+  <div class="block-content content"><div class="at-panel panel-display three-3x33 clearfix" id="mini-panel-location_get_in_touch_follow_us">
+    <div class="region region-three-33-first">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-8 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">LOCATION</h3>
+<div class="rtecenter">
+<p>571 Somerset Street West<br />
+Ottawa ON K1R 5K1<br />
+Canada</p>
+</div>
+<p class="rtecenter"> </p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-second">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-6 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">GET IN TOUCH</h3>
+<p class="rtecenter"><a href="tel:+16136866736">613-686-6736</a> (OPEN)<br />
+<a href="mailto:info@openconcept.ca" style="font-size: 13px; line-height: 1.6em;">info@openconcept.ca</a><br />
+<a href="../../careers.html" style="font-size: 13px; line-height: 1.6em;">Careers</a></p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-third">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-7 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">FOLLOW US</h3>
+<div class="clipwrapper rtecenter" style=" position: relative;height: 40px;width: 260px; margin:0 auto;">
+
+<a href="https://twitter.com/openconcept_ca" target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Twitter" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -41px; clip: rect(0 122px 50px 83px);"></a>
+
+<a href="https://www.linkedin.com/company/1703911?trk=prof-0-ovw-curr_pos"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Linkedin" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -36px; clip: rect(0 162px 50px 130px);"></a>
+
+<a href="https://www.facebook.com/OpenConcept-Consulting-Inc-657846390931051/?fref=ts"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on facebook" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -69px; clip: rect(0 250px 50px 213px);"></a>
+
+<a href="https://github.com/OpenConceptConsulting"  target="_blank" rel=”noopener noreferrer”>
+<img alt="GitHub Logo" src="../../sites/openconcept/themes/oc2014/images/github.svg" style="width: 45px; height: 45px; position: absolute; top: -5px; left: 194px;" width="45px" height="45px"></a>
+
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  </div>
+</div>
+  </div><div id="block-menu-menu-footer-menu" class="block block-menu no-title odd last block-count-5 block-region-footer block-menu-footer-menu"  role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-1264"><a href="../../about.html" title="">About</a></li><li class="leaf menu-depth-1 menu-item-1265"><a href="../../support.html" title="">Services</a></li><li class="leaf menu-depth-1 menu-item-1266"><a href="../../just-vision.html" title="">Our Work</a></li><li class="leaf menu-depth-1 menu-item-1267"><a href="../../drupal.html" title="">Drupal</a></li><li class="leaf menu-depth-1 menu-item-1582"><a href="../../blog.html" title="">Blog</a></li><li class="leaf menu-depth-1 menu-item-1269"><a href="../../contact.html" title="">Contact Us</a></li><li class="leaf menu-depth-1 menu-item-1270"><a href="../../accessibility-statement.html" title="">Accessibility</a></li><li class="leaf menu-depth-1 menu-item-1583"><a href="../../usage-policy.html" title="">Usage Policy</a></li><li class="last leaf menu-depth-1 menu-item-1614"><a href="../../privacy-policy.html" title="">Privacy</a></li></ul></div>
+  </div></div></div></div>    </footer>
+   </div>
+  
+</div>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>window.jQuery || document.write("<script src='../../sites/all/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js'>\x3C/script>")</script>
+<script src="../../sites/default/files/advagg_js/js__ZyeOaiFuDejQQbhUV7yg7atYZnj4WLfH77o0scv4068__MZdWWgUEYpsEWLcU0RqkaXMsEyksbpCgnf4XwXRkqz0__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="../../sites/default/files/advagg_js/js__44qQVp6ulaLPrJIjoRLLIy501C3bOwqOLi1eMfbACp4__dd_1_EUDtswm4KD7QBi4P6S37vtqiBQQKm4rxJlZ8Bo__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="https://platform.linkedin.com/in.js?async=true"></script>
+<script src="../../sites/default/files/advagg_js/js__PFmX6LmbJhR5AXK3oxVx771eAlh3gBae5veSHu7Kdp8__3Zgq8YGzo8LGUG0JqhxghrjxbhL2GucalpYkbCPRyq0__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"oc2014","theme_token":"wpGAa6FWnXi0hHkCmAWZjGkf06BAHJKeFuxePrNn0po"},"ws_fs":{"type":"button","app_id":"150123828484431","css":"","locale":"en_US"},"ws_gpo":{"size":"medium","annotation":"","lang":"","callback":"","width":300},"ws_lsb":{"countmode":""},"better_exposed_filters":{"views":{"profile_picture":{"displays":{"default":{"filters":[]}}},"posts_by_same_author":{"displays":{"default":{"filters":[]}}}}},"responsive_menus":[{"selectors":"#primary-menu-bar","container":"body","trigger_txt":"\u003Cspan \/\u003E\u003Cspan \/\u003E\u003Cspan \/\u003E","close_txt":"X","close_size":"18px","position":"right","media_size":"480","show_children":"1","expand_children":"1","expand_txt":"+","contract_txt":"-","remove_attrs":"1","responsive_menus_style":"mean_menu"}],"eu_cookie_compliance":{"popup_enabled":1,"popup_agreed_enabled":0,"popup_hide_agreed":0,"popup_clicking_confirmation":1,"popup_scrolling_confirmation":0,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EBy clicking any link on this page you are giving your consent for us to set cookies.\u003C\/p\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n                    \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","mobile_breakpoint":"768","popup_html_agreed":"\u003Cdiv\u003E\n  \u003Cdiv class=\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\n\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button eu-cookie-compliance-hide-button\u0022\u003EHide\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button-thank-you\u0022 \u003EMore info\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/privacy-policy","popup_link_new_window":1,"popup_position":null,"fixed_top_position":1,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":0,"reload_page":0,"domain":"","domain_all_sites":null,"popup_eu_only_js":0,"cookie_lifetime":"100","cookie_session":false,"disagree_do_not_show_popup":0,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003E\u0026lt;h2\u0026gt;We use cookies on this site to enhance your user experience\u0026lt;\/h2\u0026gt;\u0026lt;p\u0026gt;You have given your consent for us to set cookies.\u0026lt;\/p\u0026gt;\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","withdraw_enabled":false,"withdraw_button_on_info_popup":false,"cookie_categories":[],"enable_save_preferences_button":true,"fix_first_cookie_category":true,"select_all_categories_by_default":false},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"urlIsAjaxTrusted":{"\/search\/node":true}});</script>
+<script src="../../sites/default/files/advagg_js/js__F2qdh-1_GOHY85WJybNO3pprDd50KfMFbk-UcsLzh0Y___SeDJKIvrikPXIIr55mRB1jrZkJNqFYEnfX8AHNM0No__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>var eu_cookie_compliance_cookie_name = "";</script>
+<script src="../../sites/openconcept/themes/oc2014/js/portfolio.js"></script>
+</body>
+
+<!-- Mirrored from openconcept.ca/blog/jesse/introduction-rules-d7 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:26:25 GMT -->
+</html>

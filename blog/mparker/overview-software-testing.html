@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8" lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/"><!--<![endif]-->
+
+<!-- Mirrored from openconcept.ca/blog/mparker/overview-software-testing by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:08:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<!--[if IE]><![endif]-->
+<meta charset="utf-8" />
+<script src="https://www.google.com/recaptcha/api.js?hl=en" async="async" defer="defer"></script>
+<link rel="shortcut icon" href="../../sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="&quot;Software testing&quot; is a term used to refer to a variety of methods, tools, and practices for verifyi" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="abstract" content="&quot;Software testing&quot; is a term used to refer to a variety of methods, tools, and practices for verifyi" />
+<meta name="MobileOptimized" content="width" />
+<meta name="keywords" content="Drupal, WordPress, Ottawa, open-source, website, communications, eLearning, accessibility, CRM, CMS, security" />
+<meta name="robots" content="follow, index" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<meta http-equiv="content-language" content="en" />
+<meta property="fb:admins" content="openconcept" />
+<meta property="fb:admins" content="kik.side" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@openconcept_ca" />
+<meta name="twitter:site:id" content="229468736" />
+<meta name="twitter:creator" content="@openconcept_ca" />
+<meta name="twitter:creator:id" content="229468736" />
+<meta name="twitter:url" content="https://openconcept.ca/blog/mparker/overview-software-testing" />
+<meta name="twitter:title" content="An overview of software testing" />
+<meta name="twitter:description" content="&quot;Software testing&quot; is a term used to refer to a variety of methods, tools, and practices for verifyi" />
+<meta itemprop="name" content="An overview of software testing" />
+<title>Blog: An overview of software testing | OpenConcept</title>
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__CIoPC8DTSyC7ba02u2WcNx8jW9hViesHlsuFRabyGeo__Yg5urgFzSGcRtbNMXHM_QY549KOAwX-D2BCHVvRAD9w__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__0kxo9a_7V-NXmMFyEka9ww5_KAh62JvVq0T_opEsnYI__yLupVjjUulT7jR2cTAx-8AnjCJEZttCLm-N5GL51cAg__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__WQ3VIViemVu1z3pxCt1hYihEFTVqdm3SgqDmHAifCF8__8pEWrNOJbuWWcn2CXCq6Id8yS_eivMQaAg37yz85fmk__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato%7CArimo:400,700italic,400italic,700" media="all" />
+
+<!--[if (lt IE 9)&(!IEMobile 7)]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__L_hl_g5koAwf-tcMQbO0rF6TiioG2sSDkJP6VhlrJSE__Jt_t77XXAGMXO_thFaLEyXIrOahPFnRwr5VH4gzy-Wc__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="screen" />
+<![endif]-->
+<style>#sliding-popup.sliding-popup-bottom,#sliding-popup.sliding-popup-bottom .eu-cookie-withdraw-banner,.eu-cookie-withdraw-tab{background:#0779bf}#sliding-popup.sliding-popup-bottom.eu-cookie-withdraw-wrapper{background:transparent}#sliding-popup .popup-content #popup-text h1,#sliding-popup .popup-content #popup-text h2,#sliding-popup .popup-content #popup-text h3,#sliding-popup .popup-content #popup-text p,#sliding-popup label,#sliding-popup div,.eu-cookie-compliance-secondary-button,.eu-cookie-withdraw-tab{color:#fff !important}.eu-cookie-withdraw-tab{border-color:#fff}.eu-cookie-compliance-more-button{color:#fff !important}</style>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","../../sites/default/files/googleanalytics/analyticse5f5.js?qinvx1","ga");ga("create", "UA-190532-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1721 node-type-blog site-name-hidden site-name-openconcept section-blog">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page" class="page">
+
+  <!-- region: Leaderboard -->
+  
+ <div class="focus">
+  <header id="header" class="clearfix" role="banner">
+          <!-- start: Branding -->
+      <div id="branding" class="branding-elements clearfix">
+
+                  <div id="logo">
+            <a href="../../index.html" title="Home page"><img class="site-logo image-style-none" typeof="foaf:Image" src="../../sites/default/files/oclogo_0.png" alt="OpenConcept" /></a>          </div>
+        
+                  <!-- start: Site name and Slogan hgroup -->
+          <hgroup class="element-invisible" id="name-and-slogan">
+
+                          <h1 class="element-invisible" id="site-name"><a href="../../index.html" title="Home page">OpenConcept</a></h1>
+            
+            
+          </hgroup><!-- /end #name-and-slogan -->
+        
+      </div><!-- /end #branding -->
+    
+    <!-- region: Header -->
+    
+  <div id="menu-bar" class="nav clearfix"><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix odd first last block-count-1 block-region-menu-bar block-main-menu"  role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first expanded menu-depth-1 menu-item-777"><a href="../../about.html" title="">About</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-981"><a href="../../who-we-are.html">Who we are</a></li><li class="leaf menu-depth-2 menu-item-782"><a href="../../values.html">Our Values</a></li><li class="leaf menu-depth-2 menu-item-783"><a href="../../community.html" title="Our involement with the BCorp Community.">Community</a></li><li class="last leaf menu-depth-2 menu-item-862"><a href="../../careers.html">Careers</a></li></ul></li><li class="collapsed menu-depth-1 menu-item-778"><a href="../../support.html">Services</a></li><li class="leaf menu-depth-1 menu-item-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="collapsed menu-depth-1 menu-item-1187"><a href="../../drupal.html">Drupal</a></li><li class="expanded menu-depth-1 menu-item-781"><a href="../../news.html" title="">News</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-979"><a href="../../events.html">Events</a></li><li class="leaf menu-depth-2 menu-item-980"><a href="../../blog.html" title="">Blogs</a></li><li class="last leaf menu-depth-2 menu-item-1212"><a href="../../news/news-releases.html">News Releases</a></li></ul></li><li class="last leaf menu-depth-1 menu-item-614"><a href="../../contact.html">Contact Us</a></li></ul>
+  </nav></div>  <div id="primary-menu-bar" class="nav clearfix nav clearfix"><nav  class="primary-menu-wrapper menu-wrapper clearfix primary-menu-wrapper menu-wrapper clearfix"><h2 class="element-invisible">Main menu</h2><ul class="menu primary-menu clearfix"><li class="menu-777 first"><a href="../../about.html" title="">About</a></li><li class="menu-778"><a href="../../support.html">Services</a></li><li class="menu-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="menu-1187"><a href="../../drupal.html">Drupal</a></li><li class="menu-781"><a href="../../news.html" title="">News</a></li><li class="menu-614 last"><a href="../../contact.html">Contact Us</a></li></ul></nav></div>
+  </header>
+ </div>
+
+  <!-- Navigation elements -->
+  
+  <!-- Breadcrumbs -->
+  
+  <!-- Messages and Help -->
+    
+  <!-- region: Secondary Content -->
+  
+  <div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column" role="main">
+      <div class="content-inner">
+
+        <!-- region: Highlighted -->
+        
+
+        <section id="main-content"  class="focus">
+          
+                      <header id="main-content-header" class="clearfix">
+
+
+
+              
+            </header>
+          
+          <!-- region: Main Content -->
+                      <div id="content" class="region">
+              <div id="block-system-main" class="block block-system no-title odd first last block-count-2 block-region-content block-main" >  
+  
+  <div class="panel-display panel-1col clearfix" >
+  <div class="panel-panel panel-col">
+    <div><div class="panel-pane pane-node-title no-title block" id="blog-node-title">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h1>An overview of software testing</h1>
+    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-node-author block" id="blog-node-author">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">By: </h2>
+        
+    
+    <div class="block-content">
+      <a href="../../users/mparker.html" title="View user profile." class="username" xml:lang="" about="/users/mparker" typeof="sioc:UserAccount" property="foaf:name" datatype="">mparker</a>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-token pane-node-created block" id="blog-node-viewed">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">on </h2>
+        
+    
+    <div class="block-content">
+      August 03, 2015    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-body no-title block" id="blog-body">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even" property="content:encoded"><p>"Software testing" is a term used to refer to a variety of methods, tools, and practices for verifying that a software application works, at many different levels.</p>
+
+<p>All of us in the web development industry do some sort of software testing (even if the testing we do is manual and ad hoc, e.g.: refreshing a webpage after making a change to ensure the code you just wrote works). In this blog post, I will attempt to discuss why you might want to move away from ad hoc testing to more-formal testing, try to dispel some myths about formal testing, and give a high-level overview of the different ways that software can be tested, and the different levels of software testing that exist.</p>
+
+<p>First: a disclaimer — I am not a software testing expert, and to a large extent, I wrote this to help wrap my head around software testing. Also, trying to fit complex, multi-faceted things into neat boxes is difficult (and/or controversial), so be aware that others might classify testing differently. If you find out mistakes or agree/disagree with my categorizations, please let me know in the comments below.</p>
+
+<p>This blog post assumes that:</p>
+
+<ul>
+<li>you work in the software development industry, and,</li>
+<li>you've done manual, ad hoc tests at some point (and have an idea of why they are important).</li>
+</ul>
+
+
+<h2>What do you mean by formal tests?</h2>
+
+<p>This blog article considers "formal" tests to be tests which are recorded in some way so that other people (i.e.: not the original developer) or software can run them at any time.</p>
+
+<h2>Why test formally?</h2>
+
+<p>Software testing is an important tool with benefits such as:</p>
+
+<ul>
+<li>a "safety net" to ensure each subsequent change to a program doesn't cause a regression or loss-of-functionality,</li>
+<li>a "sanity check" to ensure that the code written meets the expectations / requirements of the client and your peers,</li>
+<li>a way to ensure that your code is not too tightly coupled to a particular set of assumptions or use-case (this evolves naturally as you learn to write testable code),</li>
+<li>a collaboration tool to ensure that someone else's work doesn't inadvertently break your work and vice-versa,</li>
+<li>a portability check to ensure that code works outside of your specific environment's assumptions, and even,</li>
+<li>a way to ensure that time is not wasted over-engineering solutions to problems.</li>
+</ul>
+
+
+<p>Depending on the nature of your work and clients, manual ad hoc testing might be sufficient for a while.</p>
+
+<p>However, as projects, development time, product lifecycles, and/or consequences-of-failure grow in size, complexity, and budget, the benefits listed above become increasingly important to limit the risk of client dissatisfaction, going overbudget, getting stuck in development/bug-fixing hell, and/or the risk of producing software that requires a high level of skilled maintenance to continue functioning.</p>
+
+<p>Formalizing these tests (even manual tests) by recording them in some way allows you to run them the same way every time you run them, ensuring you don't forget something important. It also allows your co-workers to run them if you're busy, or computers to run them if they're automated. And, formal manual test cases can usually be converted to automated tests with little effort.</p>
+
+<h2>Myths of formal testing</h2>
+
+<dl>
+<dt>Myth: Writing formal software tests isn't worth the cost.</dt>
+<dd>While it certainly takes a while for new testers to get used to how testing works, and it is possible to write <em>too many</em> tests, even a little bit of testing can greatly reduce development time later in the development cycle, both before the product is launched, and during maintenance later on.
+Acceptance and refinement tests specifically (see below) can also help to give all involved parties a sense of what needs to be focused on, reducing project management time, wasted development time, and the risk of producing a product that clients (or in the case of a website, the general public) doesn't want or cannot use.</dd>
+<dt>Myth: Formal software tests must be written only by software developers.</dt>
+<dd>While developers must write certain tests, and are typically capable of writing most (if not all) types of tests, there are certain types of software tests which are better written by product owners, clients, testers, developers, and designers.</dd>
+<dt>Myth: Most tests should be written after the system is (mostly) functionally-complete.</dt>
+<dd>While the Waterfall software development model states this, the reality is that the earlier you start testing, the earlier you find and correct bugs, missing functionality, architecture problems, and usability issues.</dd>
+</dl>
+
+<h2>A brief note about test-driven development (TDD)</h2>
+
+<p>A powerful way to write software is using Test-Driven Development (TDD). Simply put, TDD is the practice of writing tests first (so your intents are clearly stated), then writing the code to meet the requirements of the test. Test-driven development is applicable to all areas of software testing, except, perhaps, certain types of refinement tests.</p>
+
+<p>Test-driven development has two distinct advantages:</p>
+
+<ol>
+<li>it ensures that everything you write from the point when you start using TDD is well-tested ("has good test coverage"), and,</li>
+<li>if you follow the TDD principle to stop developing when the tests pass, you can ensure that you don't waste time over-engineering solutions to problems.</li>
+</ol>
+
+
+<p>I highly recommend reading <a href="http://www.amazon.ca/dp/0321146530"><em>Test-Driven Development By Example</em> by Kent Beck (Addison-Wesley, 2003)</a>.</p>
+
+<h2>Classifying tests</h2>
+
+<p>All types of software tests can be classified as <em>white-box</em>, <em>black-box</em>, or <em>grey-box</em>:</p>
+
+<dl>
+<dt>White-box tests</dt>
+<dt>Clear-box tests</dt>
+<dd>Tests written to test the internal structure of something, as opposed to it's functionality. Named because you typically look at the code you're testing, and write your tests to target it.</dd>
+<dt>Black-box tests</dt>
+<dd>Tests written to test the functionality of something, as opposed to it's internal structure. Named because you typically (pretend that) you know nothing about the implementation of something, and write your tests to do what you'd expect it to do.</dd>
+<dt>Grey-box tests</dt>
+<dd>A combination of white- and black-box testing, used to test for improper structure or usage defects.</dd>
+</dl>
+
+<h2>Levels of software testing</h2>
+
+<p>I group software testing into five main levels,</p>
+
+<ol>
+<li>Unit tests,</li>
+<li>Integration tests,</li>
+<li>Acceptance tests,</li>
+<li>Refinement tests, and,</li>
+<li>System tests.</li>
+</ol>
+
+
+<p>Generally, the number of tests decrease; but the coverage scope, run-time, effort and cost of the tests increase as you go down the list (i.e.: in a well tested system, there are many unit-tests, each covering a small scope (e.g.: a single function), but few system tests, each covering a wide scope (e.g.: many objects, functions, and subsystems working together as-intended)).</p>
+
+<p>To help you keep track of all these things, I've put together <a href="../../sites/openconcept/files/software_testing_cheat_sheet.pdf">a software testing cheat sheet</a> for you to download. <a href="https://github.com/mparker17/cheatsheet-software_testing">The cheatsheet's source code is on Github</a>, so feel free to improve it!</p>
+
+<h3>Unit tests</h3>
+
+<p>Unit tests are typically white-box tests to cover edge-cases and code branches (code paths) in a limited scope, typically on a per-function level. Each function typically has one or more unit tests that focus on ensuring each code path functions in the expected manner. Small changes to the code under test typically require changes to the unit tests to incorporate the new changes and ensure new code paths are covered.</p>
+
+<p>Unit tests are typically short and quickly-written by the software developer who is writing the code under test, using carefully-chosen test parameters (typically edge-cases); by checking pre- and post-conditions, state-changes, and output; and by mocking dependencies to ensure that the test only covers the function under test.</p>
+
+<p>Ideally, unit tests are written before the function(s) they test (i.e.: following Test Driven Development principles). If writing and performing unit tests is required for new work, your last chance to do so is before committing or submitting your code for code review.</p>
+
+<p>Key technologies for unit testing are:</p>
+
+<ul>
+<li><a href="https://phpunit.de/">phpUnit</a>, <a href="http://rspec.info/">RSpec</a>, <a href="http://jasmine.github.io/">Jasmine</a>, <a href="http://qunitjs.com/">QUnit</a>, <a href="http://unitjs.com/">Unit.js</a>, etc. (sometimes collectively referred to as <em>xUnit</em> because many follow a naming pattern of <code>&lt;language abbreviation&gt;Unit</code>).
+
+<ul>
+<li>Note that SimpleTest in <a href="https://www.drupal.org/project/simpletest">Drupal 6 contrib</a> and <a href="https://www.drupal.org/project/drupal">in Drupal 7 core</a> can be used to do unit tests, but it's not very good at it, so it's been replaced with phpUnit in Drupal 8.</li>
+</ul>
+</li>
+<li>Mock objects (e.g.: <a href="https://github.com/hamcrest">Hamcrest</a>).</li>
+</ul>
+
+
+<p>... note that many of the key technologies can also be used for integration and acceptance (behaviour) testing.</p>
+
+<p>Other names for unit tests are:</p>
+
+<ul>
+<li>component tests</li>
+</ul>
+
+
+<p>Some books on unit tests and mock objects that I've read and recommend are:</p>
+
+<ul>
+<li><a href="http://www.growing-object-oriented-software.com/"><em>Growing Object-Oriented Software, Guided by Tests</em>, by Steve Freeman and Nat Pryce (Addison-Wesley, 2010)</a></li>
+<li><a href="http://xunitpatterns.com/"><em>xUnit Test Patterns: Refactoring Test Code</em> by Gerard Meszaros (Addison-Wesley, 2007)</a></li>
+</ul>
+
+
+<h3>Integration tests</h3>
+
+<p>Integration tests are typically grey-box tests to cover interactions between objects and interfaces, on a limited scope, typically on a per-object or per-subsystem level. Each object and subsystem typically has one or more integration tests that focus on ensuring the object/subsystem interacts with it's dependencies in the expected manner. Small changes to the code under test might require changes to the integration tests, especially when they change the way an object/subsystem interacts with other objects/subsystems.</p>
+
+<p>Integration tests are typically medium-length and quickly-written by the software developer who is writing the object/subsystem code, by checking success and failure states, how they interact with other components (through mock objects), what they accept as input, what they produce as outputs. Mocking dependencies, shared resources and inter-process-communication is common practice at this level.</p>
+
+<p>Ideally, integration tests are written before the object(s) they test (i.e.: following TDD principles). If writing and performing integration tests is required for new work, your last chance to do so is before committing or submitting your code for code review.</p>
+
+<p>Key technologies for integration testing are:</p>
+
+<ul>
+<li>xUnit (e.g.: <a href="https://phpunit.de/">phpUnit</a>, <a href="http://rspec.info/">RSpec</a>, <a href="http://jasmine.github.io/">Jasmine</a>, <a href="http://qunitjs.com/">QUnit</a>, <a href="http://unitjs.com/">Unit.js</a>, etc.).
+
+<ul>
+<li>Note that SimpleTest in <a href="https://www.drupal.org/project/simpletest">Drupal 6 contrib</a> and <a href="https://www.drupal.org/project/drupal">in Drupal 7 core</a> can be used to do integration tests, but it's not very good at it, so it's been replaced with phpUnit in Drupal 8.</li>
+</ul>
+</li>
+<li>Mock objects (e.g.: <a href="https://github.com/hamcrest">Hamcrest</a>).</li>
+</ul>
+
+
+<p>... again, because unit tests and integration tests are so similar, they share a lot of the same technologies.</p>
+
+<p>Other names for integration tests are:</p>
+
+<ul>
+<li>integration &amp; testing (I&amp;T)</li>
+</ul>
+
+
+<p>Some books on unit tests and mock objects that I've read and recommend are:</p>
+
+<ul>
+<li><a href="http://www.growing-object-oriented-software.com/"><em>Growing Object-Oriented Software, Guided by Tests</em>, by Steve Freeman and Nat Pryce (Addison-Wesley, 2010)</a></li>
+<li><a href="http://xunitpatterns.com/"><em>xUnit Test Patterns: Refactoring Test Code</em> by Gerard Meszaros (Addison-Wesley, 2007)</a></li>
+</ul>
+
+
+<h3>Acceptance tests</h3>
+
+<p>Acceptance tests are typically black-box tests to cover how a user moves through a system on a broader scope, typically at the user-interface level. Each user-interface display typically has a number of acceptance tests that focus on ensuring the user can complete a certain set of tasks using that display, that the display functions correctly, and that it meets the client's requirements. Small changes to the code under test only require changes to the acceptance tests if the changes affect the user interface.</p>
+
+<p>Acceptance tests are typically short and written by the product owner, client, tester, or in some cases, the developer, by looking at the user story / ticket and outlining the steps the user must take to complete the requested functionality.</p>
+
+<p>Ideally, acceptance tests are written by the client, or product owner before the UI is developed and any work is done. If writing and performing acceptance tests is required for new work, your last chance to do so is before committing or submitting your code for code review.</p>
+
+<p>Ideally, parameters for accessibility testing (i.e.: level of conformance) and browser testing (i.e.: list of supported browsers) should be defined by the client before any work is done; and the latest these should be defined is before any work is started.</p>
+
+<p>Key technologies for acceptance testing are:</p>
+
+<ul>
+<li>Manual tests (using <a href="https://gist.github.com/mparker17/6378387">manual test cases</a>).</li>
+<li><a href="https://cucumber.io/docs/reference">The Gherkin domain-specific language</a>.
+
+<ul>
+<li>Tests written in Gherkin are turned into mouse clicks, keystrokes, etc. by interpreters (e.g.: <a href="http://behat.org/">Behat</a>, <a href="https://github.com/cucumber">Cucumber</a>, <a href="http://www.specflow.org/">SpecFlow</a>).
+
+<ul>
+<li>These interpreters forward these mouse clicks, keystrokes, etc. through controllers (e.g.: <a href="http://mink.behat.org/">Mink</a>, <a href="http://webdriver.io/">Webdriver</a>, <a href="http://casperjs.org/">CasperJS</a>) to browsers.
+
+<ul>
+<li> Controllers like Mink or Webdriver then control:
+
+<ul>
+<li> Real browsers (e.g.: locally-installed browsers, browsers in virtual machines (e.g.: <a href="http://modern.ie/">Modern.ie</a>), or browsers in the cloud (e.g.: <a href="https://www.browserstack.com/">BrowserStack</a>, <a href="https://saucelabs.com/">Sauce Labs</a>) using <a href="http://seleniumhq.org/">Selenium</a>; or,</li>
+<li> Fake browsers (e.g.: <a href="http://phantomjs.org/">PhantomJS</a> (based on Webkit), <a href="http://slimerjs.org/">SlimerJS</a> (based on Gecko)).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> Behavioural output from browsers is usually forwarded back to the Gherkin interpreters for analysis.</li>
+<li> Visual output from browsers can be forwarded to visual regression tools (e.g.: <a href="http://galenframework.com/">the Galen framework</a>).</li>
+</ul>
+</li>
+<li>SimpleTest in <a href="https://www.drupal.org/project/simpletest">Drupal 6 contrib</a> and <a href="https://www.drupal.org/project/drupal">in Drupal 7 core</a>.</li>
+<li>Visual difference tools (e.g.: <a href="http://shoov.io/">Shoov</a>).</li>
+<li>Accessibility testing, both automated (e.g.: <a href="http://quailjs.org/">Quail</a>) and manual (e.g.: VoiceOver, JAWS).</li>
+<li>Browser testing (i.e.: ensuring it works in each browser), either automatically (typically performed with the Gherkin stack above), or manually (using a manual test case with local browsers, browsers in virtual machines, or browsers in the cloud).</li>
+</ul>
+
+
+<p>Other names for acceptance tests are:</p>
+
+<ul>
+<li>conformance tests</li>
+<li>behaviour tests</li>
+<li>functional tests</li>
+<li>User Acceptance Tests (UAT)</li>
+<li>validation tests</li>
+</ul>
+
+
+<h3>Refinement tests</h3>
+
+<p>Refinement tests are usually black-box tests to determine if a proposed UI is:</p>
+
+<ul>
+<li>useful (does the system do what the user wants to do)</li>
+<li>usable (can the user figure out how to get their tasks done)</li>
+<li>aesthetically pleasing (does the UI look good)</li>
+<li>identifiable (is the purpose of the system clear)</li>
+<li>inspirational (does the system inspire the users to use it), and,</li>
+<li>valuable (does the user value the system and it's purpose)</li>
+</ul>
+
+
+<p>... on a broad scope, at the user-interface level. Each design stage / refinement typically undergoes a series of tests to ensure the design provides a good end-user experience. Changes to the code under test don't normally require changes to the refinement tests unless a desired UI element is deemed too costly to complete.</p>
+
+<p>Refinement tests are typically written by a designer or UX expert by presenting a UI design to users and gathering data on how they experience it, and may be repeated as the design progresses. Beginning refinement testing before any real (non-prototype) code is implemented often reduces the number of design / UI changes later on in the development cycle, as the biggest usability problems can be identified as early as possible.</p>
+
+<p>Ideally, refinement tests are written before the UI is developed and any work is done. If writing and performing refinement tests is required for new work, your last chance to do so is before committing or submitting your code for code review.</p>
+
+<p>Key technologies for refinement testing are:</p>
+
+<ul>
+<li>Visual difference tools (e.g.: <a href="http://shoov.io/">Shoov</a>).</li>
+<li>A/B testing frameworks (e.g.: <a href="http://www.acquia.com/products-services/website-personalization">Acquia Lift</a>).</li>
+<li>Accessibility testing, both automated (e.g.: <a href="http://quailjs.org/">Quail</a>) and manual (e.g.: VoiceOver, JAWS).</li>
+<li>Talking to actual users.</li>
+<li>Observing how users use the system.</li>
+</ul>
+
+
+<p>Other names for refinement tests are:</p>
+
+<ul>
+<li>UX tests</li>
+<li>Usability tests</li>
+<li>Business-value tests</li>
+<li>Return On Investment (ROI) tests</li>
+<li>End-user tests</li>
+<li>Field tests</li>
+</ul>
+
+
+<p>Some books on refinement tests that I've read and recommend are:</p>
+
+<ul>
+<li><a href="http://www.sensible.com/rsme.html"><em>Rocket Surgery Made Easy: The Do-It-Yourself Guide to Finding and Fixing Usability Problems</em> by Steve Krug (New Riders, 2010)</a></li>
+<li><a href="http://www.sensible.com/dmmt.html"><em>Don’t Make Me Think: A Common Sense Approach to Web Usability</em> by Steve Krug (New Riders, 2014)</a></li>
+</ul>
+
+
+<h3>System testing</h3>
+
+<p>System tests are typically black-box tests to cover the system as a whole and catch regressions, on an extremely broad scope, at the user-interface level. The system usually has a number of system tests, each of which may focus on an important aspect of the system. Small changes to the code under test don't normally require changes to the system tests.</p>
+
+<p>System tests are typically written by the tester, developer, and product owner, to by writing regression tests, setting performance acceptability thresholds, stress-testing the system, ensuring the system is compatible with the systems it's designed to work with (e.g.: where it will be deployed), and whether the system can recover from unexpected, serious problems outside of it's control (recovery tests).</p>
+
+<p>Ideally, system tests are written or their parameters are chosen before any development work is done. If writing and performing system tests is required for new work, your last chance to do this is after integrating code together, usually before a demo to the client or a beta test.</p>
+
+<p>One thing to note about system testing is that the results of the tests aren't always a strict pass/fail, and therefore aren't always actionable. In this case, trends are more important: you should expect software that just got a whole bunch of new features to be a bit slower; but if it's <strong>a lot</strong> slower, then you should probably examine the new code and schedule some time to refactor.</p>
+
+<p>Key technologies for system testing are:</p>
+
+<ul>
+<li>Analysis tools (e.g.: <a href="https://newrelic.com/">New Relic</a>)</li>
+<li>Load-testing tools (e.g.: <a href="https://www.joedog.org/siege-home/">Siege</a>)</li>
+<li>Manual tests</li>
+</ul>
+
+
+<p>Other names for system tests are:</p>
+
+<ul>
+<li>End-user tests</li>
+<li>Field tests</li>
+<li>Regression tests</li>
+<li>Performance tests</li>
+<li>Failure tests</li>
+</ul>
+
+
+<h2>Bonus: Smoke tests</h2>
+
+<p>Smoke tests are extremely-small, preliminary, typically ad-hoc tests to reveal major defects that would typically preclude someone's ability to run other tests. For example:</p>
+
+<ul>
+<li>code that does not compile because of a syntax error prevents all tests from being run, therefore, <a href="conforming-coding-standards-linters.html">syntax linters</a> could be considered a type of smoke test;</li>
+<li>if a file added in the latest deployment does not exist after the deployment, or the file is empty (and it isn't supposed to be), that's usually a good indication that a deployment failed.</li>
+</ul>
+
+
+<p>Rumor has it that the term "smoke tests" is a calque from the discipline of electrical engineering, where, if you plug something in and it starts to smoke, that typically indicates that something is wrong and would prevent further testing.</p>
+
+<p>Other names for smoke tests are:</p>
+
+<ul>
+<li>confidence tests</li>
+<li>sanity tests</li>
+<li>intake tests</li>
+</ul>
+
+
+<h2>In conclusion</h2>
+
+<p>Hopefully, this blog post will help you to understand some of the terminology that surrounds software testing.</p>
+
+<p>Special thanks to my friend <a href="https://ca.linkedin.com/in/anandpathaksharma">Anand Sharma</a>, who is just as passionate about software quality, and has been a big help and influence in helping me learn software testing. He also reviewed <a href="../../sites/openconcept/files/software_testing_cheat_sheet.pdf">the software testing cheat sheet</a> for me. Also, thanks to <a href="https://github.com/patcon">Patrick Connelly</a> for the great tools he built and conversations we've had about continuous integration and software quality in general.</p>
+
+<p>Some books on this subject that I've read and strongly recommend are:</p>
+
+<ul>
+<li><a href="http://www.amazon.ca/dp/0321146530"><em>Test-Driven Development By Example</em> by Kent Beck (Addison-Wesley, 2003)</a></li>
+<li><a href="http://www.growing-object-oriented-software.com/"><em>Growing Object-Oriented Software, Guided by Tests</em>, by Steve Freeman and Nat Pryce (Addison-Wesley, 2010)</a></li>
+<li><a href="http://www.amazon.ca/dp/0131177052"><em>Working Effectively with Legacy Code</em>, by Michael C. Feathers (Prentice Hall, 2004)</a></li>
+</ul>
+
+
+<p>If you're looking to implement formal software testing at your organization, don't be discouraged by the fact that it takes a while to learn how to write good tests: it's worth the investment.</p>
+
+<p>Next week, I'll write a bit about automated testing, continuous integration, and continuous delivery.</p></div></div></div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-terms no-title block" id="blogTopicList">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <ul class="links"><li class="taxonomy_term_88 first"><a href="../../topic/drupal-development.html" rel="tag" title="">Drupal Development</a></li><li class="taxonomy_term_120"><a href="../../topic/planet.html" rel="tag" title="">Planet</a></li><li class="taxonomy_term_121 last"><a href="../../topic/technical.html" rel="tag" title="">Technical</a></li></ul>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-block pane-service-links-service-links block" id="blog-services-links">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Share this article</h2>
+        
+    
+    <div class="block-content">
+      <div class="service-links"><a href="https://www.facebook.com/sharer.php" title="Share this post on Facebook" class="service-links-facebook-share" rel="https://openconcept.ca/blog/mparker/overview-software-testing" target="_blank"><span class="element-invisible">Share on Facebook</span></a> <a href="overview-software-testing.html" title="Share on Linkedin" class="service-links-linkedin-share-button" rel="nofollow" target="_blank"><span class="element-invisible">Linkedin Share Button</span></a> <a href="overview-software-testing.html" title="Plus it" class="service-links-google-plus-one" rel="nofollow" target="_blank"><span class="element-invisible">Google Plus One</span></a> <a href="https://reddit.com/submit?url=https%3A//openconcept.ca/blog/mparker/overview-software-testing&amp;title=An%20overview%20of%20software%20testing" title="Submit this post on reddit.com" class="service-links-reddit" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/reddit.png" alt="Reddit logo" /></a> <a href="https://twitter.com/share?url=https%3A//openconcept.ca/blog/mparker/overview-software-testing&amp;text=An%20overview%20of%20software%20testing" title="Share this on Twitter" class="service-links-twitter" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/twitter.png" alt="Twitter logo" /></a></div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-posts-by-same-author block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Posts By Author</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-posts-by-same-author view-id-posts_by_same_author view-display-id-default view-dom-id-43494e0225649e20c137b6cd8ac933ee">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="overview-software-testing.html" class="active">An overview of software testing</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="automatically-running-linters-commit.html">Automatically running linters on commit</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="conforming-coding-standards-linters.html">Conforming to coding standards with linters</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-related-posts block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Related Posts</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-related-posts view-id-related_posts view-display-id-default view-dom-id-e59d5765db263a26b58ca1e2a6b33795">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mike/drupal-7.html">Drupal 7</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mike/organizing-drupal-government-ottawa.html">Organizing for Drupal in Government in Ottawa</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="drupal-north-code-sprint.html">The Drupal North Code Sprint</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-comment-wrapper no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <section id="comments" class="comment-wrapper">
+
+  
+  
+      <h2 class="comment-title title comment-form">Add new comment</h2>
+    <form class="comment-form" action="https://openconcept.ca/blog/mparker/overview-software-testing#comment-form" method="post" id="comment-form" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">Your name </label>
+ <input type="text" id="edit-name" name="name" value="" size="30" maxlength="60" class="form-text" />
+</div>
+<div class="form-item form-type-textfield form-item-subject">
+  <label for="edit-subject">Subject </label>
+ <input type="text" id="edit-subject" name="subject" value="" size="60" maxlength="64" class="form-text" />
+</div>
+<div class="field-type-text-long field-name-comment-body field-widget-text-textarea form-wrapper" id="edit-comment-body"><div id="comment-body-add-more-wrapper"><div class="text-format-wrapper"><div class="form-item form-type-textarea form-item-comment-body-und-0-value">
+  <label for="edit-comment-body-und-0-value">Comment <span class="form-required" title="This field is required.">*</span></label>
+ <div class="form-textarea-wrapper resizable"><textarea class="text-full form-textarea required" id="edit-comment-body-und-0-value" name="comment_body[und][0][value]" cols="60" rows="5"></textarea></div>
+</div>
+<fieldset class="filter-wrapper form-wrapper" id="edit-comment-body-und-0-format"><div class="fieldset-wrapper"><div class="filter-help form-wrapper" id="edit-comment-body-und-0-format-help"><p><a href="../../filter/tips.html" target="_blank">More information about text formats</a></p></div><div class="filter-guidelines form-wrapper" id="edit-comment-body-und-0-format-guidelines"><div class="filter-guidelines-item filter-guidelines-plain_text"><h3>Plain text</h3><ul class="tips"><li>No HTML tags allowed.</li><li>Lines and paragraphs break automatically.</li></ul></div></div></div></fieldset>
+</div>
+</div></div><input type="hidden" name="form_build_id" value="form-G3EOWw40ackZFFFe4brv87ot5Ah-IpGjYby0lpGP2UU" />
+<input type="hidden" name="form_id" value="comment_node_blog_form" />
+<fieldset class="captcha form-wrapper"><legend><span class="fieldset-legend">CAPTCHA</span></legend><div class="fieldset-wrapper"><div class="fieldset-description">This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.</div><input type="hidden" name="captcha_sid" value="202878" />
+<input type="hidden" name="captcha_token" value="b54ae1ac1b18f5c33aad5b5d1625f9a7" />
+<input type="hidden" name="captcha_response" value="Google no captcha" />
+<div class="g-recaptcha" data-sitekey="6LdXOyITAAAAAN7Z_EVSa8In_5EpmZTfmdah3ip2" data-theme="light" data-type="image"></div><input type="hidden" name="captcha_cacheable" value="1" />
+</div></fieldset>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Save" class="form-submit" /><input type="submit" id="edit-preview" name="op" value="Preview" class="form-submit" /></div><div class="address2-textfield"><div class="form-item form-type-textfield form-item-address2">
+  <label for="edit-address2">Leave this field blank </label>
+ <input autocomplete="off" type="text" id="edit-address2" name="address2" value="" size="20" maxlength="128" class="form-text" />
+</div>
+</div></div></form>  
+</section>
+    </div>
+
+    
+    
+  </div>
+</div>
+</div>
+  </div>
+</div>
+
+  </div>            </div>
+          
+          <!-- Feed icons (RSS, Atom icons etc -->
+          
+          
+        </section><!-- /end #main-content -->
+
+        <!-- region: Content Aside -->
+        
+      </div><!-- /end .content-inner -->
+    </div><!-- /end #content-column -->
+
+    <!-- regions: Sidebar first and Sidebar second -->
+        
+  </div><!-- /end #columns -->
+
+  <!-- region: Tertiary Content -->
+  
+  <!-- region: Footer -->
+     <div id="footer-wrapper">
+    <footer id="footer" class="clearfix" role="contentinfo">
+      <div class="region region-footer"><div class="region-inner clearfix"><div id="block-block-14" class="block block-block no-title odd first block-count-3 block-region-footer block-14" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p> </p>
+<h2 class="rtecenter"><strong>Interested in digital accessibility? <a href="https://mailchi.mp/133e3c60c3f6/accessibility-action" style="color:white;">Sign up today to our monthly Accessibility Action Newsletter!</a></strong></h2>
+<p> </p>
+</div>
+  </div></div><div id="block-panels-mini-location-get-in-touch-follow-us" class="block block-panels-mini no-title even block-count-4 block-region-footer block-location-get-in-touch-follow-us" >  
+  
+  <div class="block-content content"><div class="at-panel panel-display three-3x33 clearfix" id="mini-panel-location_get_in_touch_follow_us">
+    <div class="region region-three-33-first">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-8 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">LOCATION</h3>
+<div class="rtecenter">
+<p>571 Somerset Street West<br />
+Ottawa ON K1R 5K1<br />
+Canada</p>
+</div>
+<p class="rtecenter"> </p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-second">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-6 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">GET IN TOUCH</h3>
+<p class="rtecenter"><a href="tel:+16136866736">613-686-6736</a> (OPEN)<br />
+<a href="mailto:info@openconcept.ca" style="font-size: 13px; line-height: 1.6em;">info@openconcept.ca</a><br />
+<a href="../../careers.html" style="font-size: 13px; line-height: 1.6em;">Careers</a></p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-third">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-7 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">FOLLOW US</h3>
+<div class="clipwrapper rtecenter" style=" position: relative;height: 40px;width: 260px; margin:0 auto;">
+
+<a href="https://twitter.com/openconcept_ca" target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Twitter" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -41px; clip: rect(0 122px 50px 83px);"></a>
+
+<a href="https://www.linkedin.com/company/1703911?trk=prof-0-ovw-curr_pos"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Linkedin" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -36px; clip: rect(0 162px 50px 130px);"></a>
+
+<a href="https://www.facebook.com/OpenConcept-Consulting-Inc-657846390931051/?fref=ts"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on facebook" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -69px; clip: rect(0 250px 50px 213px);"></a>
+
+<a href="https://github.com/OpenConceptConsulting"  target="_blank" rel=”noopener noreferrer”>
+<img alt="GitHub Logo" src="../../sites/openconcept/themes/oc2014/images/github.svg" style="width: 45px; height: 45px; position: absolute; top: -5px; left: 194px;" width="45px" height="45px"></a>
+
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  </div>
+</div>
+  </div><div id="block-menu-menu-footer-menu" class="block block-menu no-title odd last block-count-5 block-region-footer block-menu-footer-menu"  role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-1264"><a href="../../about.html" title="">About</a></li><li class="leaf menu-depth-1 menu-item-1265"><a href="../../support.html" title="">Services</a></li><li class="leaf menu-depth-1 menu-item-1266"><a href="../../just-vision.html" title="">Our Work</a></li><li class="leaf menu-depth-1 menu-item-1267"><a href="../../drupal.html" title="">Drupal</a></li><li class="leaf menu-depth-1 menu-item-1582"><a href="../../blog.html" title="">Blog</a></li><li class="leaf menu-depth-1 menu-item-1269"><a href="../../contact.html" title="">Contact Us</a></li><li class="leaf menu-depth-1 menu-item-1270"><a href="../../accessibility-statement.html" title="">Accessibility</a></li><li class="leaf menu-depth-1 menu-item-1583"><a href="../../usage-policy.html" title="">Usage Policy</a></li><li class="last leaf menu-depth-1 menu-item-1614"><a href="../../privacy-policy.html" title="">Privacy</a></li></ul></div>
+  </div></div></div></div>    </footer>
+   </div>
+  
+</div>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>window.jQuery || document.write("<script src='../../sites/all/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js'>\x3C/script>")</script>
+<script src="../../sites/default/files/advagg_js/js__xMEFExRBeLF_Nnh2w42eON8oYCZVgn3_dmuWETzlD7o__YziG9O396nnc4ik7kSEjURf3zNFx-Gsbb51r1rYsccE__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="https://platform.linkedin.com/in.js?async=true"></script>
+<script src="../../sites/default/files/advagg_js/js__A52bEiaKhdkakCoe5501JI0YxDPSwTBJ-UFE-efNJb0__yf0_gufdxCt_YiSNmLRFk6O15VOLxNV0NN2NCDqVc-w__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="../../sites/default/files/advagg_js/js__TtR0f7kt8CNg-hMiSmtY5rrY3UtYDvihouuIR-zgvjo__eZvC1evgHOLlh_llWv-9amB8lWXb0LoA26aAILv2Q1M__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"oc2014","theme_token":"grblWUGN54d6FANMr989_ord2YunAfUoyDUhPzbtISg"},"ws_fs":{"type":"button","app_id":"150123828484431","css":"","locale":"en_US"},"ws_gpo":{"size":"medium","annotation":"","lang":"","callback":"","width":300},"ws_lsb":{"countmode":""},"better_exposed_filters":{"views":{"profile_picture":{"displays":{"default":{"filters":[]}}},"posts_by_same_author":{"displays":{"default":{"filters":[]}}},"related_posts":{"displays":{"default":{"filters":[]}}}}},"ckeditor":{"input_formats":{"filtered_html":{"customConfig":"\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.config.js?","defaultLanguage":"en","toolbar":"[\n    [\u0027Bold\u0027,\u0027Italic\u0027,\u0027NumberedList\u0027,\u0027BulletedList\u0027,\u0027Link\u0027,\u0027Blockquote\u0027,\u0027PasteText\u0027,\u0027Source\u0027,\u0027Flash\u0027,\u0027Maximize\u0027]\n]","enterMode":1,"shiftEnterMode":2,"toolbarStartupExpanded":true,"width":"100%","skin":"moono-lisa","format_tags":"p;div;pre;address;h1;h2;h3;h4;h5;h6","show_toggle":"t","default":"t","ss":"2","loadPlugins":{"drupalbreaks":{"name":"drupalbreaks","desc":"Plugin for inserting Drupal teaser and page breaks.","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/drupalbreaks\/","buttons":{"DrupalBreak":{"label":"DrupalBreak","icon":"images\/drupalbreak.png"}},"default":"t"}},"entities":false,"entities_greek":false,"entities_latin":false,"scayt_autoStartup":true,"language":"en","scayt_sLang":"en_US","forcePasteAsPlainText":true,"stylesCombo_stylesSet":"drupal:\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.styles.js","contentsCss":["\/sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css?qinvx1","\/sites\/all\/libraries\/ckeditor\/contents.css?qinvx1"]},"full_html":{"customConfig":"\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.config.js?","defaultLanguage":"en","toolbar":"[\n    [\u0027Bold\u0027,\u0027Italic\u0027,\u0027Underline\u0027,\u0027Strike\u0027,\u0027JustifyLeft\u0027,\u0027JustifyCenter\u0027,\u0027JustifyRight\u0027,\u0027JustifyBlock\u0027,\u0027Table\u0027,\u0027NumberedList\u0027,\u0027Blockquote\u0027,\u0027Indent\u0027,\u0027Outdent\u0027,\u0027BulletedList\u0027,\u0027Link\u0027,\u0027Unlink\u0027,\u0027Anchor\u0027,\u0027Image\u0027,\u0027IMCE\u0027],\n    [\u0027TextColor\u0027,\u0027BGColor\u0027,\u0027Format\u0027,\u0027Font\u0027,\u0027FontSize\u0027,\u0027Styles\u0027],\n    [\u0027Maximize\u0027,\u0027SpellChecker\u0027,\u0027MediaEmbed\u0027,\u0027PageBreak\u0027],\n    [\u0027Source\u0027]\n]","enterMode":1,"shiftEnterMode":2,"toolbarStartupExpanded":true,"width":"100%","skin":"moono-lisa","format_tags":"p;div;pre;address;h1;h2;h3;h4;h5;h6","show_toggle":"t","default":"t","allowedContent":true,"ss":"2","loadPlugins":{"drupalbreaks":{"name":"drupalbreaks","desc":"Plugin for inserting Drupal teaser and page breaks.","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/drupalbreaks\/","buttons":{"DrupalBreak":{"label":"DrupalBreak","icon":"images\/drupalbreak.png"}},"default":"t"},"imce":{"name":"imce","desc":"Plugin for inserting files from IMCE without image dialog","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/imce\/","buttons":{"IMCE":{"label":"IMCE","icon":"images\/icon.png"}},"default":"f"},"mediaembed":{"name":"mediaembed","desc":"Plugin for inserting Drupal embeded media","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/mediaembed\/","buttons":{"MediaEmbed":{"label":"MediaEmbed","icon":"images\/icon.png"}},"default":"f"}},"entities":false,"entities_greek":false,"entities_latin":false,"scayt_autoStartup":true,"forcePasteAsPlainText":true,"filebrowserBrowseUrl":"\/imce?app=ckeditor%7Csendto%40ckeditor_imceSendTo%7C","stylesCombo_stylesSet":"drupal:\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.styles.js","contentsCss":["\/sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css?qinvx1","\/sites\/all\/libraries\/ckeditor\/contents.css?qinvx1"]}},"plugins":[],"textarea_default_format":{"edit-comment-body-und-0-value":"plain_text"}},"urlIsAjaxTrusted":{"\/blog\/mparker\/overview-software-testing#comment-form":true,"\/search\/node":true},"responsive_menus":[{"selectors":"#primary-menu-bar","container":"body","trigger_txt":"\u003Cspan \/\u003E\u003Cspan \/\u003E\u003Cspan \/\u003E","close_txt":"X","close_size":"18px","position":"right","media_size":"480","show_children":"1","expand_children":"1","expand_txt":"+","contract_txt":"-","remove_attrs":"1","responsive_menus_style":"mean_menu"}],"eu_cookie_compliance":{"popup_enabled":1,"popup_agreed_enabled":0,"popup_hide_agreed":0,"popup_clicking_confirmation":1,"popup_scrolling_confirmation":0,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EBy clicking any link on this page you are giving your consent for us to set cookies.\u003C\/p\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n                    \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","mobile_breakpoint":"768","popup_html_agreed":"\u003Cdiv\u003E\n  \u003Cdiv class=\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\n\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button eu-cookie-compliance-hide-button\u0022\u003EHide\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button-thank-you\u0022 \u003EMore info\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/privacy-policy","popup_link_new_window":1,"popup_position":null,"fixed_top_position":1,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":0,"reload_page":0,"domain":"","domain_all_sites":null,"popup_eu_only_js":0,"cookie_lifetime":"100","cookie_session":false,"disagree_do_not_show_popup":0,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003E\u0026lt;h2\u0026gt;We use cookies on this site to enhance your user experience\u0026lt;\/h2\u0026gt;\u0026lt;p\u0026gt;You have given your consent for us to set cookies.\u0026lt;\/p\u0026gt;\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","withdraw_enabled":false,"withdraw_button_on_info_popup":false,"cookie_categories":[],"enable_save_preferences_button":true,"fix_first_cookie_category":true,"select_all_categories_by_default":false},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"}});</script>
+<script src="../../sites/default/files/advagg_js/js__F2qdh-1_GOHY85WJybNO3pprDd50KfMFbk-UcsLzh0Y___SeDJKIvrikPXIIr55mRB1jrZkJNqFYEnfX8AHNM0No__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>var eu_cookie_compliance_cookie_name = "";</script>
+<script src="../../sites/openconcept/themes/oc2014/js/portfolio.js"></script>
+</body>
+
+<!-- Mirrored from openconcept.ca/blog/mparker/overview-software-testing by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:08:25 GMT -->
+</html>

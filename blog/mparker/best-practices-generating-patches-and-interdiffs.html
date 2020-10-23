@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8" lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/"><!--<![endif]-->
+
+<!-- Mirrored from openconcept.ca/blog/mparker/best-practices-generating-patches-and-interdiffs by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:08:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<!--[if IE]><![endif]-->
+<meta charset="utf-8" />
+<link rel="shortcut icon" href="../../sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="I&#039;ve often been asked how I generate both patches and interdiffs at the same time, because the instr" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="abstract" content="I&#039;ve often been asked how I generate both patches and interdiffs at the same time, because the instr" />
+<meta name="MobileOptimized" content="width" />
+<meta name="keywords" content="Drupal, WordPress, Ottawa, open-source, website, communications, eLearning, accessibility, CRM, CMS, security" />
+<meta name="robots" content="follow, index" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<meta http-equiv="content-language" content="en" />
+<meta property="fb:admins" content="openconcept" />
+<meta property="fb:admins" content="kik.side" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@openconcept_ca" />
+<meta name="twitter:site:id" content="229468736" />
+<meta name="twitter:creator" content="@openconcept_ca" />
+<meta name="twitter:creator:id" content="229468736" />
+<meta name="twitter:url" content="best-practices-generating-patches-and-interdiffs.html" />
+<meta name="twitter:title" content="Best practices for generating patches and interdiffs" />
+<meta name="twitter:description" content="I&#039;ve often been asked how I generate both patches and interdiffs at the same time, because the instr" />
+<meta itemprop="name" content="Best practices for generating patches and interdiffs" />
+<title>Blog: Best practices for generating patches and interdiffs | OpenConcept</title>
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__Fk6ib8vGzlld1Z-3iMHxBRa3_Z-wnv0p_-pqQEXhv1o__QUdxuXWKI0XTsPl3jjnljuEsAhlG7QC3Qj3tVSTDO_I__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__0kxo9a_7V-NXmMFyEka9ww5_KAh62JvVq0T_opEsnYI__yLupVjjUulT7jR2cTAx-8AnjCJEZttCLm-N5GL51cAg__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__WQ3VIViemVu1z3pxCt1hYihEFTVqdm3SgqDmHAifCF8__8pEWrNOJbuWWcn2CXCq6Id8yS_eivMQaAg37yz85fmk__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato%7CArimo:400,700italic,400italic,700" media="all" />
+
+<!--[if (lt IE 9)&(!IEMobile 7)]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__L_hl_g5koAwf-tcMQbO0rF6TiioG2sSDkJP6VhlrJSE__Jt_t77XXAGMXO_thFaLEyXIrOahPFnRwr5VH4gzy-Wc__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="screen" />
+<![endif]-->
+<style>#sliding-popup.sliding-popup-bottom,#sliding-popup.sliding-popup-bottom .eu-cookie-withdraw-banner,.eu-cookie-withdraw-tab{background:#0779bf}#sliding-popup.sliding-popup-bottom.eu-cookie-withdraw-wrapper{background:transparent}#sliding-popup .popup-content #popup-text h1,#sliding-popup .popup-content #popup-text h2,#sliding-popup .popup-content #popup-text h3,#sliding-popup .popup-content #popup-text p,#sliding-popup label,#sliding-popup div,.eu-cookie-compliance-secondary-button,.eu-cookie-withdraw-tab{color:#fff !important}.eu-cookie-withdraw-tab{border-color:#fff}.eu-cookie-compliance-more-button{color:#fff !important}</style>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","../../sites/default/files/googleanalytics/analyticse5f5.js?qinvx1","ga");ga("create", "UA-190532-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1716 node-type-blog site-name-hidden site-name-openconcept section-blog">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page" class="page">
+
+  <!-- region: Leaderboard -->
+  
+ <div class="focus">
+  <header id="header" class="clearfix" role="banner">
+          <!-- start: Branding -->
+      <div id="branding" class="branding-elements clearfix">
+
+                  <div id="logo">
+            <a href="../../index.html" title="Home page"><img class="site-logo image-style-none" typeof="foaf:Image" src="../../sites/default/files/oclogo_0.png" alt="OpenConcept" /></a>          </div>
+        
+                  <!-- start: Site name and Slogan hgroup -->
+          <hgroup class="element-invisible" id="name-and-slogan">
+
+                          <h1 class="element-invisible" id="site-name"><a href="../../index.html" title="Home page">OpenConcept</a></h1>
+            
+            
+          </hgroup><!-- /end #name-and-slogan -->
+        
+      </div><!-- /end #branding -->
+    
+    <!-- region: Header -->
+    
+  <div id="menu-bar" class="nav clearfix"><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix odd first last block-count-1 block-region-menu-bar block-main-menu"  role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first expanded menu-depth-1 menu-item-777"><a href="../../about.html" title="">About</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-981"><a href="../../who-we-are.html">Who we are</a></li><li class="leaf menu-depth-2 menu-item-782"><a href="../../values.html">Our Values</a></li><li class="leaf menu-depth-2 menu-item-783"><a href="../../community.html" title="Our involement with the BCorp Community.">Community</a></li><li class="last leaf menu-depth-2 menu-item-862"><a href="../../careers.html">Careers</a></li></ul></li><li class="collapsed menu-depth-1 menu-item-778"><a href="../../support.html">Services</a></li><li class="leaf menu-depth-1 menu-item-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="collapsed menu-depth-1 menu-item-1187"><a href="../../drupal.html">Drupal</a></li><li class="expanded menu-depth-1 menu-item-781"><a href="../../news.html" title="">News</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-979"><a href="../../events.html">Events</a></li><li class="leaf menu-depth-2 menu-item-980"><a href="../../blog.html" title="">Blogs</a></li><li class="last leaf menu-depth-2 menu-item-1212"><a href="../../news/news-releases.html">News Releases</a></li></ul></li><li class="last leaf menu-depth-1 menu-item-614"><a href="../../contact.html">Contact Us</a></li></ul>
+  </nav></div>  <div id="primary-menu-bar" class="nav clearfix nav clearfix"><nav  class="primary-menu-wrapper menu-wrapper clearfix primary-menu-wrapper menu-wrapper clearfix"><h2 class="element-invisible">Main menu</h2><ul class="menu primary-menu clearfix"><li class="menu-777 first"><a href="../../about.html" title="">About</a></li><li class="menu-778"><a href="../../support.html">Services</a></li><li class="menu-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="menu-1187"><a href="../../drupal.html">Drupal</a></li><li class="menu-781"><a href="../../news.html" title="">News</a></li><li class="menu-614 last"><a href="../../contact.html">Contact Us</a></li></ul></nav></div>
+  </header>
+ </div>
+
+  <!-- Navigation elements -->
+  
+  <!-- Breadcrumbs -->
+  
+  <!-- Messages and Help -->
+    
+  <!-- region: Secondary Content -->
+  
+  <div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column" role="main">
+      <div class="content-inner">
+
+        <!-- region: Highlighted -->
+        
+
+        <section id="main-content"  class="focus">
+          
+                      <header id="main-content-header" class="clearfix">
+
+
+
+              
+            </header>
+          
+          <!-- region: Main Content -->
+                      <div id="content" class="region">
+              <div id="block-system-main" class="block block-system no-title odd first last block-count-2 block-region-content block-main" >  
+  
+  <div class="panel-display panel-1col clearfix" >
+  <div class="panel-panel panel-col">
+    <div><div class="panel-pane pane-node-title no-title block" id="blog-node-title">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h1>Best practices for generating patches and interdiffs</h1>
+    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-node-author block" id="blog-node-author">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">By: </h2>
+        
+    
+    <div class="block-content">
+      <a href="../../users/mparker.html" title="View user profile." class="username" xml:lang="" about="/users/mparker" typeof="sioc:UserAccount" property="foaf:name" datatype="">mparker</a>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-token pane-node-created block" id="blog-node-viewed">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">on </h2>
+        
+    
+    <div class="block-content">
+      May 27, 2015    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-body no-title block" id="blog-body">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even" property="content:encoded"><p>I've often been asked how I generate both <a href="https://www.drupal.org/node/707484">patches</a> and <a href="https://www.drupal.org/documentation/git/interdiff">interdiffs</a> at the same time, because the instructions on drupal.org currently detail the two processes separately, and different documentation pages give different instructions.</p>
+
+<p>So, I thought I'd share the process that works for me, providing real-world examples from <a href="https://www.drupal.org/node/2290031">an issue that I've worked on</a>.</p>
+
+<p>If you find a better process, please blog about it and post a link in the comments!</p>
+
+<p>This tutorial assumes that:</p>
+
+<ul>
+<li>You know what patchfiles are,</li>
+<li>You know how to use the command-line (the instructions should work in both *NIX and Windows), and,</li>
+<li>You have a beginner-level knowledge about Git.</li>
+</ul>
+
+
+<h2>High-level workflow overview</h2>
+
+<p>My patching workflow works roughly like this:</p>
+
+<ol>
+<li>Before you make a patch, make an issue to post it to.</li>
+<li>Make your patch in an environment that makes as few assumptions as possible. I use a fresh Drupal site installed with the Minimal install profile, and I only install the bare minimum set of modules that I need to make the module I want to patch work.</li>
+<li>To make the first patch in an issue:
+
+<ol type="a">
+<li>Before making any changes, make a new branch named after the NID of the issue and the comment number you intend to post the patch to.</li>
+<li>Make your changes and commit them to the new branch. If you make more than one commit, squash them down to a single commit when you feel that you're ready to post the patch.</li>
+<li>Generate a patchfile with <code>git format-patch</code> — this will add extra metadata to help Git and other humans in the future.</li>
+</ol>
+</li>
+<li>If there are already patches in the issue, and the most-recent patch no longer applies, re-roll the old patch first and upload it, then make your changes in a separate patch.</li>
+<li>If there are already patches in the issue:
+
+<ol type="a">
+<li>Download the most-recent patch and commit its changes to a branch named after the NID of the issue and the comment number that you got the patchfile from.
+
+<ul>
+<li>If it no longer applies, re-roll and upload it first, then make your changes in a separate patch.</li>
+</ul>
+</li>
+<li>Checkout the starting branch again.</li>
+<li>Make a new branch named after the NID of the issue and the comment number you intend to post the patch to.</li>
+<li>Apply the most-recent patch to the new branch but don't commit it yet.</li>
+<li>Make your changes in the new branch and commit them to the new branch. If you make more than one commit, squash them down to a single commit when you feel that you're ready to post the patch.</li>
+<li>Generate a patchfile with <code>git format-patch</code> — this will add extra metadata to help Git and other humans in the future.</li>
+<li>Generate an interdiff by <code>git diff</code>-ing against the branch from step 5a.</li>
+</ol>
+</li>
+</ol>
+
+
+<p>... if none of this makes sense yet, don't worry: I'll explain it below. Hopefully once you've run through it a couple of times, you can use this high-level overview as a reference.</p>
+
+<h2>Detailed workflow</h2>
+
+<h3>1. Making a new issue</h3>
+
+<p>Before you make a patch, you should have an issue to post it to.</p>
+
+<ol>
+<li>Create a ticket on Drupal.org, and propose your changes.
+
+<ul>
+<li>Use the <a href="https://www.drupal.org/node/1155816">Issue summary template</a>.
+
+<ul>
+<li>If you're reporting a bug, add a section with <em>Steps to Reproduce</em> the bug. This will help module maintainers see the need for your patch!</li>
+<li>Especially for bug reports, it's helpful to compare what the module does now with what you want it to do. This also helps module maintainers see the problem.</li>
+</ul>
+</li>
+<li>Good metadata is important! I usually need to spend a bit of time finding a succinct <em>Title</em>, choosing the most-appropriate <em>Category</em> and <em>Component</em>, re-reading <a href="https://www.drupal.org/node/45111">the guidelines for setting a <em>Priority</em></a>, and <a href="https://www.drupal.org/node/1023102">choosing good issue tags</a>.
+
+<ul>
+<li>Since this is a new issue, and you haven't attached a patch yet, leave the <a href="https://www.drupal.org/node/156119">issue status</a> set to <em>Active</em>.</li>
+<li>If you intend to provide a patch right away, you may assign the issue to yourself.</li>
+</ul>
+</li>
+<li>Take note of the node ID in the URL of the issue (e.g.: for <code>https://www.drupal.org/node/2290031</code> the Node ID is <code>2290031</code>) — you'll need it when patching.</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>2. Set up your environment for patching</h3>
+
+<p>Accidentally making assumptions about the Drupal site you're working on increases the risk that your patch will break other people's work, won't get accepted, will take a long time to be accepted, or will be rolled back later on. So, it's important to write your patch on an environment that makes as few assumptions as possible.</p>
+
+<p>In some cases, trying to reproduce a problem (or adding a feature) in a clean environment will also help you to identify future problems, or see a solution that doesn't require patching.</p>
+
+<ol>
+<li>Set up a fresh Drupal site to write your patch on.
+
+<ul>
+<li>Use the <em>Minimal</em> install profile.</li>
+</ul>
+</li>
+<li>Enable only the bare minimum set of modules that you need to make the module you want to patch work (e.g.: the Facet API module requires <code>ctools</code> and a search module, like core's <code>search</code>).</li>
+<li>Clone the module you want to patch (e.g.: <code>git clone --branch 7.x-1.x http://git.drupal.org/project/facetapi.git</code>).
+
+<ul>
+<li>You can copy and paste the Git command from the project page's <em>Version control</em> tab (e.g.: <code>https://www.drupal.org/project/facetapi/git-instructions</code>).</li>
+<li>Take note of the branch you start from.</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>3. Making the first patch in an issue</h3>
+
+<p>The first patch to an issue does not need an <code>interdiff.txt</code>, but generating your first patch as follows makes generating interdiffs easier in the future.</p>
+
+<ol>
+<li>From the starting branch, create a new branch named after the Node ID of the issue and the comment number you intend to post it to (e.g.: <code>2290031-3</code> — <code>git checkout -b 2290031-3</code>).
+
+<ul>
+<li>The Node ID is in the URL of the issue (e.g.: for <code>https://www.drupal.org/node/2290031</code> the Node ID is <code>2290031</code>).</li>
+<li>Note that if you're logged into Drupal.org, the "Add comment" section title shows the next comment number (e.g. <code>Add comment #10</code>).</li>
+</ul>
+</li>
+<li>Make your changes in this branch, add them, and commit them.
+
+<ul>
+<li>If you make more than one commit, you'll need to squash it down to a single commit using <a href="http://git-scm.com/docs/git-rebase">git-rebase</a>.</li>
+<li>The commit message you enter here will be seen by others, but it will not be used as <a href="https://www.drupal.org/node/52287">the final commit message</a>. I simply enter the name of the branch (e.g.: <code>git commit -m "2290031-3"</code>).</li>
+</ul>
+</li>
+<li>Run <code>git format-patch $starting_branch</code> (e.g.: <code>git format-patch 7.x-1.x</code>).
+
+<ul>
+<li>This generates a patch file and places it in the repository.</li>
+<li>Alternately, you could generate a patch with <code>git diff $starting_branch</code>, but I like <a href="http://git-scm.com/docs/git-format-patch">git-format-patch</a> better because it adds a bit of metadata that will <a href="https://github.com/git/git/commit/f247b10aa0f75727f1b4bdd67b060720b8219b29">help Git to apply your patch</a> without someone having to re-roll it as often.</li>
+</ul>
+</li>
+<li>Move the patch file out of the git repository to prevent you accidentally committing it later.
+
+<ul>
+<li>This is a good time to <a href="https://www.drupal.org/patch/submit#patch_naming">rename your patch</a>.</li>
+<li>Note that if you use <a href="https://dreditor.org/">Dreditor</a>, you can use it to generate a patch name for you by clicking the <em>Patchname suggestion</em> button in the <em>Files</em> fieldset.</li>
+</ul>
+</li>
+<li>Check out the starting branch, to prevent you from accidentally branching off it later.</li>
+<li>Upload the patch to the issue.
+
+<ul>
+<li>Don't forget to un-assign the issue! Many maintainers ignore assigned issues, regardless of what the issue's <em>Status</em> is, because they assume assigned issues have someone actively working on it right now.</li>
+<li>Don't forget to set the <em>Status</em> to <code>Needs review</code>. This helps others to know there's a patch attached and that patch is ready for someone else to look at.</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>4. Re-rolling a patch</h3>
+
+<p>If the maintainer(s) have been making a lot of commits to the starting branch, <a href="http://git-scm.com/docs/git">git(1)</a> or <a href="http://manpages.ubuntu.com/manpages/vivid/en/man1/patch.1.html">patch(1)</a> may not be able to figure out how to apply the patch file any longer. If this happens, the patch will need to be rerolled.</p>
+
+<p>If you're making a subsequent patch to an issue, and the previous patch doesn't apply, <strong>re-roll the patch first, then make your changes in a separate patch</strong>. Doing so makes it easier for both you to generate interdiffs; and it makes it easier for the maintainer(s) (and anyone else following the issue) to understand what's going on.</p>
+
+<ol>
+<li>Make sure your repository is up-to-date (<code>git pull</code>).</li>
+<li>Download the most-recent patch.</li>
+<li>Double-check whether it is necessary to re-roll the patch (<code>git apply --check /path/to/most-recent.patch</code>).
+
+<ul>
+<li>If you see nothing, then the patch does not need to be re-rolled and you can skip this section entirely.</li>
+<li>If you see <code>error: patch failed</code>, then you will need to re-roll the patch.</li>
+</ul>
+</li>
+<li>Find when the most-recent patch was made.
+
+<ul>
+<li>If the most-recent patch was made with <a href="http://git-scm.com/docs/git-format-patch">git-format-patch</a>, the first line of the patchfile (<code>From $commit_id $date</code>) will tell you everything you need to know. Take note of the commit ID and jump down to step 6.</li>
+<li>If the commit ID or date is not available in the patchfile, you can get a rough guess by looking at the date-stamp on the comment that the most-recent patch was uploaded in will work instead.
+
+<ul>
+<li>Sometimes Drupal.org displays the time since the comment was posted (e.g.: "yesterday"). Double-click to change to an exact date.</li>
+</ul>
+</li>
+<li>Take note of how to write the date in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> (<code>yyyy-mm-dd</code>, e.g.: <code>2014-06-20</code>).</li>
+</ul>
+</li>
+<li>Search git log to find a commit from that day or earlier (<code>git log --before=$iso_8601_date</code> e.g.: <code>git log --before=2014-06-20</code>).
+
+<ul>
+<li>Take note of the commit ID (e.g.: <code>9e26034949aac609bb8537ef5a189033a3665baa</code>).</li>
+</ul>
+</li>
+<li>Check out the commit ID (e.g.: <code>git checkout 9e26034949aac609bb8537ef5a189033a3665baa</code>).
+
+<ul>
+<li>Git will tell you that <code>You are in 'detached HEAD' state</code>. This is okay.</li>
+</ul>
+</li>
+<li>Create a new branch named after the Node ID of the issue and the comment number you intend to post it to (e.g.: <code>2290031-6</code> — <code>git checkout -b 2290031-6</code>).</li>
+<li>Apply the patch (<code>git apply --index /path/to/most-recent.patch</code> e.g.: <code>git apply --index make_inactive_active-2290031-4.patch</code>).</li>
+<li>Commit the patch.
+
+<ul>
+<li>The commit message you enter here will be seen by others, but it will not be used as <a href="https://www.drupal.org/node/52287">the final commit message</a>. I simply enter the name of the branch (e.g.: <code>git commit -m "2290031-6"</code>).</li>
+</ul>
+</li>
+<li>Rebase the branch onto the most-recent commit of the starting branch: <code>git rebase $starting_branch</code> (e.g.: <code>git rebase 7.x-1.x</code>).
+
+<ul>
+<li>You might get merge conflicts. If you do, fix them, taking notes on what you did, and follow Git's instructions for finishing the rebase.</li>
+<li>In rare cases, if you get merge conflicts, it's because the maintainer(s) <em>significantly</em> changed how the code works. If this is the case, you might have to abort the rebase and start the patch fresh (see <em>3. Making the first patch in an issue</em>). Make sure to <strong>very clearly state</strong> in the comment where you post the patch that you tried re-rolling but the code had changed too much and you were forced to start from scratch.</li>
+</ul>
+</li>
+<li>If and only if the rebase completed successfully, run <code>git format-patch $starting_branch</code> (e.g.: <code>git format-patch 7.x-1.x</code>).
+
+<ul>
+<li>This generates a patch file and places it in the repository.</li>
+<li>Alternately, you could generate a patch with <code>git diff $starting_branch</code>, but I like <a href="http://git-scm.com/docs/git-format-patch">git-format-patch</a> better because it adds a bit of metadata that will <a href="https://github.com/git/git/commit/f247b10aa0f75727f1b4bdd67b060720b8219b29">help Git to apply your patch</a> without someone having to re-roll it as often.</li>
+</ul>
+</li>
+<li>Move the patch file out of the git repository to prevent you accidentally committing it later.
+
+<ul>
+<li>This is a good time to <a href="https://www.drupal.org/patch/submit#patch_naming">rename your patch</a>.</li>
+<li>Note that if you use <a href="https://dreditor.org/">Dreditor</a>, you can use it to generate a patch name for you by clicking the <em>Patchname suggestion</em> button in the <em>Files</em> fieldset.</li>
+</ul>
+</li>
+<li>Check out the starting branch, to prevent you from accidentally branching off it later (<code>git checkout $starting_branch</code>, e.g.: <code>git checkout 7.x-1.x</code>).</li>
+<li>Upload the patch to the issue.
+
+<ul>
+<li>Don't forget to un-assign the issue! Many maintainers ignore assigned issues, regardless of what the issue's <em>Status</em> is, because they assume assigned issues have someone actively working on it right now.</li>
+<li>Don't forget to set the <em>Status</em> to <code>Needs review</code>. This helps others to know there's a patch attached and that patch is ready for someone else to look at.</li>
+<li>Make sure you <strong>very clearly state</strong> that you are just re-rolling and there are no changes (or, if you got merge conflicts, state how you resolved them and why).</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>5. Making a subsequent patch in an issue</h3>
+
+<p>If there's already a patch in an issue, and you want to change it, you will need to generate an interdiff to help the maintainer(s) understand what you're changing.</p>
+
+<ol>
+<li>Make sure your repository is up-to-date (<code>git pull</code>).</li>
+<li>Download the most-recent patch.</li>
+<li>Create a new branch named after the Node ID of the issue and the comment number of the most-recent patch (e.g.: <code>2290031-6</code> — <code>git checkout -b 2290031-6</code>).
+
+<ul>
+<li>If you generated the last patch and the branch is still in your repository, you can skip down to step 7.</li>
+</ul>
+</li>
+<li>Apply the patch (<code>git apply --index /path/to/most-recent.patch</code> e.g.: <code>git apply --index make_inactive_active-2290031-6.patch</code>).</li>
+<li>Commit the patch.
+
+<ul>
+<li>I simply enter the name of the branch (e.g.: <code>git commit -m "2290031-6"</code>).</li>
+</ul>
+</li>
+<li>Checkout the starting branch (<code>git checkout $starting_branch</code>, e.g.: <code>git checkout 7.x-1.x</code>).</li>
+<li>Create a new branch named after the Node ID of the issue and the comment number you intend to post it to (e.g.: <code>2290031-7</code> — <code>git checkout -b 2290031-7</code>).</li>
+<li>Apply the patch again (<code>git apply --index /path/to/most-recent.patch</code> e.g.: <code>git apply --index make_inactive_active-2290031-6.patch</code>).
+
+<ul>
+<li>If you want to take the patch in an entirely new direction, you can skip this step, but you should have a really good reason for throwing away other people's work (which they might have volunteered), and you should <strong>very clearly state those reasons</strong> in the comment you post in step 15. Make sure you follow <a href="https://www.drupal.org/dcoc">the Drupal Code of Conduct</a>.</li>
+</ul>
+</li>
+<li>Make your changes in this branch, add them, and commit them.
+
+<ul>
+<li>If you make more than one commit, you'll need to squash it down to a single commit using <a href="http://git-scm.com/docs/git-rebase">git-rebase</a>.</li>
+<li>The commit message you enter here will be seen by others, but it will not be used as <a href="https://www.drupal.org/node/52287">the final commit message</a>. I simply enter the name of the branch (e.g.: <code>git commit -m "2290031-7"</code>).</li>
+</ul>
+</li>
+<li>Run <code>git format-patch $starting_branch</code> (e.g.: <code>git format-patch 7.x-1.x</code>).
+
+<ul>
+<li>This generates a patch file and places it in the repository.</li>
+<li>Alternately, you could generate a patch with <code>git diff $starting_branch</code>, but I like <a href="http://git-scm.com/docs/git-format-patch">git-format-patch</a> better because it adds a bit of metadata that will help Git to apply your patch without someone having to re-roll it as often.</li>
+</ul>
+</li>
+<li>Move the patch file out of the git repository to prevent you accidentally committing it later.
+
+<ul>
+<li>This is a good time to <a href="https://www.drupal.org/patch/submit#patch_naming">rename your patch</a>.</li>
+<li>Note that if you use <a href="https://dreditor.org/">Dreditor</a>, you can use it to generate a patch name for you by clicking the <em>Patchname suggestion</em> button in the <em>Files</em> fieldset.</li>
+</ul>
+</li>
+<li>Generate an interdiff (<code>git diff $previous_patch_branch &gt; interdiff.txt</code> e.g.: <code>git diff 2290031-6</code>).</li>
+<li>Move the interdiff out of the git repository to prevent you accidentally committing it later.
+
+<ul>
+<li>Interdiffs are usually just named <code>interdiff.txt</code>, regardless of what issue number or comments they relate to, so take careful note of where you move it to so that you don't confuse it with another interdiff later.</li>
+</ul>
+</li>
+<li>Check out the starting branch, to prevent you from accidentally branching off it later (<code>git checkout $starting_branch</code>, e.g.: <code>git checkout 7.x-1.x</code>).</li>
+<li>Upload both the patch and the interdiff to the issue.
+
+<ul>
+<li>Don't forget to un-assign the issue! Many maintainers ignore assigned issues, regardless of what the issue's <em>Status</em> is, because they assume assigned issues have someone actively working on it right now.</li>
+<li>Don't forget to set the <em>Status</em> to <code>Needs review</code>. This helps others to know there's a patch attached and that patch is ready for someone else to look at.</li>
+<li>Make sure you upload the correct interdiff! Interdiffs are usually just named <code>interdiff.txt</code>, regardless of what issue number or comments they relate to, so make sure you upload the right one!</li>
+</ul>
+</li>
+<li>Delete the <code>interdiff.txt</code> so you don't get confused and upload an old interdiff later.</li>
+</ol>
+
+
+<h2>Conclusion</h2>
+
+<p>I'm posting this in the hopes that it will help others in the future. If you have questions, ask them in the comments and I'll try to answer them and update the blog post with corrections, so you can refer to this post in the future without digging through the comments as well.</p></div></div></div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-terms no-title block" id="blogTopicList">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <ul class="links"><li class="taxonomy_term_88 first"><a href="../../topic/drupal-development.html" rel="tag" title="">Drupal Development</a></li><li class="taxonomy_term_111"><a href="../../topic/community.html" rel="tag" title="Content that is about people creating&amp;nbsp;a feeling of fellowship with others, as a result of sharing common attitudes, interests, and goals.
+">Community</a></li><li class="taxonomy_term_112"><a href="../../topic/open-source.html" rel="tag" title="Generally, open source refers to a computer program&amp;nbsp;in which the source code&amp;nbsp;is available to the general public for use and/or modification from its original design. Open-source code is typically a collaborative effort where programmers improve upon the source code and share the changes within the community so that other members can help improve it further.
+">Open Source</a></li><li class="taxonomy_term_120"><a href="../../topic/planet.html" rel="tag" title="">Planet</a></li><li class="taxonomy_term_121 last"><a href="../../topic/technical.html" rel="tag" title="">Technical</a></li></ul>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-block pane-service-links-service-links block" id="blog-services-links">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Share this article</h2>
+        
+    
+    <div class="block-content">
+      <div class="service-links"><a href="https://www.facebook.com/sharer.php" title="Share this post on Facebook" class="service-links-facebook-share" rel="https://openconcept.ca/blog/mparker/best-practices-generating-patches-and-interdiffs" target="_blank"><span class="element-invisible">Share on Facebook</span></a> <a href="best-practices-generating-patches-and-interdiffs.html" title="Share on Linkedin" class="service-links-linkedin-share-button" rel="nofollow" target="_blank"><span class="element-invisible">Linkedin Share Button</span></a> <a href="best-practices-generating-patches-and-interdiffs.html" title="Plus it" class="service-links-google-plus-one" rel="nofollow" target="_blank"><span class="element-invisible">Google Plus One</span></a> <a href="https://reddit.com/submit?url=https%3A//openconcept.ca/blog/mparker/best-practices-generating-patches-and-interdiffs&amp;title=Best%20practices%20for%20generating%20patches%20and%20interdiffs" title="Submit this post on reddit.com" class="service-links-reddit" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/reddit.png" alt="Reddit logo" /></a> <a href="https://twitter.com/share?url=https%3A//openconcept.ca/blog/mparker/best-practices-generating-patches-and-interdiffs&amp;text=Best%20practices%20for%20generating%20patches%20and%20interdiffs" title="Share this on Twitter" class="service-links-twitter" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/twitter.png" alt="Twitter logo" /></a></div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-posts-by-same-author block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Posts By Author</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-posts-by-same-author view-id-posts_by_same_author view-display-id-default view-dom-id-b85b031259f50d104708459cdad3ebf8">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="overview-software-testing.html">An overview of software testing</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="automatically-running-linters-commit.html">Automatically running linters on commit</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="conforming-coding-standards-linters.html">Conforming to coding standards with linters</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-related-posts block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Related Posts</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-related-posts view-id-related_posts view-display-id-default view-dom-id-1bfaf95e97509ad42cc1408fc776a1cc">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mgifford/25-years-internet.html">25 Years on the Internet</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../../rfi_open_source_software_government.html">Response to PWGSC&#039;s No Charge Licensed Software RFI</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mike/government-and-business-can-cooperate-greater-sustainability.html">Government and Business Can Cooperate for Greater Sustainability</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-comment-wrapper no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <section id="comments" class="comment-wrapper">
+
+  
+  
+  
+</section>
+    </div>
+
+    
+    
+  </div>
+</div>
+</div>
+  </div>
+</div>
+
+  </div>            </div>
+          
+          <!-- Feed icons (RSS, Atom icons etc -->
+          
+          
+        </section><!-- /end #main-content -->
+
+        <!-- region: Content Aside -->
+        
+      </div><!-- /end .content-inner -->
+    </div><!-- /end #content-column -->
+
+    <!-- regions: Sidebar first and Sidebar second -->
+        
+  </div><!-- /end #columns -->
+
+  <!-- region: Tertiary Content -->
+  
+  <!-- region: Footer -->
+     <div id="footer-wrapper">
+    <footer id="footer" class="clearfix" role="contentinfo">
+      <div class="region region-footer"><div class="region-inner clearfix"><div id="block-block-14" class="block block-block no-title odd first block-count-3 block-region-footer block-14" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p> </p>
+<h2 class="rtecenter"><strong>Interested in digital accessibility? <a href="https://mailchi.mp/133e3c60c3f6/accessibility-action" style="color:white;">Sign up today to our monthly Accessibility Action Newsletter!</a></strong></h2>
+<p> </p>
+</div>
+  </div></div><div id="block-panels-mini-location-get-in-touch-follow-us" class="block block-panels-mini no-title even block-count-4 block-region-footer block-location-get-in-touch-follow-us" >  
+  
+  <div class="block-content content"><div class="at-panel panel-display three-3x33 clearfix" id="mini-panel-location_get_in_touch_follow_us">
+    <div class="region region-three-33-first">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-8 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">LOCATION</h3>
+<div class="rtecenter">
+<p>571 Somerset Street West<br />
+Ottawa ON K1R 5K1<br />
+Canada</p>
+</div>
+<p class="rtecenter"> </p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-second">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-6 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">GET IN TOUCH</h3>
+<p class="rtecenter"><a href="tel:+16136866736">613-686-6736</a> (OPEN)<br />
+<a href="mailto:info@openconcept.ca" style="font-size: 13px; line-height: 1.6em;">info@openconcept.ca</a><br />
+<a href="../../careers.html" style="font-size: 13px; line-height: 1.6em;">Careers</a></p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-third">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-7 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">FOLLOW US</h3>
+<div class="clipwrapper rtecenter" style=" position: relative;height: 40px;width: 260px; margin:0 auto;">
+
+<a href="https://twitter.com/openconcept_ca" target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Twitter" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -41px; clip: rect(0 122px 50px 83px);"></a>
+
+<a href="https://www.linkedin.com/company/1703911?trk=prof-0-ovw-curr_pos"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Linkedin" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -36px; clip: rect(0 162px 50px 130px);"></a>
+
+<a href="https://www.facebook.com/OpenConcept-Consulting-Inc-657846390931051/?fref=ts"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on facebook" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -69px; clip: rect(0 250px 50px 213px);"></a>
+
+<a href="https://github.com/OpenConceptConsulting"  target="_blank" rel=”noopener noreferrer”>
+<img alt="GitHub Logo" src="../../sites/openconcept/themes/oc2014/images/github.svg" style="width: 45px; height: 45px; position: absolute; top: -5px; left: 194px;" width="45px" height="45px"></a>
+
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  </div>
+</div>
+  </div><div id="block-menu-menu-footer-menu" class="block block-menu no-title odd last block-count-5 block-region-footer block-menu-footer-menu"  role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-1264"><a href="../../about.html" title="">About</a></li><li class="leaf menu-depth-1 menu-item-1265"><a href="../../support.html" title="">Services</a></li><li class="leaf menu-depth-1 menu-item-1266"><a href="../../just-vision.html" title="">Our Work</a></li><li class="leaf menu-depth-1 menu-item-1267"><a href="../../drupal.html" title="">Drupal</a></li><li class="leaf menu-depth-1 menu-item-1582"><a href="../../blog.html" title="">Blog</a></li><li class="leaf menu-depth-1 menu-item-1269"><a href="../../contact.html" title="">Contact Us</a></li><li class="leaf menu-depth-1 menu-item-1270"><a href="../../accessibility-statement.html" title="">Accessibility</a></li><li class="leaf menu-depth-1 menu-item-1583"><a href="../../usage-policy.html" title="">Usage Policy</a></li><li class="last leaf menu-depth-1 menu-item-1614"><a href="../../privacy-policy.html" title="">Privacy</a></li></ul></div>
+  </div></div></div></div>    </footer>
+   </div>
+  
+</div>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>window.jQuery || document.write("<script src='../../sites/all/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js'>\x3C/script>")</script>
+<script src="../../sites/default/files/advagg_js/js__ZyeOaiFuDejQQbhUV7yg7atYZnj4WLfH77o0scv4068__MZdWWgUEYpsEWLcU0RqkaXMsEyksbpCgnf4XwXRkqz0__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="../../sites/default/files/advagg_js/js__44qQVp6ulaLPrJIjoRLLIy501C3bOwqOLi1eMfbACp4__dd_1_EUDtswm4KD7QBi4P6S37vtqiBQQKm4rxJlZ8Bo__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="https://platform.linkedin.com/in.js?async=true"></script>
+<script src="../../sites/default/files/advagg_js/js__PFmX6LmbJhR5AXK3oxVx771eAlh3gBae5veSHu7Kdp8__3Zgq8YGzo8LGUG0JqhxghrjxbhL2GucalpYkbCPRyq0__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"oc2014","theme_token":"Z_bZvN0kl9KGJ0kLezvwXoTD63_CeHpRsIbn3KAVlMU"},"ws_fs":{"type":"button","app_id":"150123828484431","css":"","locale":"en_US"},"ws_gpo":{"size":"medium","annotation":"","lang":"","callback":"","width":300},"ws_lsb":{"countmode":""},"better_exposed_filters":{"views":{"profile_picture":{"displays":{"default":{"filters":[]}}},"posts_by_same_author":{"displays":{"default":{"filters":[]}}},"related_posts":{"displays":{"default":{"filters":[]}}}}},"responsive_menus":[{"selectors":"#primary-menu-bar","container":"body","trigger_txt":"\u003Cspan \/\u003E\u003Cspan \/\u003E\u003Cspan \/\u003E","close_txt":"X","close_size":"18px","position":"right","media_size":"480","show_children":"1","expand_children":"1","expand_txt":"+","contract_txt":"-","remove_attrs":"1","responsive_menus_style":"mean_menu"}],"eu_cookie_compliance":{"popup_enabled":1,"popup_agreed_enabled":0,"popup_hide_agreed":0,"popup_clicking_confirmation":1,"popup_scrolling_confirmation":0,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EBy clicking any link on this page you are giving your consent for us to set cookies.\u003C\/p\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n                    \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","mobile_breakpoint":"768","popup_html_agreed":"\u003Cdiv\u003E\n  \u003Cdiv class=\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\n\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button eu-cookie-compliance-hide-button\u0022\u003EHide\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button-thank-you\u0022 \u003EMore info\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/privacy-policy","popup_link_new_window":1,"popup_position":null,"fixed_top_position":1,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":0,"reload_page":0,"domain":"","domain_all_sites":null,"popup_eu_only_js":0,"cookie_lifetime":"100","cookie_session":false,"disagree_do_not_show_popup":0,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003E\u0026lt;h2\u0026gt;We use cookies on this site to enhance your user experience\u0026lt;\/h2\u0026gt;\u0026lt;p\u0026gt;You have given your consent for us to set cookies.\u0026lt;\/p\u0026gt;\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","withdraw_enabled":false,"withdraw_button_on_info_popup":false,"cookie_categories":[],"enable_save_preferences_button":true,"fix_first_cookie_category":true,"select_all_categories_by_default":false},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"urlIsAjaxTrusted":{"\/search\/node":true}});</script>
+<script src="../../sites/default/files/advagg_js/js__F2qdh-1_GOHY85WJybNO3pprDd50KfMFbk-UcsLzh0Y___SeDJKIvrikPXIIr55mRB1jrZkJNqFYEnfX8AHNM0No__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>var eu_cookie_compliance_cookie_name = "";</script>
+<script src="../../sites/openconcept/themes/oc2014/js/portfolio.js"></script>
+</body>
+
+<!-- Mirrored from openconcept.ca/blog/mparker/best-practices-generating-patches-and-interdiffs by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:08:29 GMT -->
+</html>

@@ -1,0 +1,1464 @@
+<!DOCTYPE html> 
+<html manifest="cache.manifest">
+  
+<!-- Mirrored from openconcept.ca/sites/openconcept.ca/files/A11y_Presentation/A11y_Presentation_7.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:18:31 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" />
+
+
+<!--
+  Copyright 2010 Google Inc.
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+ 
+     http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ 
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+                 Brad Neuberg
+-->
+
+    <title>Accessibility & Drupal 7: Why Bother?</title>
+    <style type="text/css" media="all">
+      @font-face {
+        font-family: Diavlo; 
+        src: url(images/Diavlo_BLACK_II_37.html) format("opentype");
+	    font-weight: 800;
+    }
+
+    
+      body {
+        font-family: Diavlo, sans-serif;
+        font-size: 2.4em;
+        font-weight: 800;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px; top: 0px;
+        text-shadow: 4px 4px 4px #ddccb5;
+        /* text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px; */
+      }
+      
+      .presentation {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0px;
+        top: 0px;
+        display: block;
+        overflow: hidden;
+        background: #fff;
+      }
+      
+      .slides {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        display: block;
+        -webkit-transition: -webkit-transform 1s ease-in-out;
+        -moz-transition: -moz-transform 1s ease-in-out;
+        -o-transition: -o-transform 1s ease-in-out;
+        transition: transform 1s ease-in-out;
+        
+        /* so it's visible in the iframe. */
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+        
+      }
+      
+      .slide {
+        display: none;
+        position: absolute;
+        overflow: hidden;
+        width: 900px;
+        height: 700px;
+        left: 50%;
+        top: 50%;
+        margin-top: -350px;
+        background-color: #eee;
+        background: -webkit-gradient(linear, left bottom, left top, from(#bbd), to(#fff));
+        background: -moz-linear-gradient(bottom, #bbd, #fff);
+        background: linear-gradient(bottom, #bbd, #fff);
+        -webkit-transition: all 0.25s ease-in-out;
+        -moz-transition: all 0.25s ease-in-out;
+        -o-transition: all 0.25s ease-in-out;
+        transition: all 0.25s ease-in-out;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+      }
+      
+      .slide:nth-child(even) {
+        -moz-border-radius: 20px 0;
+        -khtml-border-radius: 20px 0;
+        border-radius: 20px 0; /* includes Opera 10.5+ */
+        -webkit-border-top-left-radius: 20px;
+        -webkit-border-bottom-right-radius: 20px;
+      }
+      
+      .slide:nth-child(odd) {
+        -moz-border-radius: 0 20px;
+        -khtml-border-radius: 0 20px;
+        border-radius: 0 20px;
+        -webkit-border-top-right-radius: 20px;
+        -webkit-border-bottom-left-radius: 20px;
+      }
+ 
+      .slide p, .slide textarea {
+        font-size: 120%;
+      }
+ 
+      .slide .counter {
+        color: #999999;
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        display: block;
+        font-size: 70%;
+      }
+ 
+      .slide.title > .counter,
+      .slide.segue > .counter,
+      .slide.mainTitle > .counter {
+        display: none;
+      }
+ 
+      .force-render {
+        display: block;
+        visibility: hidden;
+      }
+      
+      .slide.far-past {
+        display: block;
+        margin-left: -2400px;
+      }
+      
+      .slide.past {
+        visibility: visible;
+        display: block;
+        margin-left: -1400px;
+      }
+      
+      .slide.current {
+        visibility: visible;
+        display: block;
+        margin-left: -450px;
+      }
+      
+      .slide.future {
+        visibility: visible;
+        display: block;
+        margin-left: 500px;
+      }
+      
+      .slide.far-future {
+        display: block;
+        margin-left: 1500px;
+      }
+      
+      body.three-d div.slides {
+        -webkit-transform: translateX(50px) scale(0.8) rotateY(10deg);
+        -moz-transform: translateX(50px) scale(0.8) rotateY(10deg);
+        -o-transform: translateX(50px) scale(0.8) rotateY(10deg);
+        transform: translateX(50px) scale(0.8) rotateY(10deg);
+      }
+      
+      /* Content */
+      
+      @font-face { font-family: 'Junction'; src: url(images/src/Junction02.html); }
+      @font-face { font-family: 'LeagueGothic'; src: url(images/src/LeagueGothic.html); }
+      
+      header {
+        font-weight: bold;
+        letter-spacing: -.05em;
+        /* text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px; */
+        left: 30px;
+        top: 25px;
+        margin: 0;
+        padding: 0;
+        font-size: 140%;
+      }
+      
+      h1 {
+        font-size: 180%;
+        display: inline;
+      	font-weight: bold;
+      	padding: 0;
+      	margin: 0;
+      }
+      
+      h2 {
+        color: #000;
+        font-size: 150%;
+        background-color: #fff;
+        opacity: 0.6;
+      }
+      
+      section.top h2 {
+         border-radius: 0 0 20px 20px;
+      }
+      
+      section.middle h2, section.bottom h2 {
+         border-radius: 0 20px 0 20px;
+      }
+            
+      h2:first-child {
+        margin-top: 0;
+      }
+      
+       section, footer {
+        color: #0F0F0F;
+        /* text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px; */
+        margin: 100px 30px 0;
+        display: block;
+        overflow: hidden;
+      }
+      
+      footer {
+        font-size: 100%;
+      }
+      
+      .presenter-notes {
+        display: none;
+      }
+      
+      p.bg-img-desc, .element-invisible {
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+        clip: rect(1px, 1px, 1px, 1px);
+      }
+      
+      p {
+        background-color: #fff;
+        opacity: 0.6;
+      }
+      
+      p.image-source {
+        font-size: 50%;
+        position: absolute;
+        color: #fff;
+        right: 0px; bottom: 0px;
+        background-color: #000;
+        opacity: 0.6;
+        padding-left: 10px;
+        margin: 0px;
+        border-radius: 20px 0 0 20px;
+        line-height: 1.5em;
+      }
+    
+      a {
+        color: inherit;
+        display: inline-block;
+        text-decoration: none;
+        line-height: 110%;
+        border-bottom: 2px solid #3f3f3f;
+      }
+ 
+      ul {
+        text-align: left;
+        font-size: 90%;
+        text-align: left;
+      }
+ 
+      button {
+        font-size: 100%;
+      }
+      
+      pre button {
+        margin: 2px;
+      }
+      
+      section.left {
+        float: left;
+        width: 390px;
+      }
+      
+      section.small {
+        font-size: 24px;
+      }
+      
+      section.small ul {
+        margin: 0 0 0 15px;
+        padding: 0;
+      }
+      
+      section.small li {
+        padding-bottom: 0;
+      }
+            
+      section {
+        line-height: 2em;
+        text-align: center;
+        display: table-cell;
+        height: 700px;
+        width: 900px;
+      }
+      
+      section.middle {
+        vertical-align: middle;
+      }
+      
+      section.bottom {
+        vertical-align: bottom;
+      }
+      
+      section.top {
+        vertical-align: top;
+      }
+      
+      pre {
+        text-align: left;
+        font-family: 'Droid Sans Mono', Courier;
+        font-size: 80%;
+        padding: 10px 20px;
+        background: rgba(255, 0, 0, 0.05);
+        -webkit-border-radius: 8px;
+        -khtml-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 0, 0, 0.2);
+      }
+      
+      pre select {
+        font-family: Monaco, Courier;
+        border: 1px solid #c61800;
+      }
+        
+      input {
+        font-size: 100%;
+        margin-right: 10px;
+        font-family: Helvetica;
+        padding: 3px;
+      }
+      input[type="range"] {
+        width: 100%;
+      }
+      
+      button {
+        margin: 20px 10px 0 0;
+        font-family: Verdana;
+      }
+      
+      button.large {
+        font-size: 32px;
+      }
+        
+      pre b {
+        color: #c61800;
+        text-shadow: #c61800 0 0 1px;
+        /*letter-spacing: -1px;*/
+      }
+      pre em {
+        color: #18a600;
+        text-shadow: #18a600 0 0 1px;
+      }
+      pre input[type="range"] {
+        height: 6px;
+        cursor: pointer;
+        width: auto;
+      }
+      
+      div.example {
+        display: block;
+        padding: 10px 20px;
+        color: black;
+        background: rgba(255, 255, 255, 0.4);
+        -webkit-border-radius: 8px;
+        -khtml-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+      
+      /* 
+        background-repeat:no-repeat; background-position:center center;
+          -o-background-size: 100% 100%, auto;
+          -moz-background-size: 100% 100%, auto;
+          -webkit-background-size: 100% 100%, auto;
+          background-size: 100% 100%, auto
+      */
+      div.slide {
+        background-repeat: no-repeat; 
+        background-size: 100% 100%, auto;
+        background-origin: content;
+      }
+
+      video {
+        -moz-border-radius: 8px;
+        -khtml-border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+      
+      .key {
+        font-family: 'Droid Sans';
+        color: black;
+        display: inline-block;
+        padding: 6px 10px 3px 10px;
+        font-size: 100%;
+        line-height: 30px;
+        text-shadow: none;
+        letter-spacing: 0;
+        bottom: 10px;
+        position: relative;
+        -moz-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: white;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
+        -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
+        -o-box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
+      }
+      
+      .key { font-family: Arial; }
+      
+      :not(header) > .key {
+        margin: 0 5px;
+        bottom: 4px;
+      }
+ 
+      .two-column {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+      }
+ 
+      .stroke {
+        -webkit-text-stroke-color: red;
+        -webkit-text-stroke-width: 1px;
+      } /* currently webkit-only */
+      
+      .center {
+        text-align: center;
+      }
+      
+      #presentation-counter {
+        color: #ccc;
+        font-size: 70%;
+        letter-spacing: 1px;
+        position: absolute;
+        top: 40%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+      
+      div:not(.current).reduced {
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+      } 
+      
+      .no-transitions {
+        -webkit-transition: none;
+        -moz-transition: none;
+        -o-transition: none;
+        transition: none;
+      }
+ 
+      .no-gradients {
+        background: none;
+        background-color: #fff;
+      }
+      
+      ul.bulleted {
+        padding-left: 30px;
+      }
+      
+    </style> 
+    
+  </head> 
+  <body> 
+    <div class="presentation"> 
+      <div id="presentation-counter"></div> 
+      <div class="slides"> 
+        <div class="slide" 
+        style="background-image: url(images/3046577873_919a0eceed_b.jpg); 
+          background-repeat: no-repeat; background-size: 150% 150%, auto;  background-position:right top;"> 
+          <section class="middle"> 
+            <h2>
+              Accessibility & Drupal 7: <br />
+              <span style="font-weight: 999; font-size: 120%;">Why Bother?</span>
+            </h2> 
+            <p>by Mike Gifford, OpenConcept.ca</p>
+            <br />
+            <p>Press <span class="key">&rarr;</span> key to advance.</p> 
+            <p>Zoom in/out: <span class="key">Ctrl or Command</span> + <span class="key">+/-</span></p> 
+ 
+            <ul class="presenter-notes">
+              <li>I'm a core contributor Drupal 7's accessibility initive</li>
+              <li>Awareness about accessibility issues is rising</li>
+              <li>In the last 10-15 years many governments have instituted accessibility guidelines</li>
+              <li>Slide presetation very accessible & done with HTML5, CSS3 & Javascript</li>
+              <li>This presentation will be available online.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/cobalt/3046577873/in/gallery-mgifford-72157625069543841/">Photo by @cobalt123</a></p>
+            <p class="bg-img-desc">Adam Cruz leans forward to listen intently. Use arrow keys to navigate back/forth between the slides.</p>  
+          </section>
+        </div> 
+        
+        <div class="slide"
+        style="background-image: url(images/4602805654_db8b6569fb_b.jpg);"> 
+          <section class="bottom"> 
+            <h2> 
+              Web accessibility efforts have failed
+            </h2>
+            <ul class="presenter-notes">
+              <li>Despite over a decade of global efforts to increase awareness</li>
+              <li>There remains very small percentage of accessible sites</li>
+              <li>Accessibility is usually an afterthought</li>
+              <li>Rates of adoption haven't been high, even in government</li>
+              <li>Donna Jodhan's case against the Government of Canada is an example</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/cdevers/4602805654/in/gallery-mgifford-72157625069543841/">Photo by @Chris Devers</a></p>
+            <p class="bg-img-desc">Banksy Graffiti with a guy who has painted 'Follow Your Dreams' on a wall that is now covered with a 'Cancelled' sticker.</p>
+          </section>
+        </div> 
+ 
+        <div class="slide"
+        style="background-image: url(images/3973646324_d4226ba446_b.jpg);"> 
+          <section class="top"> 
+            <h2> 
+              Almost no sites are WCAG 1.0 AA Compliant
+            </h2>
+            <ul class="presenter-notes">
+              <li>a 10 year old standard</li>
+              <li>WCAG is the World Wide Web Consortium's (W3C) Web Accessibility Initiative Web Content Accessibility Guideline</li>              
+              <li>Most organizations have not viewed web accessibility as a right</li>
+              <li>Very few organizations have an independent accessibility review</li>
+              <li>Indeed having a 100% accessible site is at the moment unrealistic</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/question_everything/3973646324/in/gallery-mgifford-72157625069543841/">Photo by @Let Ideas Compete</a></p>
+            <p class="bg-img-desc">Photo of a prairie walk in Boulder County.  Deep blue sky with orange fields. An open, close to empty landscape.</p>
+          </section> 
+        </div>  
+ 
+        <div class="slide" style="background-image: url(images/86377696_8824a25784_o.jpg); 
+          background-repeat: no-repeat; background-size: 120% 120%, auto;  background-position:center center;"> 
+         
+          <section class="bottom"> 
+            <h2 style="text-align: right; padding-right: 20px; padding-left: 20px; margin-left:300px;"> 
+              It is a dismissable <br />
+              motherhood issue
+            </h2>
+            <ul class="presenter-notes">
+              <li>It is a chairity issue</li>
+              <li>Almost everyone good intentions to "take care" of accessibility</li>
+              <li>it is usually left to the end, if time/resources allow</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/olsenweb/86377696/in/gallery-mgifford-72157625069543841/">Photo by @OlsenWeb</a></p>
+            <p class="bg-img-desc">Picture of an old woman with glasses & a fur hat.  A photo of a mother or grandmother.</p>
+          </section> 
+        </div> 
+        
+          <div class="slide" style="background-image: url(images/4936762155_d5b75a271d_b.jpg);"> 
+          <section class="bottom"> 
+            <h2> 
+              But for most it <br />
+              isn't our issue!
+            </h2>
+            <ul class="presenter-notes">
+              <li>Accessibility isn't as sexy as web fonts, RDFa or a slick design</li>
+              <li>How many people have a friend/family member with a disability?</li>
+              <li>There are many people who have a disability that we don't know about</li>
+              <li>Is anyone here colour blind?</li>
+              <li>Most people assume accessibility can just be taken care of</li>
+              <li>Fortunately, the community of people developing Drupal 7 have been very responsive</li>
+              <li>The advancements in D7 are important both in the technology & the community</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/29363647@N04/4936762155/in/gallery-mgifford-72157625069543841/">Photo by @crizzirc</a></p>
+            <p class="bg-img-desc">Picture from DrupalCon Copenhagen. A big room of Drupal geeks holding their laptops.</p>
+          </section> 
+        </div>
+ 
+        <div class="slide" style="background-image: url(images/223754291_687bb33d14_b.jpg);"> 
+          <section class="top"> 
+            <h2> 
+              All ability is temporary
+            </h2>
+            <ul class="presenter-notes">
+              <li>Accessibility issues can affect everyone, even if only temporarily</li>
+              <li>It is a critical part of the human condition & needs to be treated that way</li>
+              <li>We wrongly act as if the abilities we have now we will have tomorrow</li>
+              <li></li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/liberato/223754291/">Photo by @liber</a></p>
+            <p class="bg-img-desc">Picture of a woman balancing on one hand. She can do this now, but not always.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/22702995_9f2d52651a_o.jpg);"> 
+          <section class="top"> 
+            <h2> 
+              We are all aging
+            </h2>
+            <ul class="presenter-notes">
+              <li>Slowly we are loosing mobility, vision & hearing.</li>
+              <li>Our minds also change as we age.</li>
+              <li>We can't ignore the baby boomers as they age</li>
+              <li>We are also living longer</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/mcbeth/22702995/in/gallery-mgifford-72157625069543841/">Photo by @liber</a></p>
+            <p class="bg-img-desc">An old picture of a family that both indicates aging in people, but also technology.  This black/white photo has three generations of a family with different levels of ability.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/2058906709_4df88305da_o.jpg);"> 
+          <section class="top"> 
+            <h2> 
+              Any of us could lose ability <br />
+              at any time
+            </h2>
+            <ul class="presenter-notes">
+              <li>Even small accidents can seriously reduce our abilities.</li>
+              <li>If we look around we all benefit from accessibility enhancements</li>
+              <li>Good contrast helps people reading your site on on their laptop on a patio</li>
+              <li>It also helps people with poor vision</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/leshoward/2058906709/in/gallery-mgifford-72157625069543841/">Photo by @leshoward</a></p>
+            <p class="bg-img-desc">A fire truck and ambulance at the scene of an accident in Atlanta with a Corona truck. We can all become disabled.</p>           
+          </section> 
+        </div>
+        
+         <div class="slide" style="background-image: url(images/8513870_2963a120dd_o.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              This could become your issue tomorrow
+            </h2>
+            <ul class="presenter-notes">
+              <li>Accessibility can quickly become an issue that you have to struggle with. </li>
+              <li>Kids are born every day with one or more disabilities</li>
+              <li>People with disabilities can lead more independent lives if we plan to include them</li>
+              <li>Accessibility is often seen as someone else's issue until we or someone close to us is touched by it</li>
+              <li>It is an issue that affects all of us</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/willemvelthoven/8513870/in/gallery-mgifford-72157625069543841/">Photo by @willem velthoven</a></p>
+            <p class="bg-img-desc">A picture of a new baby in a hospital looking at the camera. Babies bring a set of unknowns to their parents.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/477025209_1cc3cee9c3_o.jpg);">
+          <section class="middle"> 
+            <h2 style="text-align: left; padding-left: 20px; margin-right: 50%"> 
+              WCAG 1.0 <br />
+              is based<br /> 
+              on HTML
+            </h2>
+            <ul class="presenter-notes">
+              <li>To address this people have been working on defining best practices</li>
+              <li>The W3C's Web Content Accessibility Guidelines (WCAG) 1.0 had rules based on HTML</li>
+              <li>Since that time the technology has continued to surge ahead.</li>
+              <li>Web applications have become much more common & complex </li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/nhall/477025209/in/gallery-mgifford-72157625069543841/">Photo by @nickhall</a></p>
+            <p class="bg-img-desc">A photo of a cemetary sign that says 'Thou shalt not park here'. It's a rules based approach to a particular technology.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/3951143570_20b4eccd3f_b.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              WCAG 2.0 aims to be <br />
+              tech neutral
+            </h2>
+            <ul class="presenter-notes">
+              <li>Javascript and Flash all allow users browsers to be much more interactive.  </li>
+              <li>Web 2.0 is interactive & dynamic</li>
+              <li>Content gets rendered through technology like AJAX which then needs to be interpreted by AT</li>
+              <li>This is why in WCAG 2.0 was reforumlated around the P.O.U.R. principals.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/st3f4n/3951143570/in/gallery-mgifford-72157625069543841/">Photo by @Stefan</a></p>
+            <p class="bg-img-desc">Photo of two storm troopers looking at a big Google search engine screen with the text 'the droids we're looking for' in it.  Technology changes, but WCAG 2.0 isn't tied to just HTML.</p>          
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/3037391013_f42cc57aac_b.jpg); background-size: 110%, auto; background-position:center center;">
+          <section class="top">  
+            <h2> 
+              Can users perceive it?
+            </h2><ul class="presenter-notes">
+              <li>Is it percievable? Simple things like alternative text, captions & testing color contrast.</li>
+              <li>There tools on the Internet which can help your site be more adaptable for use with AT.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/cobalt/3037391013/in/gallery-mgifford-72157625069543841/">Photo by @cobalt123</a></p>
+            <p class="bg-img-desc">Picture of a smiling guy wearing binocular glasses and demonstrating the use of AT. Who can percieve the site?</p>            
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/3560807234_24d481136e_b.jpg);">
+          <section class="middle"> 
+            <h2> 
+              Will it be operable?
+            </h2>
+            <ul class="presenter-notes">
+              <li>The open web is about interaction</li>
+              <li>Operable implies that you have done some keyboard only testing</li>
+              <li>Some people need extra time to respond to before having their session time out</li>
+              <li>A badly designed website can throw someone into a seizure.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/sharman/3560807234/in/gallery-mgifford-72157625069543841/">Photo by @Kalense Kid</a></p>
+            <p class="bg-img-desc">A black/white photo of a man in a wheelchair using a smart phone. He's sitting in an alcove under a set of stairs.  There is the operability of the physical space that he is in but also the virtual space.</p>          
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/2507970530_e92d24b4b4_b.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              Is it understandable?
+            </h2>
+            <ul class="presenter-notes">
+              <li>Is your text written consistently at an appropriate educational level</li>
+              <li>Does the user interface operate in a predictable manner?</li>
+              <li>Are there ways for users to quickly identify their mistakes and correct them?</li>
+              <li>Your knowledge of your user base will be critical for this </li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/sharman/3560807234/in/gallery-mgifford-72157625069543841/">Photo by @Kalense Kid</a></p>
+            <p class="bg-img-desc">A bowl with the Fruit Loops tucan on it and the words in pig latin 'oot-fray oops-lay'. A language specifically designed to be difficult to understand.</p>  
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/52158537_7a24d5bab6_b.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              How robust is it?
+            </h2>
+            <ul class="presenter-notes">
+              <li>Is it future compatible? Is it based on open standards?</li>
+              <li>What existing technology will you support and test with?</li>
+              <li>These guidelines aren't sufficient on their own</li>
+              <li>Soliciting feedback from users with a disability is key</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/flissphil/52158537/in/gallery-mgifford-72157625069543841/">Photo by @PhillipC</a></p>
+            <p class="bg-img-desc">A photo of an Bodiam Castle which has a large moat around it.  It would be very difficult to find something more robust in the 14th Century.</p>            
+          </section> 
+        </div>
+
+        <div class="slide" style="background-image: url(images/4080559903_ef383beb41_o.jpg);">
+          <section class="top"> 
+            <h2> 
+              Activities should be inclusive <br />for equal participation
+            </h2>
+            <ul class="presenter-notes">
+              <li>Now many countries have their own legislation for accessibiity</li>
+              <li>The USA has been a leader and their Section 508 is under review</li>
+              <li>Both Canada & the USA have signed the  UN Convention on the Rights of Persons with Disabilities </li>
+              <li>Recognizing the right for people with disabilities to live live independently & participate fully in all aspects of life</li>
+              <li>Accessibility is becoming a legal requirement</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/un_photo/4080559903/in/gallery-mgifford-72157625069543841/">Photo by @United Nations Photo</a></p>
+            <p class="bg-img-desc">The meetings of the UNCED Earth Summit of the United Nations in Brazil in June of 1992. The UN's Convention on the Rights of Persons with Disabilities may well have looked similar (although likely a lot smaller).</p>
+          </section>
+        </div>
+        
+        <div class="slide" style="background-image: url(images/3229042760_82e287827e_b.jpg);">
+          <section class="top"> 
+            <h2> 
+              Maintenance is critical
+            </h2>
+            <ul class="presenter-notes">
+              <li>Content is still king, even more with user generated content </li>
+              <li>External sites like Youtube & Twitter are now commonly appearing as javascript widgets</li>
+              <li>These all impact how people with disabilities are able to interact with your site.</li>
+              <li> CSS & HTML standards are changing, as new standards are adopted old content needs to be updated</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/chrisgold/3229042760/in/gallery-mgifford-72157625069543841/">Photo by @ChrisGoldNY</a></p>
+            <p class="bg-img-desc">A crumbling Doorway in Greece.  Old dis-repaired wall is all that remains against a very blue ocean & light blue sky.</p>
+
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/273371415_36e175b6f6_b.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              Keeping up with tech <br />
+              is an ongoing struggle
+            </h2>
+            <ul class="presenter-notes">
+              <li>All of the technology is also changing</li>
+              <li>An upgrade of the MacOS last summer resulted in us having to rewrite an accessibility patch</li>
+              <li>Each screen reader has it's own version which uses an independent browser</li>
+              <li>The AT often isn't affordable which stops people from upgrading</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/dramaqueennorma/273371415/in/gallery-mgifford-72157625069543841/">Photo by @Norma Desmond</a></p>
+            <p class="bg-img-desc">A black/white photo of a boy frantically running after a dog.  It's all quite blury as they chase after a ball.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/2515544997_08358817a3_b.jpg);">
+          <section class="top"> 
+            <h2> 
+              Need code of practice <br />
+              not list of checkboxes
+            </h2>
+            <ul class="presenter-notes">
+              <li>WCAG is important set of guidelines, but not useful in isolation</li>
+              <li>It is a critical framework to use when examining accessibility of your site</li>
+              <li>Having a perfectly accessible website, WCAG 2.0 AAA isn't attainable</li>
+              <li>A responsive practice of regular review for ongoing enhancement is required</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/dm-set/2515544997/">Photo by @Sara G...</a></p>
+            <p class="bg-img-desc">Photo of a well travelled metal surface with the note 'Confined space category 3, Follow code of practice'.  Checkboxes can be done once but practices are things that are ongoing behaviors.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/4520913120_d6c2c4b1ed_z.jpg);">
+          <section class="top"> 
+            <h2> 
+              How to meet the challenge<br />
+              of universal accessibility 
+            </h2>
+            <ul class="presenter-notes">
+              <li>Communications staff and web professionals need to become more aware of how others use or percieve their work</li>
+              <li>It's a strong base which has already undergone considerable accessibility review/enhancement.</li>
+              <li>Websites should have various feedback measures to actively solicit feedback associated to user problems</li>
+              <li>Your website doesn't exist in isolation, but as part of a broader ecosystem of technology</li>
+              <li>The only way to meet this massive challenge is by working collaboratively.</li>
+              <li>Accessibility bugs & feature requests need to be contributed in order to improve tools and develop best practices</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/dankunitz/4520913120/in/gallery-mgifford-72157625074404487/">Photo by @Dan Kunitz</a></p>
+            <p class="bg-img-desc">Photo of a Wendy Chisholm making a presentation about an Inclusive Universe.  The slide she is presenting says 'not a wheelchair', it is stairs that make a building inaccessibile.  She is a co-author of <a href="http://oreilly.com/catalog/9780596518745">Universal Design for Web Applications</a>.</p>         
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/279354231_3c73692f17_b.jpg);">
+          <section class="top"> 
+            <h2> 
+              Start with Drupal 7
+            </h2>
+            <ul class="presenter-notes">
+              <li>It's a strong base which has already undergone considerable accessibility review/enhancement.</li>
+              <li>It is far from perfect and starting with it won't mean your site is accessible.</li>
+              <li>Often even if it's not in core, the community have proposed a solution</li>
+              <li>The modular nature of Drupal means that many enhancements in core will be available by default.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/gaborhojtsy/279354231/in/gallery-mgifford-72157625074404487/">Photo by @Gabor Hojtsy</a></p>
+            <p class="bg-img-desc">Photo by a core Drupal developer with a Drupal mug and a bunch of blue lego men/women. These are the building blocks for an accessible site.</p>         
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/2485992852_612f327d7f_o.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              Add a Solid Base Theme <br />
+              Look for #D7AX
+            </h2>
+            <ul class="presenter-notes">
+              <li>Most of the accessibility problems in D7 will likely be introduced into the theme layer.</li>
+              <li>Themes allow over-writing of many functions, so Core's output can be both improved or deteriorated. </li>
+              <li>Start with a theme which has made the #D7AX pledge then you can be fairly sure that the themes maintainers are working on enhancements for accessibility & receptive to the feedback of others. </li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/43052603@N00/2485992852/in/gallery-mgifford-72157625074404487/">Photo by @Christolakis</a></p>
+            <p class="bg-img-desc">Photo of a stunning ocean sunset over some dramatic rock formations.  This great photo is just a dramatization of a theme.  But if we start with a solid theme, accessibility will be better.</p>            
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/2385041554_5a3f940c6c_b.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              Add automated testing tools
+            </h2>
+            <ul class="presenter-notes">
+              <li>There are a whole bunch of great testing tools which are available for testing sites. </li>
+              <li>My current favourite is WebAIM's Wave Toolbar which works with firefox to be able to provide a quick review of a site's accessibility problems. </li>
+              <li>Automated tools are good but don't give you the full picture.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/donsolo/2385041554/in/gallery-mgifford-72157625074404487/">Photo by @Don Solo</a></p>
+            <p class="bg-img-desc">Photo of a Tofu Robot [medium]. Just a goofy play on automation.  Of course we're talking WebAIM's WAVE Toolbar & similar tools.</p>        
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/253401575_18aa2bb230_o.jpg);">
+          <section class="middle"> 
+            <h2> 
+              Use acessibility <br />
+              helper modules
+            </h2>
+            <ul class="presenter-notes">
+              <li>The Accessible Helper Module was designed initially for D6 to help provide accessible solutions for those who just couldn't wait till D7</li>
+              <li>This module will likely also play this role for D7 in being a intermediary step between core releases to implement best practices when they are defined. </li>
+              <li>It is largely a collection of themed functions that implements best practices. </li>
+              <li>Other modules which can help too: Accessible Content, Readability Analyzer, Better Select, SwitchTheme, Page Style, & htmLawed all can provide additional enhancements.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/cobalt/253401575/in/gallery-mgifford-72157625069543841/">Photo by @cobalt123</a></p>
+            <p class="bg-img-desc">Macro photo of a keyboard with a plastic overlay. It is one of the first AT devices I'd ever seen in a friend of mine with Cerebral Palsy. </p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/2617273152_f94b8275f8_z.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              Bring in WAI-ARIA <br />
+              especially landmarks
+            </h2>
+            <ul class="presenter-notes">
+              <li>Learn more about the Web Accessibility Initiative's draft Accessible Rich Internet Applications Suite (WAI-ARIA).</li>
+              <li>Many browsers are already supporting ARIA landmarks</li>
+              <li>As the complexity of your site increases it will be important to use it </li>
+              <li>The adoption of landmarks allows for a basic way to divide up the content in a website allowing AT users to have another means to navigate a stream of information.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/rene_ehrhardt/2617273152/in/gallery-mgifford-72157625074404487/">Photo by @Rene Ehrhardt</a></p>
+            <p class="bg-img-desc">Photo of Montreal's Olympic Park Stadium.  Certainly a landmark, in HDR from this view it is definitely very dramatic.  Landmark's are especially important to let folks know where they are.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/4064057574_d49fefbf61_b.jpg);">
+          <section class="bottom"> 
+            <h2> 
+              Develop a testing framework <br />
+              with WCAG 2.0 goals
+            </h2>
+            <ul class="presenter-notes">
+              <li>Be strategic about how you test your accessibility.</li>
+              <li>By using a content management system you can reduce your testing work load</li>
+              <li>After that it's a matter of picking a few strategic pages to test representative functinality.</li>
+              <li>Using a Drupal theme can help you fix sitewide problems of your site in one place.</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/redux/4064057574/in/gallery-mgifford-72157625074404487/">Photo by @patrick h. lauke</a></p>
+            <p class="bg-img-desc">Photo of W3C Quick Tips To Make Accessible Websites. This photo of the business cards is just a tie back to the W3C & WCAG.</p>            
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/4537431288_78dd7c481a_b.jpg);">
+          <section class="top"> 
+            <h2> 
+              Get expert feedback at <br />
+              all project phases!
+            </h2>
+            <ul class="presenter-notes">
+              <li>Bring in an expert! They can see your site in ways you can't</li>
+              <li>Given the range of accessibility challenges it is a rare person who can speak knowledgably to them all</li>
+              <li>This is a rapidly changing environment and bringing in an external resource to review your site and look for enhancements can be well worth the investment.</li>
+              <li>Hiring someone with a disability to do this review is a useful because we all learn to use technology in different ways</li>
+              <li>Join the <a href="http://groups.drupal.org/accessibility">Accessibility Group</a> and post a question</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/mgifford/4537431288/">Photo by @m.gifford</a></p>
+            <p class="bg-img-desc">I took this photo at a DrupalCon SF BoF and it includes Everett Zufelt, Kevin Miller & John Foliot.</p>
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/3014414972_fd8de03f5a_b.jpg);">
+          <section class="middle"> 
+            <h2> 
+              Recruit regular user feedback <br />
+              for ongoing improvements 
+            </h2>
+            <ul class="presenter-notes">
+              <li>Experts are great, but ultimately everyone uses technology differently and it is important to be responsive to the feedback of your users</li>
+              <li>Ensuring that your users know that you are open and interested in getting feedback on the site is key.</li>
+              <li>They are the only ones who know how they have their system configured and will have valuable insights what doesn't work for them.</li>
+              <li></li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/njla/3292883871/in/gallery-mgifford-72157625074404487/">Photo by @</a></p>
+            <p class="bg-img-desc">This is a photo of a Birds of a Feather session on accessibility at DrupalCon SF.</p>           
+          </section> 
+        </div>
+        
+        <div class="slide" style="background-image: url(images/3292883871_2942cfe0b8_b.jpg);">
+          <section class="top"> 
+            <h2> 
+              Schedule regular reviews <br /> 
+              of new & old pages
+            </h2>
+            <ul class="presenter-notes">
+              <li>High use pages certainly need a more regular review, but a structure of regular randomized tests will help keep your site is kept up-to-date. </li>
+              <li>On readability, it is important to have a means to monitor those pages whose content lies outside of your target audience.  </li>
+              <li>Ideally you'd bring in a small focus group to provide feedback on their use of the site from time to time as well so that you can make perpetual upgrades to it's behavior.</li>
+              <li>Find ways to contribute back to the community. Submit a bug or feature request. Take the #D7AX pledge for your module/theme</li>
+            </ul>
+            <p class="image-source"><a href="http://www.flickr.com/photos/njla/3292883871/in/gallery-mgifford-72157625074404487/">Photo by @NJLA: New Jersey Library Association</a></p>
+            <p class="bg-img-desc">Photo of a man with a headset watching a monitor. In front of the monitor is a high contrast keyboard that helps some people with vision problems. </p>          
+          </section>
+        </div>
+
+        <div class="slide" style="background-image: url(images/openconcept_logo_2010.png); 
+          background-repeat: no-repeat; background-size: 70% auto; background-position: bottom right;">
+          <section class="top"> 
+            <h2> 
+              For more info see:
+            </h2>
+            <ul>
+            <li>http://openconcept.ca/blog</li>
+            <li>http://twitter.com/mgifford</li>
+            <li>http://drupal.org/about/accessibility</li>
+            <li>http://www.html5rocks.com</li>
+            </ul>
+            <p class="image-source"></p>
+            <p>This presentation is licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative Commons-ShareAlike</a>.</p>
+            <h3 class="presenter-notes">
+            Final Comments
+            </h3>
+            <ul class="presenter-notes">
+              <li>I'd like to open this up for discussion now</li>
+              <li>Do you have any feedback about your experiences with implementing more accessible drupal sites?</li>
+            </ul>
+            <p class="bg-img-desc">OpenConcept's Logo appears at the bottom of this page.</p>
+          </section> 
+        </div>
+        
+<!--master slide     
+        
+        <div class="slide" style="background-image: url(images/); 
+          background-size: 100%; background-origin: content; background-repeat: no-repeat; background-size: 100% 100%, auto;  background-position:center center;">
+          <section class="middle"> 
+            <h2> 
+              
+            </h2>
+            <p class="bg-img-desc"><a href="">Photo by @</a>. Photo </p>
+            <p class="presenter-notes"></p>  
+            <h2 class="element-invisible">Navigation</h2>
+            <ul class="presenter-notes">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <p class="image-source"></p>
+            <ul class="presenter-notes">
+            <li><a href="#" onclick="return prev()">Previous</a></li>
+            <li><a href="#" onclick="return next()">Next</a></li>
+            </ul> 
+          </section> 
+        </div>
+        
+-->   
+
+<!-- HANDOUT START
+
+
+
+ 
+HANDOUT END -->
+
+      </div> <!-- slides --> 
+ 
+    </div> <!-- presentation --> 
+ 
+    <script> 
+      (function() {
+        var doc = document;
+        var disableBuilds = true;
+ 
+        var ctr = 0;
+        var spaces = /\s+/, a1 = [''];
+ 
+        var toArray = function(list) {
+          return Array.prototype.slice.call(list || [], 0);
+        };
+ 
+        var byId = function(id) {
+          if (typeof id == 'string') { return doc.getElementById(id); }
+          return id;
+        };
+ 
+        var query = function(query, root) {
+          if (!query) { return []; }
+          if (typeof query != 'string') { return toArray(query); }
+          if (typeof root == 'string') {
+            root = byId(root);
+            if(!root){ return []; }
+          }
+ 
+          root = root || document;
+          var rootIsDoc = (root.nodeType == 9);
+          var doc = rootIsDoc ? root : (root.ownerDocument || document);
+ 
+          // rewrite the query to be ID rooted
+          if (!rootIsDoc || ('>~+'.indexOf(query.charAt(0)) >= 0)) {
+            root.id = root.id || ('qUnique' + (ctr++));
+            query = '#' + root.id + ' ' + query;
+          }
+          // don't choke on something like ".yada.yada >"
+          if ('>~+'.indexOf(query.slice(-1)) >= 0) { query += ' *'; }
+ 
+          return toArray(doc.querySelectorAll(query));
+        };
+ 
+        var strToArray = function(s) {
+          if (typeof s == 'string' || s instanceof String) {
+            if (s.indexOf(' ') < 0) {
+              a1[0] = s;
+              return a1;
+            } else {
+              return s.split(spaces);
+            }
+          }
+          return s;
+        };
+ 
+        var addClass = function(node, classStr) {
+          classStr = strToArray(classStr);
+          var cls = ' ' + node.className + ' ';
+          for (var i = 0, len = classStr.length, c; i < len; ++i) {
+            c = classStr[i];
+            if (c && cls.indexOf(' ' + c + ' ') < 0) {
+              cls += c + ' ';
+            }
+          }
+          node.className = cls.trim();
+        };
+ 
+        var removeClass = function(node, classStr) {
+          var cls;
+          if (classStr !== undefined) {
+            classStr = strToArray(classStr);
+            cls = ' ' + node.className + ' ';
+            for (var i = 0, len = classStr.length; i < len; ++i) {
+              cls = cls.replace(' ' + classStr[i] + ' ', ' ');
+            }
+            cls = cls.trim();
+          } else {
+            cls = '';
+          }
+          if (node.className != cls) {
+            node.className = cls;
+          }
+        };
+ 
+        var toggleClass = function(node, classStr) {
+          var cls = ' ' + node.className + ' ';
+          if (cls.indexOf(' ' + classStr.trim() + ' ') >= 0) {
+            removeClass(node, classStr);
+          } else {
+            addClass(node, classStr);
+          }
+        };
+ 
+        var ua = navigator.userAgent;
+        var isFF = parseFloat(ua.split('Firefox/index.html')[1]) || undefined;
+        var isWK = parseFloat(ua.split('WebKit/index.html')[1]) || undefined;
+        var isOpera = parseFloat(ua.split('Opera/index.html')[1]) || undefined;
+ 
+        var canTransition = (function() {
+          var ver = parseFloat(ua.split('Version/index.html')[1]) || undefined;
+          // test to determine if this browser can handle CSS transitions.
+          var cachedCanTransition = 
+            (isWK || (isFF && isFF > 3.6 ) || (isOpera && ver >= 10.5));
+          return function() { return cachedCanTransition; }
+        })();
+ 
+        //
+        // Slide class
+        //
+        var Slide = function(node, idx) {
+          this._node = node;
+          if (idx >= 0) {
+            this._count = idx + 1;
+          }
+          if (this._node) {
+            addClass(this._node, 'slide distant-slide');
+          }
+          this._makeCounter();
+          this._makeBuildList();
+        };
+ 
+        Slide.prototype = {
+          _node: null,
+          _count: 0,
+          _buildList: [],
+          _visited: false,
+          _currentState: '',
+          _states: [ 'distant-slide', 'far-past',
+                     'past', 'current', 'future',
+                     'far-future', 'distant-slide' ],
+          setState: function(state) {
+            if (typeof state != 'string') {
+              state = this._states[state];
+            }
+            if (state == 'current' && !this._visited) {
+              this._visited = true;
+              this._makeBuildList();
+            }
+            removeClass(this._node, this._states);
+            addClass(this._node, state);
+            this._currentState = state;
+ 
+            // delay first auto run. Really wish this were in CSS.
+            /*
+            this._runAutos();
+            */
+            var _t = this;
+            setTimeout(function(){ _t._runAutos(); } , 400);
+          },
+          _makeCounter: function() {
+            if(!this._count || !this._node) { return; }
+            var c = doc.createElement('span');
+            c.innerHTML = this._count;
+            c.className = 'counter';
+            this._node.appendChild(c);
+          },
+          _makeBuildList: function() {
+            this._buildList = [];
+            if (disableBuilds) { return; }
+            if (this._node) {
+              this._buildList = query('[data-build] > *', this._node);
+            }
+            this._buildList.forEach(function(el) {
+              addClass(el, 'to-build');
+            });
+          },
+          _runAutos: function() {
+            if (this._currentState != 'current') {
+              return;
+            }
+            // find the next auto, slice it out of the list, and run it
+            var idx = -1;
+            this._buildList.some(function(n, i) {
+              if (n.hasAttribute('data-auto')) {
+                idx = i;
+                return true;
+              }
+              return false;
+            });
+            if (idx >= 0) {
+              var elem = this._buildList.splice(idx, 1)[0];
+              var transitionEnd = isWK ? 'webkitTransitionEnd' : (isFF ? 'mozTransitionEnd' : 'oTransitionEnd');
+              var _t = this;
+              if (canTransition()) {
+                var l = function(evt) {
+                  elem.parentNode.removeEventListener(transitionEnd, l, false);
+                  _t._runAutos();
+                };
+                elem.parentNode.addEventListener(transitionEnd, l, false);
+                removeClass(elem, 'to-build');
+              } else {
+                setTimeout(function() {
+                  removeClass(elem, 'to-build');
+                  _t._runAutos();
+                }, 400);
+              }
+            }
+          },
+          buildNext: function() {
+            if (!this._buildList.length) {
+              return false;
+            }
+            removeClass(this._buildList.shift(), 'to-build');
+            return true;
+          },
+        };
+ 
+        //
+        // SlideShow class
+        //
+        var SlideShow = function(slides) {
+          this._slides = (slides || []).map(function(el, idx) {
+            return new Slide(el, idx);
+          });
+ 
+          var h = window.location.hash;
+          try {
+            this.current = parseInt(h.split('#slide')[1], 10);
+          }catch (e) { /* squeltch */ }
+          this.current = isNaN(this.current) ? 1 : this.current;
+          var _t = this;
+          doc.addEventListener('keydown', 
+              function(e) { _t.handleKeys(e); }, false);
+          doc.addEventListener('mousewheel', 
+              function(e) { _t.handleWheel(e); }, false);
+          doc.addEventListener('DOMMouseScroll', 
+              function(e) { _t.handleWheel(e); }, false);
+          doc.addEventListener('touchstart', 
+              function(e) { _t.handleTouchStart(e); }, false);
+          doc.addEventListener('touchend', 
+              function(e) { _t.handleTouchEnd(e); }, false);
+          window.addEventListener('popstate', 
+              function(e) { _t.go(e.state); }, false);
+          this._update();          
+        };
+ 
+        SlideShow.prototype = {
+          _slides: [],
+          _update: function(dontPush) {
+            document.querySelector('#presentation-counter').innerText = this.current;
+            if (history.pushState) {
+              if (!dontPush) {
+                history.pushState(this.current, 'Slide ' + this.current, '#slide' + this.current);
+              }
+            } else {
+              window.location.hash = 'slide' + this.current;
+            }
+            for (var x = this.current-1; x < this.current + 7; x++) {
+              if (this._slides[x-4]) {
+                this._slides[x-4].setState(Math.max(0, x-this.current));
+              }
+            }
+          },
+ 
+          current: 0,
+          next: function() {
+            if (!this._slides[this.current-1].buildNext()) {
+              this.current = Math.min(this.current + 1, this._slides.length);
+              this._update();
+            }
+          },
+          prev: function() {
+            this.current = Math.max(this.current-1, 1);
+            this._update();
+          },
+          go: function(num) {
+            if (history.pushState && this.current != num) {
+              history.replaceState(this.current, 'Slide ' + this.current, '#slide' + this.current);
+            }
+            this.current = num;
+            this._update(true);
+          },
+ 
+          _notesOn: false,
+          showNotes: function() {
+            var isOn = this._notesOn = !this._notesOn;
+            query('.notes').forEach(function(el) {
+              el.style.display = (notesOn) ? 'block' : 'none';
+            });
+          },
+          switch3D: function() {
+            toggleClass(document.body, 'three-d');
+          },
+          handleWheel: function(e) {
+            var delta = 0;
+            if (e.wheelDelta) {
+              delta = e.wheelDelta/120;
+              if (isOpera) {
+                delta = -delta;
+              }
+            } else if (e.detail) {
+              delta = -e.detail/3;
+            }
+ 
+            if (delta > 0 ) {
+              this.prev();
+              return;
+            }
+            if (delta < 0 ) {
+              this.next();
+              return;
+            }
+          },
+          handleKeys: function(e) {
+            
+            if (/^(input|textarea)$/i.test(e.target.nodeName)) return;
+            
+            switch (e.keyCode) {
+              case 37: // left arrow
+                this.prev(); break;
+              case 39: // right arrow
+              case 32: // space
+                this.next(); break;
+              case 50: // 2
+                this.showNotes(); break;
+              case 51: // 3
+                this.switch3D(); break;
+            }
+          },
+          _touchStartX: 0,
+          handleTouchStart: function(e) {
+            this._touchStartX = e.touches[0].pageX;
+          },
+          handleTouchEnd: function(e) {
+            var delta = this._touchStartX - e.changedTouches[0].pageX;
+            var SWIPE_SIZE = 150;
+            if (delta > SWIPE_SIZE) {
+              this.next();
+            } else if (delta< -SWIPE_SIZE) {
+              this.prev();
+            }
+          },
+        };
+ 
+        // Initialize
+        var slideshow = new SlideShow(query('.slide'));
+        
+        
+        
+        
+        
+        document.querySelector('#toggle-counter').addEventListener('click', toggleCounter, false);
+        document.querySelector('#toggle-size').addEventListener('click', toggleSize, false);
+        document.querySelector('#toggle-transitions').addEventListener('click', toggleTransitions, false);
+        document.querySelector('#toggle-gradients').addEventListener('click', toggleGradients, false);
+ 
+ 
+        var counters = document.querySelectorAll('.counter');
+        var slides = document.querySelectorAll('.slide');
+ 
+        function toggleCounter() {
+          toArray(counters).forEach(function(el) {
+            el.style.display = (el.offsetHeight) ? 'none' : 'block';
+          });
+        }
+        
+        function toggleSize() {
+          toArray(slides).forEach(function(el) {
+            if (!/reduced/.test(el.className)) {
+              addClass(el, 'reduced');
+            }
+            else {
+              removeClass(el, 'reduced');
+            }
+          });
+        }
+ 
+        function toggleTransitions() {
+          toArray(slides).forEach(function(el) {
+            if (!/no-transitions/.test(el.className)) {
+              addClass(el, 'no-transitions');
+            }
+            else {
+              removeClass(el, 'no-transitions');
+            }
+          });
+        }
+        
+        function toggleGradients() {
+          toArray(slides).forEach(function(el) {
+            if (!/no-gradients/.test(el.className)) {
+              addClass(el, 'no-gradients');
+            }
+            else {
+              removeClass(el, 'no-gradients');
+            }
+          });
+        }
+        
+        
+        
+        
+        
+      })();
+      
+      
+      
+    </script> 
+ 
+    <!--[if lt IE 9]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
+    </script>
+		<script>CFInstall.check({ mode: "overlay" });</script>
+    <![endif]--> 
+    
+  </body> 
+
+<!-- Mirrored from openconcept.ca/sites/openconcept.ca/files/A11y_Presentation/A11y_Presentation_7.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:18:34 GMT -->
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xml:base="https://openconcept.ca/news/news-releases" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:schema="http://schema.org/">
+  <channel>
+    <title>News</title>
+    <link>https://openconcept.ca/news/news-releases</link>
+    <description></description>
+    <language>en</language>
+     <atom:link href="https://openconcept.ca/news/rss" rel="self" type="application/rss+xml" />
+      <item>
+    <title>OpenConcept acquires OtherData&#039;s Web Assets</title>
+    <link>https://openconcept.ca/news-release/openconcept-acquires-otherdatas-web-assets</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;OpenConcept is happy  to announce the acquisition of all web assets from Calgary-based OtherData. OtherData has been in business since 2006 and has built up a number of WordPress and Drupal clients across the country. OtherData’s CEO, Wesley Render, will be joining us at OpenConcept to help with the transition and provide additional services to our clients.&lt;/p&gt;
+&lt;p&gt;By strategically integrating our businesses we can provide a wider range web site services. OtherData has experience with Docker, MariaDB, and NodeJS among other tools.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;OpenConcept acquires OtherData&amp;#039;s Web Assets&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Mon, 02 May 2016 12:31:20 +0000</pubDate>
+ <dc:creator>claire</dc:creator>
+ <guid isPermaLink="false">1760 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>Drupal 8 is out!</title>
+    <link>https://openconcept.ca/news-release/drupal-8-out</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Today OpenConcept joins with the Drupal Association and a worldwide community of developers, businesses, and organizations in celebrating the general availability of Drupal 8, the new version of the world’s most widely adopted, enterprise open-source digital experience platform. Introducing hundreds of new breakthrough capabilities, Drupal 8 makes digital experiences extraordinary across all channels of customer interaction to deliver transformative business results.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;Drupal 8 is out!&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Thu, 19 Nov 2015 16:10:39 +0000</pubDate>
+ <dc:creator>claire</dc:creator>
+ <guid isPermaLink="false">1743 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>Creating the 1st Open-data Weather Forecast Grading System</title>
+    <link>https://openconcept.ca/news-release/creating-1st-open-data-weather-forecast-grading-system</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt; &lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;The Weather Report Card is an open-data weather forecast grading system that evaluates forecaster’s reliability and predictions’ accuracy.&lt;/p&gt;
+&lt;p&gt;It aggregates data from Environment Canada and organizes it in reports to compare temperature, rain and warning predictions versus actual weather. The system then evaluates the forecast’s accuracy and grades it.&lt;/p&gt;
+&lt;p&gt;On the site, users have a variety of ways to view daily conditions grading:&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;Creating the 1st Open-data Weather Forecast Grading System&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Wed, 18 Nov 2015 15:06:02 +0000</pubDate>
+ <dc:creator>claire</dc:creator>
+ <guid isPermaLink="false">1741 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>The Accessibility Unconference&#039;s success on CBC Ottawa</title>
+    <link>https://openconcept.ca/news-release/accessibility-unconferences-success-cbc-ottawa</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;OpenConcept was a sponsor at the second edition of a11yYOW, the Ottawa Accessibility Unconference that took place on December 6 at Carleton University. The event aimed to bring to Ottawa the capital&#039;s Web industry, as well as the Ontario, Quebec and Canada governments around the theme of web accessibility.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;The Accessibility Unconference&amp;#039;s success on CBC Ottawa&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Mon, 08 Dec 2014 21:20:50 +0000</pubDate>
+ <dc:creator>claire</dc:creator>
+ <guid isPermaLink="false">1693 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>One World Film Festival - 25th Edition</title>
+    <link>https://openconcept.ca/news-release/one-world-film-festival-25th-edition</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2&gt;&lt;strong&gt;Celebrating 25 Years of Thought-Provoking Documentaries on Global Issues&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Since 1989, the One World Film Festival has been bringing together audiences, organizations and filmmakers to view documentaries and raise awareness about social justice, human rights and environmental issues. OpenConcept was supporting this milestone by sponsoring this year&#039;s Festival, and helping it continue raising awareness on global issues.&lt;br /&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;One World Film Festival - 25th Edition&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Mon, 20 Oct 2014 18:33:34 +0000</pubDate>
+ <dc:creator>claire</dc:creator>
+ <guid isPermaLink="false">1683 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>OpenConcept Honored as &quot;Best for Workers&quot;</title>
+    <link>https://openconcept.ca/openconcept-honored-best-workers</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2&gt;&lt;strong&gt;Creating Higher Quality Jobs That Serve a Higher Purpose&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Today, &lt;strong&gt;OpenConcept Consulting Inc.&lt;/strong&gt; and 79 other companies worldwide were recognized for creating the highest quality jobs by the nonprofit B Lab with the release of the third annual ‘B Corp Best for Workers’ list. This analysis includes metrics regarding compensation and benefits, health and wellness programs, parent-friendly flex time and leave policies, professional development and internal promotion, corporate culture, profit sharing and ownership opportunities.&lt;br /&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;OpenConcept Honored as &amp;quot;Best for Workers&amp;quot;&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Mon, 20 Oct 2014 17:54:53 +0000</pubDate>
+ <dc:creator>claire</dc:creator>
+ <guid isPermaLink="false">1682 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>Richard Pietro ends his Canadian Tour in Ottawa with the Open Government Grand Bazaar</title>
+    <link>https://openconcept.ca/news-release/richard-pietro-ends-his-canadian-tour-ottawa-open-government-grand-bazaar</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Richard Pietro is an average citizen who has undertaken to do something very much above average. On July 2nd, 2014 he started a cross-Canada motorcycle tour with the objective of bringing attention to, and encouraging citizen engagement in, the Open Government &amp;amp; Open Data movements.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;Richard Pietro ends his Canadian Tour in Ottawa with the Open Government Grand Bazaar&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Fri, 19 Sep 2014 18:40:19 +0000</pubDate>
+ <dc:creator>openconcept</dc:creator>
+ <guid isPermaLink="false">1671 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>OpenConcept turns 15!</title>
+    <link>https://openconcept.ca/openconcept-turns-15-0</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;p&gt;Mike Gifford founded OpenConcept in 1999, seeing an opportunity in the web to accelerate change and engage citizens. The company has gone a long way from its early years in Mike’s basement to its brand new premises in the Hintonburg area in Ottawa. With a 10-year focus on Drupal and a recognized expertise in Accessibility and Security, OpenConcept is now one of the most important Drupal shop in Canada.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;OpenConcept turns 15!&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Fri, 19 Sep 2014 19:30:20 +0000</pubDate>
+ <dc:creator>openconcept</dc:creator>
+ <guid isPermaLink="false">1672 at https://openconcept.ca</guid>
+  </item>
+  <item>
+    <title>The West End Well is now our home.</title>
+    <link>https://openconcept.ca/west-end-well-now-our-home</link>
+    <description>&lt;div class=&quot;field field-name-body field-type-text-with-summary field-label-hidden view-mode-teaser&quot;&gt;&lt;div class=&quot;field-items&quot;&gt;&lt;div class=&quot;field-item even&quot; property=&quot;content:encoded&quot;&gt;&lt;h2&gt;The West End Well&lt;/h2&gt;
+&lt;p&gt;The West End Well is a co-operatively run grocery, café, and meeting space in Ottawa’s Hintonburg neighbourhood. It is a hub for food, learning, and the arts that promotes an engaged, connected, and sustainable community. It features local entertainment in the evening, offers programs like cooking and canning classes, and runs workshops on issues like sustainability, growing your own food, and social justice. The West End Well is also a Good Food Box and Community Supported Agriculture (CSA) drop-off site.&lt;br /&gt;
+ &lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;span property=&quot;dc:title&quot; content=&quot;The West End Well is now our home.&quot; class=&quot;rdf-meta element-hidden&quot;&gt;&lt;/span&gt;</description>
+     <pubDate>Fri, 19 Sep 2014 19:34:12 +0000</pubDate>
+ <dc:creator>openconcept</dc:creator>
+ <guid isPermaLink="false">1673 at https://openconcept.ca</guid>
+  </item>
+  </channel>
+</rss>

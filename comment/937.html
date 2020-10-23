@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8" lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/"><!--<![endif]-->
+
+<!-- Mirrored from openconcept.ca/comment/937 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:24:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<!--[if IE]><![endif]-->
+<meta charset="utf-8" />
+<script src="https://www.google.com/recaptcha/api.js?hl=en" async="async" defer="defer"></script>
+<link rel="shortcut icon" href="../sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta http-equiv="content-language" content="en" />
+<meta property="fb:admins" content="openconcept" />
+<meta property="fb:admins" content="kik.side" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@openconcept_ca" />
+<meta name="twitter:site:id" content="229468736" />
+<meta name="twitter:creator" content="@openconcept_ca" />
+<meta name="twitter:creator:id" content="229468736" />
+<meta name="twitter:url" content="https://openconcept.ca/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" />
+<meta name="twitter:title" content="APC, Varnish, Memcache, and Caching Beyond Drupal Core" />
+<meta name="twitter:description" content="Drupal is a powerful web application framework and Content Management System. It is capable of serving high volume websites at incredible speeds. But a poorly configured cache setting can grind your" />
+<meta itemprop="name" content="APC, Varnish, Memcache, and Caching Beyond Drupal Core" />
+<title>Blog: APC, Varnish, Memcache, and Caching Beyond Drupal Core | OpenConcept</title>
+<link type="text/css" rel="stylesheet" href="../sites/default/files/advagg_css/css__CIoPC8DTSyC7ba02u2WcNx8jW9hViesHlsuFRabyGeo__Yg5urgFzSGcRtbNMXHM_QY549KOAwX-D2BCHVvRAD9w__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../sites/default/files/advagg_css/css__0kxo9a_7V-NXmMFyEka9ww5_KAh62JvVq0T_opEsnYI__yLupVjjUulT7jR2cTAx-8AnjCJEZttCLm-N5GL51cAg__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../sites/default/files/advagg_css/css__WQ3VIViemVu1z3pxCt1hYihEFTVqdm3SgqDmHAifCF8__8pEWrNOJbuWWcn2CXCq6Id8yS_eivMQaAg37yz85fmk__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato%7CArimo:400,700italic,400italic,700" media="all" />
+
+<!--[if (lt IE 9)&(!IEMobile 7)]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__L_hl_g5koAwf-tcMQbO0rF6TiioG2sSDkJP6VhlrJSE__Jt_t77XXAGMXO_thFaLEyXIrOahPFnRwr5VH4gzy-Wc__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="screen" />
+<![endif]-->
+<style>#sliding-popup.sliding-popup-bottom,#sliding-popup.sliding-popup-bottom .eu-cookie-withdraw-banner,.eu-cookie-withdraw-tab{background:#0779bf}#sliding-popup.sliding-popup-bottom.eu-cookie-withdraw-wrapper{background:transparent}#sliding-popup .popup-content #popup-text h1,#sliding-popup .popup-content #popup-text h2,#sliding-popup .popup-content #popup-text h3,#sliding-popup .popup-content #popup-text p,#sliding-popup label,#sliding-popup div,.eu-cookie-compliance-secondary-button,.eu-cookie-withdraw-tab{color:#fff !important}.eu-cookie-withdraw-tab{border-color:#fff}.eu-cookie-compliance-more-button{color:#fff !important}</style>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","../sites/default/files/googleanalytics/analyticse5f5.js?qinvx1","ga");ga("create", "UA-190532-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1601 node-type-blog site-name-hidden site-name-openconcept section-blog">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page" class="page">
+
+  <!-- region: Leaderboard -->
+  
+ <div class="focus">
+  <header id="header" class="clearfix" role="banner">
+          <!-- start: Branding -->
+      <div id="branding" class="branding-elements clearfix">
+
+                  <div id="logo">
+            <a href="../index.html" title="Home page"><img class="site-logo image-style-none" typeof="foaf:Image" src="../sites/default/files/oclogo_0.png" alt="OpenConcept" /></a>          </div>
+        
+                  <!-- start: Site name and Slogan hgroup -->
+          <hgroup class="element-invisible" id="name-and-slogan">
+
+                          <h1 class="element-invisible" id="site-name"><a href="../index.html" title="Home page">OpenConcept</a></h1>
+            
+            
+          </hgroup><!-- /end #name-and-slogan -->
+        
+      </div><!-- /end #branding -->
+    
+    <!-- region: Header -->
+    
+  <div id="menu-bar" class="nav clearfix"><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix odd first last block-count-1 block-region-menu-bar block-main-menu"  role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first expanded menu-depth-1 menu-item-777"><a href="../about.html" title="">About</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-981"><a href="../who-we-are.html">Who we are</a></li><li class="leaf menu-depth-2 menu-item-782"><a href="../values.html">Our Values</a></li><li class="leaf menu-depth-2 menu-item-783"><a href="../community.html" title="Our involement with the BCorp Community.">Community</a></li><li class="last leaf menu-depth-2 menu-item-862"><a href="../careers.html">Careers</a></li></ul></li><li class="collapsed menu-depth-1 menu-item-778"><a href="../support.html">Services</a></li><li class="leaf menu-depth-1 menu-item-787"><a href="../just-vision.html" title="">Our Work</a></li><li class="collapsed menu-depth-1 menu-item-1187"><a href="../drupal.html">Drupal</a></li><li class="expanded menu-depth-1 menu-item-781"><a href="../news.html" title="">News</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-979"><a href="../events.html">Events</a></li><li class="leaf menu-depth-2 menu-item-980"><a href="../blog.html" title="">Blogs</a></li><li class="last leaf menu-depth-2 menu-item-1212"><a href="../news/news-releases.html">News Releases</a></li></ul></li><li class="last leaf menu-depth-1 menu-item-614"><a href="../contact.html">Contact Us</a></li></ul>
+  </nav></div>  <div id="primary-menu-bar" class="nav clearfix nav clearfix"><nav  class="primary-menu-wrapper menu-wrapper clearfix primary-menu-wrapper menu-wrapper clearfix"><h2 class="element-invisible">Main menu</h2><ul class="menu primary-menu clearfix"><li class="menu-777 first"><a href="../about.html" title="">About</a></li><li class="menu-778"><a href="../support.html">Services</a></li><li class="menu-787"><a href="../just-vision.html" title="">Our Work</a></li><li class="menu-1187"><a href="../drupal.html">Drupal</a></li><li class="menu-781"><a href="../news.html" title="">News</a></li><li class="menu-614 last"><a href="../contact.html">Contact Us</a></li></ul></nav></div>
+  </header>
+ </div>
+
+  <!-- Navigation elements -->
+  
+  <!-- Breadcrumbs -->
+  
+  <!-- Messages and Help -->
+    
+  <!-- region: Secondary Content -->
+  
+  <div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column" role="main">
+      <div class="content-inner">
+
+        <!-- region: Highlighted -->
+        
+
+        <section id="main-content"  class="focus">
+          
+                      <header id="main-content-header" class="clearfix">
+
+
+
+              
+            </header>
+          
+          <!-- region: Main Content -->
+                      <div id="content" class="region">
+              <div id="block-system-main" class="block block-system no-title odd first last block-count-2 block-region-content block-main" >  
+  
+  <div class="panel-display panel-1col clearfix" >
+  <div class="panel-panel panel-col">
+    <div><div class="panel-pane pane-node-title no-title block" id="blog-node-title">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h1>APC, Varnish, Memcache, and Caching Beyond Drupal Core</h1>
+    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-node-author block" id="blog-node-author">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">By: </h2>
+        
+    
+    <div class="block-content">
+      <a href="../users/mikem.html" title="View user profile." class="username" xml:lang="" about="/users/mikem" typeof="sioc:UserAccount" property="foaf:name" datatype="">mikem</a>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-token pane-node-created block" id="blog-node-viewed">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">on </h2>
+        
+    
+    <div class="block-content">
+      November 28, 2013    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-body no-title block" id="blog-body">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Drupal is a powerful web application framework and Content Management System. It is capable of serving high volume websites at incredible speeds. But a poorly configured cache setting can grind your web site to a halt, leaving impatient visitors waiting for pages. Excessive page load times will even drive some visitors away with the impression that your site has gone down. The most common <a href="https://drupal.org/node/326504">recommendations for Drupal 7.x caching</a> beyond the defaults provided in Core are APC, Varnish, and Memcache. Each plays its own specific role, and requires its own configuration settings to be reviewed by the site administrator. As always, the best settings for one site may not be appropriate at all for another. Consider the differences between a site designed for anonymous browsing and information distribution versus a site designed to be used entirely by authenticated users with dynamic reports generated on each page load. Clearly the first site would benefit greatly from a front-end page cache such as Varnish while the second could run into issues by serving cached content when a page should be regenerated. So what are APC, Varnish and Memcache and what do they do?</p>
+<h2>Varnish</h2>
+<p>Web site: <a href="https://www.varnish-cache.org/">https://www.varnish-cache.org/</a> Drupal module: <a href="https://drupal.org/project/varnish">https://drupal.org/project/varnish</a></p>
+<p>Varnish is a front-end "page cache". It can sit in front of any web application and acts as an intermediary between the site vistors and the back-end web server, regardless of the back-end application. When Varnish receives a page request from a web browser, it checks its own internal cache first to see if it has a valid copy of that page's data. If it can serve a copy from its cache, the web application server is never invoked. This has serious advantages for a brochure/pamphlet-type site where content is largely static. If Varnish does not have a copy of that page yet, or if its copy has "expired", Varnish will contact the web application server to get an updated copy of that page and add it to its cache. The most basic Varnish configuration is to tell Varnish where the web server(s) for your application are, so that it can request page data (including any HTML, XML, CSS, Javascript, image files, etc.). On any typical modern GNU/Linux system, this is done with the following snippet of code in the configuration file /etc/varnish/default.vcl:</p>
+<p>backend default {<br />
+  .host = "127.0.0.1";<br />
+  .port = "8000";<br />
+}</p>
+<p>This tells Varnish that your back-end web application server can be reached at 127.0.0.1:8000 so this is where Varnish will ask for pages it does not have cached. The server listening at that socket may be Apache, nginx, Microsoft IIS, or any other HTTP server. Varnish doesn't care. The Varnish Control Terminal is a method by which the back-end server can communicate with Varnish in order to affect the cache. For example, if the <a href="https://drupal.org/project/varnish">Drupal Varnish module</a> is configured correctly, it can tell Varnish to expire a page from its cache when that page is updated through Drupal, so that new visitors to the site get the new content immediately, instead of waiting for Varnish to expire the page as per its default page expiration settings. In order to lock down this management of Varnish's cached data, the Control Terminal is protected by a "secret key", usually located in /etc/varnish/secret. In order for the Drupal Varnish module to function correctly, some settings need to be configured. Aside from the Control Terminal secret key, Drupal should also be told the IP address of the Varnish server in order to extract the actual visitor's IP address. Otherwise all your page accesses will appear to come from the Varnish server. The default header added by Varnish for this is X-FORWARDED-FOR, but this can be configured however you please. You will also need to make sure you have the default Drupal cache settings "Cache pages for anonymous users" turned on, and you should consider the use of a "Minimum cache lifetime". Your choice for this setting will depend on your site's usage and traffic. Some administrators may wish to have a long cache lifetime to improve performance, while content editors may prefer a shorter cache lifetime to avoid the serving of stale content.</p>
+<h2>APC: Alternative PHP Cache</h2>
+<p>Web site: <a href="http://php.net/manual/en/book.apc.php">http://php.net/manual/en/book.apc.php</a> Drupal module: <a href="https://drupal.org/project/apc">https://drupal.org/project/apc</a></p>
+<p>Alternative PHP Cache is designed to store blocks of PHP code in an executable format. Drupal has many, many PHP files included in every page load, and re-reading each of these files each time a page is requested can cause a very large amount of disk I/O and CPU time. Files that do not change from page load to page load, including Drupal Core and all of your contributed module code, can safely be stored in RAM for fast retrieval. It is much faster for a computer to check a last modified date of a file to see if it has been changed, rather than reload and recompile that file, perhaps hundreds or thousands of times per second on a high traffic site. But be warned: A poorly configured cache can cause the opposite effect! When we first deployed APC with the default settings, our site seemed to perform SLOWER. Most versions of APC come with a handy PHP script, <a href="http://git.php.net/?p=pecl/caching/apc.git;a=blob;f=apc.php;h=152b5f69130e61bbf74f955d53b99e2e5565daf8;hb=HEAD">apc.php</a> which can provide a summary of the effectiveness of the APC cache in a user-friendly graphical display. It was quickly discovered that the APC cache with default settings was always full, causing it to constantly expire data to fit new data in. The result was that it was never able to retrieve cached PHP code, since by the time page load #2 began, the first pieces of page load #1 were thrown out! Increasing the APC RAM allocation inside apc.ini to a sufficiently large value caused a dramatic decrease in page load times. Another caveat of APC is that it uses separate RAM segments when PHP is invoked from the Command Line Interface (CLI) versus PHP as invoked by Apache. For Drush users, this means that a 'drush cc all' is incapable of clearing the APC cache, causing a spew of warning messages, and the possibility of uncleared caches. This has been <a href="https://drupal.org/node/1278232"> discussed at length</a> on drupal.org.</p>
+<h2>Memcache</h2>
+<p>Web site (memcached): <a href="http://memcached.org/">http://memcached.org/</a> Web site (PECL memcache extension): <a href="http://pecl.php.net/package/memcache">http://pecl.php.net/package/memcache</a> Drupal module: <a href="https://drupal.org/project/memcache">https://drupal.org/project/memcache</a></p>
+<p>Memcache helps reduce database load by caching DB objects in RAM. It requires a 'memcached' daemon/service (first link above), which will do the actual RAM storage of objects, as well as the PHP extension to use this service. There are two separate PHP extensions available, 'memcache' and 'memcached'. You can read about <a href="https://drupal.org/node/1167078">the differences between the two</a>, or just pick one and try it out.</p>
+<h2>Which to use, and When?</h2>
+<p>General recommendations for Drupal 7.x site performance are to use all three! Ultimately this depends on your site's requirements and server configuration.</p>
+<ul>
+<li>Are you finding that anonymous page loads, including image files, are slow? Install Varnish and allow it to store these in RAM.</li>
+<li>Is Apache (or other web server) expending excessive CPU time executing PHP code? APC will alleviate this for you.</li>
+<li>Is your database server suffering too many connections and excessive query load times? Memcache can take some of this load off your database server by caching queries and their responses for faster returns to the front-end application.</li>
+</ul>
+<p>It is always a good idea to monitor your changes when setting up new services such as these. As mentioned, a poorly configured cache can give the opposite results, increasing page load times, and driving visitors away. And today's cache settings may not be appropriate a year from now, when your site has exploded in popularity! It's good to check on these settings periodically to ensure they are continuing to provide their desired benefit.</p>
+<h2>Summary Of Drupal Settings</h2>
+<p>Although many of the settings for these Drupal modules can be managed using the admin UI, these settings can be placed into your site's settings.php file. Note that the module will need to be enabled despite the inclusion of the 'cache_backends' array.</p>
+<p>$conf['cache_backends'] = array();</p>
+<p>## Varnish<br />
+#  <a href="http://drupal.org/project/varnish">http://drupal.org/project/varnish</a><br />
+# Add Varnish as the page cache handler.<br />
+$conf['cache_backends'][] = 'sites/all/modules/contrib/varnish/varnish.cache.inc';<br />
+$conf['cache_class_cache_page'] = 'VarnishCache';<br />
+$conf['reverse_proxy'] = TRUE;<br />
+$conf['reverse_proxy_addresses'] = array('127.0.0.1');<br />
+$conf['varnish_version'] = '3';<br />
+# Bypass Drupal bootstrap for anonymous users so that Drupal sets max-age &gt; 0<br />
+$conf['page_cache_invoke_hooks'] = FALSE;<br />
+$conf['varnish_control_key'] = 'CONTENTS-OF-ETC-VARNISH-SECRET';<br />
+$conf['varnish_control_terminal'] = 'localhost:6082';</p>
+<p>## APC<br />
+# <a href="http://drupalcode.org/project/apc.git/blob_plain/refs/heads/7.x-1.x:/README.txt">http://drupalcode.org/project/apc.git/blob_plain/refs/heads/7.x-1.x:/REA...</a><br />
+$conf['cache_backends'][] = 'sites/all/modules/contrib/apc/drupal_apc_cache.inc';<br />
+$conf['cache_class_cache'] = 'DrupalAPCCache';<br />
+$conf['cache_class_cache_bootstrap'] = 'DrupalAPCCache';</p>
+<p>## memcache<br />
+$conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';<br />
+$conf['cache_default_class'] = 'MemCacheDrupal';<br />
+$conf['memcache_servers'] = array('localhost:11211' =&gt; 'default');<br />
+$conf['memcache_bins'] = array('cache' =&gt; 'default');<br />
+# "If you want to have multiple Drupal installations share memcached instances,<br />
+# you need to include a unique prefix for each Drupal installation in the $conf<br />
+# array of settings.php:"<br />
+$conf['memcache_key_prefix'] = "UniqueSitePrefix";<br />
+# "Make sure the following line also exists, to ensure that the special<br />
+# cache_form bin is assigned to non-volatile storage:"<br />
+$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';</p>
+</div></div></div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-terms no-title block" id="blogTopicList">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <ul class="links"><li class="taxonomy_term_88 first last"><a href="../topic/drupal-development.html" rel="tag" title="">Drupal Development</a></li></ul>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-block pane-service-links-service-links block" id="blog-services-links">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Share this article</h2>
+        
+    
+    <div class="block-content">
+      <div class="service-links"><a href="https://www.facebook.com/sharer.php" title="Share this post on Facebook" class="service-links-facebook-share" rel="https://openconcept.ca/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" target="_blank"><span class="element-invisible">Share on Facebook</span></a> <a href="../blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core.html" title="Share on Linkedin" class="service-links-linkedin-share-button" rel="nofollow" target="_blank"><span class="element-invisible">Linkedin Share Button</span></a> <a href="../blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core.html" title="Plus it" class="service-links-google-plus-one" rel="nofollow" target="_blank"><span class="element-invisible">Google Plus One</span></a> <a href="https://reddit.com/submit?url=https%3A//openconcept.ca/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core&amp;title=APC%2C%20Varnish%2C%20Memcache%2C%20and%20Caching%20Beyond%20Drupal%20Core" title="Submit this post on reddit.com" class="service-links-reddit" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../sites/all/modules/contrib/service_links/images/reddit.png" alt="Reddit logo" /></a> <a href="https://twitter.com/share?url=https%3A//openconcept.ca/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core&amp;text=APC%2C%20Varnish%2C%20Memcache%2C%20and%20Caching%20Beyond%20Drupal%20Core" title="Share this on Twitter" class="service-links-twitter" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../sites/all/modules/contrib/service_links/images/twitter.png" alt="Twitter logo" /></a></div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-posts-by-same-author block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Posts By Author</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-posts-by-same-author view-id-posts_by_same_author view-display-id-default view-dom-id-17db002f280024c7a9069e9020661c32">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../blog/mikem/whats-backup-its-restore.html">What&#039;s a Backup? (It&#039;s a Restore!)</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../blog/mikem/adventures-glusterfs.html">Adventures in GlusterFS</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../blog/mmallett/poodle-ssl-vulnerability-protect-yourself.html">POODLE SSL Vulnerability: Protect Yourself</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-related-posts block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Related Posts</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-related-posts view-id-related_posts view-display-id-default view-dom-id-0f6749e698c8f920f7a6cac07e2347e6">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../blog/mike/drupal-government-ottawa-showcase-great-success.html">Drupal in Government Ottawa Showcase - A Great Success</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../blog/mike/openlayers-accessibility-drupal.html">OpenLayers, Accessibility &amp; Drupal</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../blog/mike/drupalcon-vincenzo.html">DrupalCon with Vincenzo</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-comment-wrapper no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <section id="comments" class="comment-wrapper">
+
+          <h2 class="comment-title title">Comments</h2>
+      
+  <a id="comment-208"></a>
+<article class="comment comment-by-anonymous odd first clearfix" about="/comment/208#comment-208" typeof="sioc:Post sioct:Comment">
+  
+      <header class="comment-header">
+              <h3 property="dc:title" datatype="" class="comment-title"><a href="208.html#comment-208" rel="bookmark">Great tutorial, thanks.</a></h3>
+                </header>
+  
+      <footer class="submitted">
+            <p class="author-datetime"><span property="dc:date dc:created" content="2015-09-25T00:12:25-04:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">M (not verified)</span> on <time datetime="2015-09-25T00:12:25Z" pubdate="pubdate"><span class="date-time permalink"><a href="208.html#comment-208" rel="bookmark">September 25, 2015</a></span></time></span></p>
+    </footer>
+  
+  <div class="comment-content">
+    <span rel="sioc:reply_of" resource="/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" class="rdf-meta element-hidden"></span>  </div>
+
+  
+      <nav class="clearfix"><ul class="links inline"><li class="comment-reply first last"><a href="https://openconcept.ca/comment/reply/1601/208">reply</a></li></ul></nav>
+  
+  </article>
+<a id="comment-314"></a>
+<article class="comment comment-by-anonymous even clearfix" about="/comment/314#comment-314" typeof="sioc:Post sioct:Comment">
+  
+      <header class="comment-header">
+              <h3 property="dc:title" datatype="" class="comment-title"><a href="314.html#comment-314" rel="bookmark">nice i like the way you have explained</a></h3>
+                </header>
+  
+      <footer class="submitted">
+            <p class="author-datetime"><span property="dc:date dc:created" content="2015-10-30T01:57:18-04:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">jaywant (not verified)</span> on <time datetime="2015-10-30T01:57:18Z" pubdate="pubdate"><span class="date-time permalink"><a href="314.html#comment-314" rel="bookmark">October 30, 2015</a></span></time></span></p>
+    </footer>
+  
+  <div class="comment-content">
+    <span rel="sioc:reply_of" resource="/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" class="rdf-meta element-hidden"></span>  </div>
+
+  
+      <nav class="clearfix"><ul class="links inline"><li class="comment-reply first last"><a href="https://openconcept.ca/comment/reply/1601/314">reply</a></li></ul></nav>
+  
+  </article>
+<a id="comment-630"></a>
+<article class="comment comment-by-anonymous odd clearfix" about="/comment/630#comment-630" typeof="sioc:Post sioct:Comment">
+  
+      <header class="comment-header">
+              <h3 property="dc:title" datatype="" class="comment-title"><a href="630.html#comment-630" rel="bookmark">Good blog</a></h3>
+                </header>
+  
+      <footer class="submitted">
+            <p class="author-datetime"><span property="dc:date dc:created" content="2015-12-01T00:59:16-05:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">Amy (not verified)</span> on <time datetime="2015-12-01T00:59:16Z" pubdate="pubdate"><span class="date-time permalink"><a href="630.html#comment-630" rel="bookmark">December 01, 2015</a></span></time></span></p>
+    </footer>
+  
+  <div class="comment-content">
+    <span rel="sioc:reply_of" resource="/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" class="rdf-meta element-hidden"></span>  </div>
+
+  
+      <nav class="clearfix"><ul class="links inline"><li class="comment-reply first last"><a href="https://openconcept.ca/comment/reply/1601/630">reply</a></li></ul></nav>
+  
+  </article>
+<a id="comment-713"></a>
+<article class="comment comment-by-anonymous even clearfix" about="/comment/713#comment-713" typeof="sioc:Post sioct:Comment">
+  
+      <header class="comment-header">
+              <h3 property="dc:title" datatype="" class="comment-title"><a href="713.html#comment-713" rel="bookmark">Fantastic</a></h3>
+                </header>
+  
+      <footer class="submitted">
+            <p class="author-datetime"><span property="dc:date dc:created" content="2015-12-22T16:37:03-05:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">Arif (not verified)</span> on <time datetime="2015-12-22T16:37:03Z" pubdate="pubdate"><span class="date-time permalink"><a href="713.html#comment-713" rel="bookmark">December 22, 2015</a></span></time></span></p>
+    </footer>
+  
+  <div class="comment-content">
+    <span rel="sioc:reply_of" resource="/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" class="rdf-meta element-hidden"></span>  </div>
+
+  
+      <nav class="clearfix"><ul class="links inline"><li class="comment-reply first last"><a href="https://openconcept.ca/comment/reply/1601/713">reply</a></li></ul></nav>
+  
+  </article>
+<a id="comment-937"></a>
+<article class="comment comment-by-anonymous odd clearfix" about="/comment/937#comment-937" typeof="sioc:Post sioct:Comment">
+  
+      <header class="comment-header">
+              <h3 property="dc:title" datatype="" class="comment-title"><a href="937.html#comment-937" rel="bookmark">Great Consolidated Blog</a></h3>
+                </header>
+  
+      <footer class="submitted">
+            <p class="author-datetime"><span property="dc:date dc:created" content="2016-01-15T21:17:58-05:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">Gaja (not verified)</span> on <time datetime="2016-01-15T21:17:58Z" pubdate="pubdate"><span class="date-time permalink"><a href="937.html#comment-937" rel="bookmark">January 15, 2016</a></span></time></span></p>
+    </footer>
+  
+  <div class="comment-content">
+    <span rel="sioc:reply_of" resource="/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" class="rdf-meta element-hidden"></span>  </div>
+
+  
+      <nav class="clearfix"><ul class="links inline"><li class="comment-reply first last"><a href="https://openconcept.ca/comment/reply/1601/937">reply</a></li></ul></nav>
+  
+  </article>
+<a id="comment-4510"></a>
+<article class="comment comment-by-anonymous even clearfix" about="/comment/4510#comment-4510" typeof="sioc:Post sioct:Comment">
+  
+      <header class="comment-header">
+              <h3 property="dc:title" datatype="" class="comment-title"><a href="4510.html#comment-4510" rel="bookmark">Brief and clear</a></h3>
+                </header>
+  
+      <footer class="submitted">
+            <p class="author-datetime"><span property="dc:date dc:created" content="2017-02-22T03:31:26-05:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="sioc:UserAccount" property="foaf:name" datatype="">sidheswar (not verified)</span> on <time datetime="2017-02-22T03:31:26Z" pubdate="pubdate"><span class="date-time permalink"><a href="4510.html#comment-4510" rel="bookmark">February 22, 2017</a></span></time></span></p>
+    </footer>
+  
+  <div class="comment-content">
+    <span rel="sioc:reply_of" resource="/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core" class="rdf-meta element-hidden"></span>  </div>
+
+  
+      <nav class="clearfix"><ul class="links inline"><li class="comment-reply first last"><a href="https://openconcept.ca/comment/reply/1601/4510">reply</a></li></ul></nav>
+  
+  </article>
+
+      <h2 class="comment-title title comment-form">Add new comment</h2>
+    <form class="comment-form" action="https://openconcept.ca/blog/mmallett/apc-varnish-memcache-and-caching-beyond-drupal-core#comment-form" method="post" id="comment-form" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">Your name </label>
+ <input type="text" id="edit-name" name="name" value="" size="30" maxlength="60" class="form-text" />
+</div>
+<div class="form-item form-type-textfield form-item-subject">
+  <label for="edit-subject">Subject </label>
+ <input type="text" id="edit-subject" name="subject" value="" size="60" maxlength="64" class="form-text" />
+</div>
+<div class="field-type-text-long field-name-comment-body field-widget-text-textarea form-wrapper" id="edit-comment-body"><div id="comment-body-add-more-wrapper"><div class="text-format-wrapper"><div class="form-item form-type-textarea form-item-comment-body-und-0-value">
+  <label for="edit-comment-body-und-0-value">Comment <span class="form-required" title="This field is required.">*</span></label>
+ <div class="form-textarea-wrapper resizable"><textarea class="text-full form-textarea required" id="edit-comment-body-und-0-value" name="comment_body[und][0][value]" cols="60" rows="5"></textarea></div>
+</div>
+<fieldset class="filter-wrapper form-wrapper" id="edit-comment-body-und-0-format"><div class="fieldset-wrapper"><div class="filter-help form-wrapper" id="edit-comment-body-und-0-format-help"><p><a href="../filter/tips.html" target="_blank">More information about text formats</a></p></div><div class="filter-guidelines form-wrapper" id="edit-comment-body-und-0-format-guidelines"><div class="filter-guidelines-item filter-guidelines-plain_text"><h3>Plain text</h3><ul class="tips"><li>No HTML tags allowed.</li><li>Lines and paragraphs break automatically.</li></ul></div></div></div></fieldset>
+</div>
+</div></div><input type="hidden" name="form_build_id" value="form-ux1xIA34jk0KqNM1DSaaOv40BYki5Gr4rF-t32aSdVU" />
+<input type="hidden" name="form_id" value="comment_node_blog_form" />
+<fieldset class="captcha form-wrapper"><legend><span class="fieldset-legend">CAPTCHA</span></legend><div class="fieldset-wrapper"><div class="fieldset-description">This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.</div><input type="hidden" name="captcha_sid" value="202942" />
+<input type="hidden" name="captcha_token" value="824ad2c74e8f4206ff417ed0134ae8eb" />
+<input type="hidden" name="captcha_response" value="Google no captcha" />
+<div class="g-recaptcha" data-sitekey="6LdXOyITAAAAAN7Z_EVSa8In_5EpmZTfmdah3ip2" data-theme="light" data-type="image"></div><input type="hidden" name="captcha_cacheable" value="1" />
+</div></fieldset>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Save" class="form-submit" /><input type="submit" id="edit-preview" name="op" value="Preview" class="form-submit" /></div><div class="address2-textfield"><div class="form-item form-type-textfield form-item-address2">
+  <label for="edit-address2">Leave this field blank </label>
+ <input autocomplete="off" type="text" id="edit-address2" name="address2" value="" size="20" maxlength="128" class="form-text" />
+</div>
+</div></div></form>  
+</section>
+    </div>
+
+    
+    
+  </div>
+</div>
+</div>
+  </div>
+</div>
+
+  </div>            </div>
+          
+          <!-- Feed icons (RSS, Atom icons etc -->
+          
+          
+        </section><!-- /end #main-content -->
+
+        <!-- region: Content Aside -->
+        
+      </div><!-- /end .content-inner -->
+    </div><!-- /end #content-column -->
+
+    <!-- regions: Sidebar first and Sidebar second -->
+        
+  </div><!-- /end #columns -->
+
+  <!-- region: Tertiary Content -->
+  
+  <!-- region: Footer -->
+     <div id="footer-wrapper">
+    <footer id="footer" class="clearfix" role="contentinfo">
+      <div class="region region-footer"><div class="region-inner clearfix"><div id="block-block-14" class="block block-block no-title odd first block-count-3 block-region-footer block-14" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p> </p>
+<h2 class="rtecenter"><strong>Interested in digital accessibility? <a href="https://mailchi.mp/133e3c60c3f6/accessibility-action" style="color:white;">Sign up today to our monthly Accessibility Action Newsletter!</a></strong></h2>
+<p> </p>
+</div>
+  </div></div><div id="block-panels-mini-location-get-in-touch-follow-us" class="block block-panels-mini no-title even block-count-4 block-region-footer block-location-get-in-touch-follow-us" >  
+  
+  <div class="block-content content"><div class="at-panel panel-display three-3x33 clearfix" id="mini-panel-location_get_in_touch_follow_us">
+    <div class="region region-three-33-first">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-8 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">LOCATION</h3>
+<div class="rtecenter">
+<p>571 Somerset Street West<br />
+Ottawa ON K1R 5K1<br />
+Canada</p>
+</div>
+<p class="rtecenter"> </p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-second">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-6 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">GET IN TOUCH</h3>
+<p class="rtecenter"><a href="tel:+16136866736">613-686-6736</a> (OPEN)<br />
+<a href="mailto:info@openconcept.ca" style="font-size: 13px; line-height: 1.6em;">info@openconcept.ca</a><br />
+<a href="../careers.html" style="font-size: 13px; line-height: 1.6em;">Careers</a></p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-third">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-7 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">FOLLOW US</h3>
+<div class="clipwrapper rtecenter" style=" position: relative;height: 40px;width: 260px; margin:0 auto;">
+
+<a href="https://twitter.com/openconcept_ca" target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Twitter" src="../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -41px; clip: rect(0 122px 50px 83px);"></a>
+
+<a href="https://www.linkedin.com/company/1703911?trk=prof-0-ovw-curr_pos"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Linkedin" src="../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -36px; clip: rect(0 162px 50px 130px);"></a>
+
+<a href="https://www.facebook.com/OpenConcept-Consulting-Inc-657846390931051/?fref=ts"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on facebook" src="../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -69px; clip: rect(0 250px 50px 213px);"></a>
+
+<a href="https://github.com/OpenConceptConsulting"  target="_blank" rel=”noopener noreferrer”>
+<img alt="GitHub Logo" src="../sites/openconcept/themes/oc2014/images/github.svg" style="width: 45px; height: 45px; position: absolute; top: -5px; left: 194px;" width="45px" height="45px"></a>
+
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  </div>
+</div>
+  </div><div id="block-menu-menu-footer-menu" class="block block-menu no-title odd last block-count-5 block-region-footer block-menu-footer-menu"  role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-1264"><a href="../about.html" title="">About</a></li><li class="leaf menu-depth-1 menu-item-1265"><a href="../support.html" title="">Services</a></li><li class="leaf menu-depth-1 menu-item-1266"><a href="../just-vision.html" title="">Our Work</a></li><li class="leaf menu-depth-1 menu-item-1267"><a href="../drupal.html" title="">Drupal</a></li><li class="leaf menu-depth-1 menu-item-1582"><a href="../blog.html" title="">Blog</a></li><li class="leaf menu-depth-1 menu-item-1269"><a href="../contact.html" title="">Contact Us</a></li><li class="leaf menu-depth-1 menu-item-1270"><a href="../accessibility-statement.html" title="">Accessibility</a></li><li class="leaf menu-depth-1 menu-item-1583"><a href="../usage-policy.html" title="">Usage Policy</a></li><li class="last leaf menu-depth-1 menu-item-1614"><a href="../privacy-policy.html" title="">Privacy</a></li></ul></div>
+  </div></div></div></div>    </footer>
+   </div>
+  
+</div>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>window.jQuery || document.write("<script src='../sites/all/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js'>\x3C/script>")</script>
+<script src="../sites/default/files/advagg_js/js__xMEFExRBeLF_Nnh2w42eON8oYCZVgn3_dmuWETzlD7o__YziG9O396nnc4ik7kSEjURf3zNFx-Gsbb51r1rYsccE__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="https://platform.linkedin.com/in.js?async=true"></script>
+<script src="../sites/default/files/advagg_js/js__A52bEiaKhdkakCoe5501JI0YxDPSwTBJ-UFE-efNJb0__yf0_gufdxCt_YiSNmLRFk6O15VOLxNV0NN2NCDqVc-w__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="../sites/default/files/advagg_js/js__TtR0f7kt8CNg-hMiSmtY5rrY3UtYDvihouuIR-zgvjo__eZvC1evgHOLlh_llWv-9amB8lWXb0LoA26aAILv2Q1M__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"oc2014","theme_token":"oB_vf4TxO2_LDuyImWa3kIqTv2srnIVWuqBd34K73oc"},"ws_fs":{"type":"button","app_id":"150123828484431","css":"","locale":"en_US"},"ws_gpo":{"size":"medium","annotation":"","lang":"","callback":"","width":300},"ws_lsb":{"countmode":""},"better_exposed_filters":{"views":{"profile_picture":{"displays":{"default":{"filters":[]}}},"posts_by_same_author":{"displays":{"default":{"filters":[]}}},"related_posts":{"displays":{"default":{"filters":[]}}}}},"ckeditor":{"input_formats":{"filtered_html":{"customConfig":"\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.config.js?","defaultLanguage":"en","toolbar":"[\n    [\u0027Bold\u0027,\u0027Italic\u0027,\u0027NumberedList\u0027,\u0027BulletedList\u0027,\u0027Link\u0027,\u0027Blockquote\u0027,\u0027PasteText\u0027,\u0027Source\u0027,\u0027Flash\u0027,\u0027Maximize\u0027]\n]","enterMode":1,"shiftEnterMode":2,"toolbarStartupExpanded":true,"width":"100%","skin":"moono-lisa","format_tags":"p;div;pre;address;h1;h2;h3;h4;h5;h6","show_toggle":"t","default":"t","ss":"2","loadPlugins":{"drupalbreaks":{"name":"drupalbreaks","desc":"Plugin for inserting Drupal teaser and page breaks.","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/drupalbreaks\/","buttons":{"DrupalBreak":{"label":"DrupalBreak","icon":"images\/drupalbreak.png"}},"default":"t"}},"entities":false,"entities_greek":false,"entities_latin":false,"scayt_autoStartup":true,"language":"en","scayt_sLang":"en_US","forcePasteAsPlainText":true,"stylesCombo_stylesSet":"drupal:\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.styles.js","contentsCss":["\/sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css?qinvx1","\/sites\/all\/libraries\/ckeditor\/contents.css?qinvx1"]},"full_html":{"customConfig":"\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.config.js?","defaultLanguage":"en","toolbar":"[\n    [\u0027Bold\u0027,\u0027Italic\u0027,\u0027Underline\u0027,\u0027Strike\u0027,\u0027JustifyLeft\u0027,\u0027JustifyCenter\u0027,\u0027JustifyRight\u0027,\u0027JustifyBlock\u0027,\u0027Table\u0027,\u0027NumberedList\u0027,\u0027Blockquote\u0027,\u0027Indent\u0027,\u0027Outdent\u0027,\u0027BulletedList\u0027,\u0027Link\u0027,\u0027Unlink\u0027,\u0027Anchor\u0027,\u0027Image\u0027,\u0027IMCE\u0027],\n    [\u0027TextColor\u0027,\u0027BGColor\u0027,\u0027Format\u0027,\u0027Font\u0027,\u0027FontSize\u0027,\u0027Styles\u0027],\n    [\u0027Maximize\u0027,\u0027SpellChecker\u0027,\u0027MediaEmbed\u0027,\u0027PageBreak\u0027],\n    [\u0027Source\u0027]\n]","enterMode":1,"shiftEnterMode":2,"toolbarStartupExpanded":true,"width":"100%","skin":"moono-lisa","format_tags":"p;div;pre;address;h1;h2;h3;h4;h5;h6","show_toggle":"t","default":"t","allowedContent":true,"ss":"2","loadPlugins":{"drupalbreaks":{"name":"drupalbreaks","desc":"Plugin for inserting Drupal teaser and page breaks.","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/drupalbreaks\/","buttons":{"DrupalBreak":{"label":"DrupalBreak","icon":"images\/drupalbreak.png"}},"default":"t"},"imce":{"name":"imce","desc":"Plugin for inserting files from IMCE without image dialog","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/imce\/","buttons":{"IMCE":{"label":"IMCE","icon":"images\/icon.png"}},"default":"f"},"mediaembed":{"name":"mediaembed","desc":"Plugin for inserting Drupal embeded media","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/mediaembed\/","buttons":{"MediaEmbed":{"label":"MediaEmbed","icon":"images\/icon.png"}},"default":"f"}},"entities":false,"entities_greek":false,"entities_latin":false,"scayt_autoStartup":true,"forcePasteAsPlainText":true,"filebrowserBrowseUrl":"\/imce?app=ckeditor%7Csendto%40ckeditor_imceSendTo%7C","stylesCombo_stylesSet":"drupal:\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.styles.js","contentsCss":["\/sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css?qinvx1","\/sites\/all\/libraries\/ckeditor\/contents.css?qinvx1"]}},"plugins":[],"textarea_default_format":{"edit-comment-body-und-0-value":"plain_text"}},"urlIsAjaxTrusted":{"\/blog\/mmallett\/apc-varnish-memcache-and-caching-beyond-drupal-core#comment-form":true,"\/search\/node":true},"responsive_menus":[{"selectors":"#primary-menu-bar","container":"body","trigger_txt":"\u003Cspan \/\u003E\u003Cspan \/\u003E\u003Cspan \/\u003E","close_txt":"X","close_size":"18px","position":"right","media_size":"480","show_children":"1","expand_children":"1","expand_txt":"+","contract_txt":"-","remove_attrs":"1","responsive_menus_style":"mean_menu"}],"eu_cookie_compliance":{"popup_enabled":1,"popup_agreed_enabled":0,"popup_hide_agreed":0,"popup_clicking_confirmation":1,"popup_scrolling_confirmation":0,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EBy clicking any link on this page you are giving your consent for us to set cookies.\u003C\/p\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n                    \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","mobile_breakpoint":"768","popup_html_agreed":"\u003Cdiv\u003E\n  \u003Cdiv class=\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\n\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button eu-cookie-compliance-hide-button\u0022\u003EHide\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button-thank-you\u0022 \u003EMore info\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/privacy-policy","popup_link_new_window":1,"popup_position":null,"fixed_top_position":1,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":0,"reload_page":0,"domain":"","domain_all_sites":null,"popup_eu_only_js":0,"cookie_lifetime":"100","cookie_session":false,"disagree_do_not_show_popup":0,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003E\u0026lt;h2\u0026gt;We use cookies on this site to enhance your user experience\u0026lt;\/h2\u0026gt;\u0026lt;p\u0026gt;You have given your consent for us to set cookies.\u0026lt;\/p\u0026gt;\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","withdraw_enabled":false,"withdraw_button_on_info_popup":false,"cookie_categories":[],"enable_save_preferences_button":true,"fix_first_cookie_category":true,"select_all_categories_by_default":false},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"}});</script>
+<script src="../sites/default/files/advagg_js/js__F2qdh-1_GOHY85WJybNO3pprDd50KfMFbk-UcsLzh0Y___SeDJKIvrikPXIIr55mRB1jrZkJNqFYEnfX8AHNM0No__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>var eu_cookie_compliance_cookie_name = "";</script>
+<script src="../sites/openconcept/themes/oc2014/js/portfolio.js"></script>
+</body>
+
+<!-- Mirrored from openconcept.ca/comment/937 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:24:43 GMT -->
+</html>

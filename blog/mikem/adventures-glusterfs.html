@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8" lang="en" dir="ltr"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/"><!--<![endif]-->
+
+<!-- Mirrored from openconcept.ca/blog/mikem/adventures-glusterfs by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:14:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<!--[if IE]><![endif]-->
+<meta charset="utf-8" />
+<script src="https://www.google.com/recaptcha/api.js?hl=en" async="async" defer="defer"></script>
+<link rel="shortcut icon" href="../../sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="What is GlusterFS? GlusterFS is a distributed network filesystem." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="abstract" content="What is GlusterFS? GlusterFS is a distributed network filesystem." />
+<meta name="MobileOptimized" content="width" />
+<meta name="keywords" content="Drupal, WordPress, Ottawa, open-source, website, communications, eLearning, accessibility, CRM, CMS, security" />
+<meta name="robots" content="follow, index" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<meta http-equiv="content-language" content="en" />
+<meta property="fb:admins" content="openconcept" />
+<meta property="fb:admins" content="kik.side" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@openconcept_ca" />
+<meta name="twitter:site:id" content="229468736" />
+<meta name="twitter:creator" content="@openconcept_ca" />
+<meta name="twitter:creator:id" content="229468736" />
+<meta name="twitter:url" content="https://openconcept.ca/blog/mikem/adventures-glusterfs" />
+<meta name="twitter:title" content="Adventures in GlusterFS" />
+<meta name="twitter:description" content="What is GlusterFS? GlusterFS is a distributed network filesystem." />
+<meta itemprop="name" content="Adventures in GlusterFS" />
+<title>Blog: Adventures in GlusterFS | OpenConcept</title>
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__CIoPC8DTSyC7ba02u2WcNx8jW9hViesHlsuFRabyGeo__Yg5urgFzSGcRtbNMXHM_QY549KOAwX-D2BCHVvRAD9w__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__0kxo9a_7V-NXmMFyEka9ww5_KAh62JvVq0T_opEsnYI__yLupVjjUulT7jR2cTAx-8AnjCJEZttCLm-N5GL51cAg__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../../sites/default/files/advagg_css/css__WQ3VIViemVu1z3pxCt1hYihEFTVqdm3SgqDmHAifCF8__8pEWrNOJbuWWcn2CXCq6Id8yS_eivMQaAg37yz85fmk__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato%7CArimo:400,700italic,400italic,700" media="all" />
+
+<!--[if (lt IE 9)&(!IEMobile 7)]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__L_hl_g5koAwf-tcMQbO0rF6TiioG2sSDkJP6VhlrJSE__Jt_t77XXAGMXO_thFaLEyXIrOahPFnRwr5VH4gzy-Wc__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.css" media="screen" />
+<![endif]-->
+<style>#sliding-popup.sliding-popup-bottom,#sliding-popup.sliding-popup-bottom .eu-cookie-withdraw-banner,.eu-cookie-withdraw-tab{background:#0779bf}#sliding-popup.sliding-popup-bottom.eu-cookie-withdraw-wrapper{background:transparent}#sliding-popup .popup-content #popup-text h1,#sliding-popup .popup-content #popup-text h2,#sliding-popup .popup-content #popup-text h3,#sliding-popup .popup-content #popup-text p,#sliding-popup label,#sliding-popup div,.eu-cookie-compliance-secondary-button,.eu-cookie-withdraw-tab{color:#fff !important}.eu-cookie-withdraw-tab{border-color:#fff}.eu-cookie-compliance-more-button{color:#fff !important}</style>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","../../sites/default/files/googleanalytics/analyticse5f5.js?qinvx1","ga");ga("create", "UA-190532-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1755 node-type-blog site-name-hidden site-name-openconcept section-blog">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page" class="page">
+
+  <!-- region: Leaderboard -->
+  
+ <div class="focus">
+  <header id="header" class="clearfix" role="banner">
+          <!-- start: Branding -->
+      <div id="branding" class="branding-elements clearfix">
+
+                  <div id="logo">
+            <a href="../../index.html" title="Home page"><img class="site-logo image-style-none" typeof="foaf:Image" src="../../sites/default/files/oclogo_0.png" alt="OpenConcept" /></a>          </div>
+        
+                  <!-- start: Site name and Slogan hgroup -->
+          <hgroup class="element-invisible" id="name-and-slogan">
+
+                          <h1 class="element-invisible" id="site-name"><a href="../../index.html" title="Home page">OpenConcept</a></h1>
+            
+            
+          </hgroup><!-- /end #name-and-slogan -->
+        
+      </div><!-- /end #branding -->
+    
+    <!-- region: Header -->
+    
+  <div id="menu-bar" class="nav clearfix"><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix odd first last block-count-1 block-region-menu-bar block-main-menu"  role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first expanded menu-depth-1 menu-item-777"><a href="../../about.html" title="">About</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-981"><a href="../../who-we-are.html">Who we are</a></li><li class="leaf menu-depth-2 menu-item-782"><a href="../../values.html">Our Values</a></li><li class="leaf menu-depth-2 menu-item-783"><a href="../../community.html" title="Our involement with the BCorp Community.">Community</a></li><li class="last leaf menu-depth-2 menu-item-862"><a href="../../careers.html">Careers</a></li></ul></li><li class="collapsed menu-depth-1 menu-item-778"><a href="../../support.html">Services</a></li><li class="leaf menu-depth-1 menu-item-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="collapsed menu-depth-1 menu-item-1187"><a href="../../drupal.html">Drupal</a></li><li class="expanded menu-depth-1 menu-item-781"><a href="../../news.html" title="">News</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-979"><a href="../../events.html">Events</a></li><li class="leaf menu-depth-2 menu-item-980"><a href="../../blog.html" title="">Blogs</a></li><li class="last leaf menu-depth-2 menu-item-1212"><a href="../../news/news-releases.html">News Releases</a></li></ul></li><li class="last leaf menu-depth-1 menu-item-614"><a href="../../contact.html">Contact Us</a></li></ul>
+  </nav></div>  <div id="primary-menu-bar" class="nav clearfix nav clearfix"><nav  class="primary-menu-wrapper menu-wrapper clearfix primary-menu-wrapper menu-wrapper clearfix"><h2 class="element-invisible">Main menu</h2><ul class="menu primary-menu clearfix"><li class="menu-777 first"><a href="../../about.html" title="">About</a></li><li class="menu-778"><a href="../../support.html">Services</a></li><li class="menu-787"><a href="../../just-vision.html" title="">Our Work</a></li><li class="menu-1187"><a href="../../drupal.html">Drupal</a></li><li class="menu-781"><a href="../../news.html" title="">News</a></li><li class="menu-614 last"><a href="../../contact.html">Contact Us</a></li></ul></nav></div>
+  </header>
+ </div>
+
+  <!-- Navigation elements -->
+  
+  <!-- Breadcrumbs -->
+  
+  <!-- Messages and Help -->
+    
+  <!-- region: Secondary Content -->
+  
+  <div id="columns" class="columns clearfix">
+    <div id="content-column" class="content-column" role="main">
+      <div class="content-inner">
+
+        <!-- region: Highlighted -->
+        
+
+        <section id="main-content"  class="focus">
+          
+                      <header id="main-content-header" class="clearfix">
+
+
+
+              
+            </header>
+          
+          <!-- region: Main Content -->
+                      <div id="content" class="region">
+              <div id="block-system-main" class="block block-system no-title odd first last block-count-2 block-region-content block-main" >  
+  
+  <div class="panel-display panel-1col clearfix" >
+  <div class="panel-panel panel-col">
+    <div><div class="panel-pane pane-node-title no-title block" id="blog-node-title">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h1>Adventures in GlusterFS</h1>
+    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-node-author block" id="blog-node-author">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">By: </h2>
+        
+    
+    <div class="block-content">
+      <a href="../../users/mikem.html" title="View user profile." class="username" xml:lang="" about="/users/mikem" typeof="sioc:UserAccount" property="foaf:name" datatype="">mikem</a>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-token pane-node-created block" id="blog-node-viewed">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">on </h2>
+        
+    
+    <div class="block-content">
+      February 10, 2016    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-body no-title block" id="blog-body">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-_custom_display"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>What is GlusterFS?</h2>
+<p>GlusterFS is a distributed network filesystem. It acts as a file system which can be attached to a server for storage like any other, but using network sockets it can be configured in a variety of ways to distribute the files across a number of disparate servers simultaneously and in a fashion which is transparent to users.</p>
+<p>It can be deployed to replicate the same data across multiple servers (sort of like RAID mirroring), or bring together the free space of multiple servers into a single large volume (sort of like RAID striping), or distribute data across a WAN using "geo-replcation".</p>
+<p>A Gluster filesystem is called a Volume. Servers participating in the Gluster Volume are called Bricks. Additional Bricks can be added to the Volume later if needed.</p>
+<p>A server then mounts the Gluster Volume, and the Gluster daemon `glusterd` manages the data across the Bricks in whatever configuration you have chosen when the Volume was created.</p>
+<h2>Sharing Disk Space Across Servers</h2>
+<p>Everything was going along just fine until one day a server ran out of space... I wrote to the hosting company and asked for a bigger disk, but I was told that the particular server configuration we have chosen cannot be changed. I sighed. Then I realized there was a whole bunch of free space on the server right next to it, sharing a Gbps LAN connection. The easiest solution which has worked for *nix systems administrators for decades is simply to install NFS and mount an exported directory from the server with lots of free disk space. But the application I'm using which needs the space also needs it to all be available in a single directory, not a subdirectory. I chose GlusterFS to solve this conundrum.</p>
+<p>In the default configuration, `gluster volume create ...` will create a new DISTRIBUTED volume, meaning that the files stored on the volume will be distributed across all of the bricks; There will be no redundancy, but all free space on both filesystems within the Gluster volume will be available. Any loss of a Brick's storage for the Volume means complete destruction of the Volume, and it is important to understand this because without another source of this data such as external backups, it is in a precarious position. The advantage is that if additional space is needed, it can be added on-the-fly to the Volume, and clients mounting that Volume will have the new space available immediately.</p>
+<p>The following outlines one potential configuration of a Gluster Volume, and the issues I encountered while bring the Volume online:<br />
+ </p>
+<h2>1. Install GlusterFS Packages</h2>
+<p>The servers I configured GlusterFS on for distributed Volume storage are running Ubuntu 12.04 LTS (codenamed "precise"), so I obtained the Ubuntu PPA for GlusterFS from here: <a href="https://launchpad.net/~gluster/+archive/ubuntu/glusterfs-3.6">https://launchpad.net/~gluster/+archive/ubuntu/glusterfs-3.6</a></p>
+<p>(The current latest version, 3.7, does not have Ubuntu packages available for 12.04 so I decided to use a previous version)</p>
+<p>Much of the GlusterFS documentation revolves around Fedora / RedHat Enterprise Linux (RHEL) because RedHat is the central authority for Gluster development. That said, you should follow installation instructions for your Linux distribution as appropriate.</p>
+<p>Install the server package ("glusterfs-server" in Ubuntu) on all servers you wish to participate in the storage.</p>
+<p>Install the client ("glusterfs-client") on all systems where the Gluster Volume is to be used to store data (This might be the same servers which are serving the Gluster Volume, or maybe not).</p>
+<h2>2. Start The Gluster Service</h2>
+<p>With the packages installed, ensure eeach server you want to participate in the Volume storage has the gluster daemon started.</p>
+<p>RHEL: `service glusterd status`<br />
+Ubuntu: `service glusterfs-server status`</p>
+<h2>3. Create A Directory For Bricks To Hold Their Data</h2>
+<p>Each server participating in the storage of a Gluster Volume, called "Bricks", needs a place on its own filesystem to hold this data. These directories must be specified when creating the Volume in the next step so you may wish to use the same directory structure on each Brick to make things easier.</p>
+<p>`mkdir -p /srv/gluster-vol` (or whatever location works for you)</p>
+<h2>3. Create A New Gluster Volume</h2>
+<p>If you require data redundancy, you should create a new "replica" Volume. If you require a Volume to be distributed/replicated across a WAN, read up on geo-replication which is beyond the scope of this blog post.</p>
+<p>I needed to harness the available free space across two servers without the need for data redundancy, so I did not specify a type, causing the `gluster volume create ...` command to create a new Distributed Volume.</p>
+<h2>3a. Ensure Your Environment Is Prepared; Use Consistent Hostnames</h2>
+<p>You should ensure that you have consistent hostnames available on all Brick servers so that each server refers to the others by a hostname which has the same IP address everywhere.</p>
+<p>At first I tried referring to each server by its LAN IP address. The Volume was successfully created on each Brick, but it wouldn't start (come online). Reviewing the logs I saw</p>
+<pre>
+Commit of operation 'Volume Start' failed on localhost</pre><p>which baffled me. I never once asked for a Brick to be used with a hostname of "localhost", nor did I ever specify a "127.x.x.x" address, so how could this happen?</p>
+<p>My two servers have LAN IP addresses 10.0.0.1 (server "alpha") and 10.0.0.2 (server "beta"), and my storage space is at /srv/gluster-vol on each, so I issued this command to create the Volume:</p>
+<p>`gluster volume create mygluster 10.0.0.1:/srv/gluster-vol 10.0.0.2:/srv/gluster-vol`</p>
+<p>Everything seemed to create fine and there was no mention of `localhost` anywhere. Issuing a `status` command on the Gluster Volume tipped me off to the issue. On server beta:</p>
+<pre>
+root@beta:~# gluster volume status mygluster
+Status of volume: mygluster
+
+Gluster process                        Port    Online    Pid
+------------------------------------------------------------------------------
+Brick 10.0.0.1:/srv/gluster-vol        49153    Y    127581
+Brick 10.0.0.2:/srv/gluster-vol        49153    Y    121695
+NFS Server on localhost                 2049    Y    127593
+NFS Server on alpha                      N/A    N    N/A
+</pre><p>Wait, what?? I'm not planning to mount this volume using NFS, but who said "alpha"? It turns out I had the following configuration on each server's `/etc/hosts` file:</p>
+<p>alpha:/etc/hosts:</p>
+<pre>
+127.0.0.1 localhost alpha
+10.0.0.2  beta</pre><p>beta:/etc/hosts</p>
+<pre>
+127.0.0.1 localhost beta
+10.0.0.1  alpha</pre><p>So it seems that beta decided to look up a hostname for IP address 10.0.0.1 which is shared with the other Bricks. This hostname is "alpha". When alpha looked that hostname up to obtain an IP address it obtained 127.0.0.1! Okay, so I fixed up the hosts files:</p>
+<p>alpha:/etc/hosts:</p>
+<pre>
+127.0.0.1 localhost alpha
+10.0.0.1  gluster1
+10.0.0.2  beta gluster2</pre><p>beta:/etc/hosts</p>
+<pre>
+127.0.0.1 localhost beta
+10.0.0.1  alpha gluster1
+10.0.0.2  gluster2</pre><p>Now the volume can be created using hostnames which will resolve to the same IP address everywhere they are used ("gluster1" and "gluster2"). So I recreated the volume using these:</p>
+<pre>
+gluster volume create mygluster gluster1:/srv/gluster-vol gluster2:/srv/gluster-vol</pre><p>But still it would not start...</p>
+<h2>3b. Firewall Rules For GLusterFS</h2>
+<p>Being a security conscious systems administrator, I have firewall rules on servers to throw away dangerous or malicious packets, packets appearing to come from wrong IP addresses on wrong interfaces, and I limit the available network connections to necessary services for necessary clients.</p>
+<p>Reviewing the logs further I discovered a number of "Connection refused" messages while attempting to contact a server's own LAN IP address. Server alpha got "Connection refused" attempting to connect to 10.0.0.1:24007. How could this be? Each server seemed to have firewall rules permissive enough for GlusterFS to function, which requires TCP/24007 and TCP/49152-49252. The firewall rules on each server specified the following, in plain English:</p>
+<p>Allow all connections on interface "lo" if the source IP address is 127.*<br />
+Allow all connections on interface "eth0" if the source IP address is 10.*<br />
+Deny all other connections</p>
+<p>This was taught to me years ago as sensible restrictions. A localhost network packet with IP address 127.0.0.1 should never appear on interface eth0; If it does it should be discarded. Likewise the box should never accept any packets to/from the 10.x.x.x network on the localhost interface. Surely these packets have been maliciously placed there to affect some undesired functionality...</p>
+<p>But that's what Gluster did, as shown by tcpdump:</p>
+<pre>
+root@alpha:~# tcpdump -n -i lo net 10
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on lo, link-type EN10MB (Ethernet), capture size 65535 bytes
+14:07:50.094031 IP 10.0.0.1.24007 &gt; 10.0.0.1.1023: Flags [.], ack 4166831461, win 256, options [nop,nop,TS val 3289703104 ecr 3289700600], length 0
+14:07:50.094060 IP 10.0.0.1.1023 &gt; 10.0.0.1.24007: Flags [.], ack 1, win 256, options [nop,nop,TS val 3289703104 ecr 3289700592], length 0</pre><p>There is no good reason this should ever happen, yet there it is staring me in the face. Two adjustments to the firewall rules fixes this in a strict way which allows this strange behavious without allowing too much strangeness to pass through. In plain English:</p>
+<p>Allow packets from 10.0.0.1 port tcp/24007 received on interface "lo"<br />
+Allow packets to 10.0.0.1 port tcp/24007 sent on interface "lo"</p>
+<p>And the same two rules added to beta, using its IP 10.0.0.2 instead.</p>
+<h2>4. Mount The Volume</h2>
+<p>Once your Gluster Volume is started, and you are able to get some successful happy output from the status command</p>
+<p>gluster volume status mygluster</p>
+<p>it is ready to be used! For clients without GlusterFS support, such as non-Linux *nix or *BSD systems with NFS support, Gluster Volumes may be mounted as type "nfs". However if your Linux system has the glusterfs-client package installed, you should mount it as type "glusterfs" using FUSE.</p>
+<p>/etc/fstab:</p>
+<pre>
+10.0.0.1:/mygluster /path/to/mountpoint glusterfs defaults 0 0</pre><p>Since I am using a distributed volume, there is no need to specify backup volume servers; If any of the Volume servers ("Bricks") go offline, my distributed Volume will be unavailable.</p>
+<p>However it is worth noting that if you are using a "replica"-type Volume where data is mirrored across multiple volume servers, you may wish to use the mount option "backup-volfile-servers":</p>
+<pre>
+10.0.0.1:/replicavol /path/to/mountpoint glusterfs defaults,backup-volfile-servers=10.0.0.2:/replicavol,10.0.0.3:/replicavol,10.0.0.4:/replicavol 0 0</pre><p>In this way, if the primary server goes offline, the replicated data will remain available to the client, which would then connect to a backup-volfile-server in order to retain the availability of the data.</p>
+<h2>Conclusion</h2>
+<p>In this case I have used GlusterFS to provide some additional disk space, as a distributed filesystem across servers on a LAN, because one server was dangerously low on space; It's large data files have been placed on the Gluster Volume and between both servers a lot more space is now available for use.</p>
+<p>In a replicated configuration ("replica"), Gluster can provide data redundancy and distribution, so that if one server fails, the data on the Gluster Volume remains available for use, and when that server comes back online it will be synchronized to the state of the others, with the changes made during its downtime being updated before the Volume becomes available. We have investigated this usage to provide a High Availability web server cluster, where newly uploaded files to a web site are immediately available across all web servers in the cluster. This configuration will be detailed in a future blog post.</p>
+</div></div></div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-terms no-title block" id="blogTopicList">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <ul class="links"><li class="taxonomy_term_83 first"><a href="../../topic/hosting-and-support.html" rel="tag" title="">Hosting and Support</a></li><li class="taxonomy_term_112"><a href="../../topic/open-source.html" rel="tag" title="Generally, open source refers to a computer program&amp;nbsp;in which the source code&amp;nbsp;is available to the general public for use and/or modification from its original design. Open-source code is typically a collaborative effort where programmers improve upon the source code and share the changes within the community so that other members can help improve it further.
+">Open Source</a></li><li class="taxonomy_term_121 last"><a href="../../topic/technical.html" rel="tag" title="">Technical</a></li></ul>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-block pane-service-links-service-links block" id="blog-services-links">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Share this article</h2>
+        
+    
+    <div class="block-content">
+      <div class="service-links"><a href="https://www.facebook.com/sharer.php" title="Share this post on Facebook" class="service-links-facebook-share" rel="https://openconcept.ca/blog/mikem/adventures-glusterfs" target="_blank"><span class="element-invisible">Share on Facebook</span></a> <a href="adventures-glusterfs.html" title="Share on Linkedin" class="service-links-linkedin-share-button" rel="nofollow" target="_blank"><span class="element-invisible">Linkedin Share Button</span></a> <a href="adventures-glusterfs.html" title="Plus it" class="service-links-google-plus-one" rel="nofollow" target="_blank"><span class="element-invisible">Google Plus One</span></a> <a href="https://reddit.com/submit?url=https%3A//openconcept.ca/blog/mikem/adventures-glusterfs&amp;title=Adventures%20in%20GlusterFS" title="Submit this post on reddit.com" class="service-links-reddit" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/reddit.png" alt="Reddit logo" /></a> <a href="https://twitter.com/share?url=https%3A//openconcept.ca/blog/mikem/adventures-glusterfs&amp;text=Adventures%20in%20GlusterFS" title="Share this on Twitter" class="service-links-twitter" rel="nofollow" target="_blank"><img typeof="foaf:Image" class="image-style-none" src="../../sites/all/modules/contrib/service_links/images/twitter.png" alt="Twitter logo" /></a></div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-posts-by-same-author block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Posts By Author</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-posts-by-same-author view-id-posts_by_same_author view-display-id-default view-dom-id-403419467d601f7544984b6493e7b7fe">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="whats-backup-its-restore.html">What&#039;s a Backup? (It&#039;s a Restore!)</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="adventures-glusterfs.html" class="active">Adventures in GlusterFS</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mmallett/poodle-ssl-vulnerability-protect-yourself.html">POODLE SSL Vulnerability: Protect Yourself</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><section class="panel-pane pane-views pane-related-posts block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title">Related Posts</h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-related-posts view-id-related_posts view-display-id-default view-dom-id-a08790fb836c859f5290c8846f8486cc">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mike/what-action-you-need-take-when-techie-leaves.html">What Action You Need to Take When a Techie Leaves</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mike/promoting-open-source-procurement-government.html">Promoting Open Source Procurement in Government</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="../mgifford/wtoaction-wtocaravan.html">WTOAction &amp; WTOCaravan</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-node-comment-wrapper no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <section id="comments" class="comment-wrapper">
+
+  
+  
+      <h2 class="comment-title title comment-form">Add new comment</h2>
+    <form class="comment-form" action="https://openconcept.ca/blog/mikem/adventures-glusterfs#comment-form" method="post" id="comment-form" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">Your name </label>
+ <input type="text" id="edit-name" name="name" value="" size="30" maxlength="60" class="form-text" />
+</div>
+<div class="form-item form-type-textfield form-item-subject">
+  <label for="edit-subject">Subject </label>
+ <input type="text" id="edit-subject" name="subject" value="" size="60" maxlength="64" class="form-text" />
+</div>
+<div class="field-type-text-long field-name-comment-body field-widget-text-textarea form-wrapper" id="edit-comment-body"><div id="comment-body-add-more-wrapper"><div class="text-format-wrapper"><div class="form-item form-type-textarea form-item-comment-body-und-0-value">
+  <label for="edit-comment-body-und-0-value">Comment <span class="form-required" title="This field is required.">*</span></label>
+ <div class="form-textarea-wrapper resizable"><textarea class="text-full form-textarea required" id="edit-comment-body-und-0-value" name="comment_body[und][0][value]" cols="60" rows="5"></textarea></div>
+</div>
+<fieldset class="filter-wrapper form-wrapper" id="edit-comment-body-und-0-format"><div class="fieldset-wrapper"><div class="filter-help form-wrapper" id="edit-comment-body-und-0-format-help"><p><a href="../../filter/tips.html" target="_blank">More information about text formats</a></p></div><div class="filter-guidelines form-wrapper" id="edit-comment-body-und-0-format-guidelines"><div class="filter-guidelines-item filter-guidelines-plain_text"><h3>Plain text</h3><ul class="tips"><li>No HTML tags allowed.</li><li>Lines and paragraphs break automatically.</li></ul></div></div></div></fieldset>
+</div>
+</div></div><input type="hidden" name="form_build_id" value="form-k9kDHuV1vRSGpEpF01atMwjjuo5JzdGvDqNU3DQ9FeA" />
+<input type="hidden" name="form_id" value="comment_node_blog_form" />
+<fieldset class="captcha form-wrapper"><legend><span class="fieldset-legend">CAPTCHA</span></legend><div class="fieldset-wrapper"><div class="fieldset-description">This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.</div><input type="hidden" name="captcha_sid" value="202896" />
+<input type="hidden" name="captcha_token" value="8c78e682be2bf343ed4e27e2ca580dca" />
+<input type="hidden" name="captcha_response" value="Google no captcha" />
+<div class="g-recaptcha" data-sitekey="6LdXOyITAAAAAN7Z_EVSa8In_5EpmZTfmdah3ip2" data-theme="light" data-type="image"></div><input type="hidden" name="captcha_cacheable" value="1" />
+</div></fieldset>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Save" class="form-submit" /><input type="submit" id="edit-preview" name="op" value="Preview" class="form-submit" /></div><div class="address2-textfield"><div class="form-item form-type-textfield form-item-address2">
+  <label for="edit-address2">Leave this field blank </label>
+ <input autocomplete="off" type="text" id="edit-address2" name="address2" value="" size="20" maxlength="128" class="form-text" />
+</div>
+</div></div></form>  
+</section>
+    </div>
+
+    
+    
+  </div>
+</div>
+</div>
+  </div>
+</div>
+
+  </div>            </div>
+          
+          <!-- Feed icons (RSS, Atom icons etc -->
+          
+          
+        </section><!-- /end #main-content -->
+
+        <!-- region: Content Aside -->
+        
+      </div><!-- /end .content-inner -->
+    </div><!-- /end #content-column -->
+
+    <!-- regions: Sidebar first and Sidebar second -->
+        
+  </div><!-- /end #columns -->
+
+  <!-- region: Tertiary Content -->
+  
+  <!-- region: Footer -->
+     <div id="footer-wrapper">
+    <footer id="footer" class="clearfix" role="contentinfo">
+      <div class="region region-footer"><div class="region-inner clearfix"><div id="block-block-14" class="block block-block no-title odd first block-count-3 block-region-footer block-14" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p> </p>
+<h2 class="rtecenter"><strong>Interested in digital accessibility? <a href="https://mailchi.mp/133e3c60c3f6/accessibility-action" style="color:white;">Sign up today to our monthly Accessibility Action Newsletter!</a></strong></h2>
+<p> </p>
+</div>
+  </div></div><div id="block-panels-mini-location-get-in-touch-follow-us" class="block block-panels-mini no-title even block-count-4 block-region-footer block-location-get-in-touch-follow-us" >  
+  
+  <div class="block-content content"><div class="at-panel panel-display three-3x33 clearfix" id="mini-panel-location_get_in_touch_follow_us">
+    <div class="region region-three-33-first">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-8 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">LOCATION</h3>
+<div class="rtecenter">
+<p>571 Somerset Street West<br />
+Ottawa ON K1R 5K1<br />
+Canada</p>
+</div>
+<p class="rtecenter"> </p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-second">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-6 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">GET IN TOUCH</h3>
+<p class="rtecenter"><a href="tel:+16136866736">613-686-6736</a> (OPEN)<br />
+<a href="mailto:info@openconcept.ca" style="font-size: 13px; line-height: 1.6em;">info@openconcept.ca</a><br />
+<a href="../../careers.html" style="font-size: 13px; line-height: 1.6em;">Careers</a></p>
+    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  <div class="region region-three-33-third">
+    <div class="region-inner clearfix">
+      <div class="panel-pane pane-block pane-block-7 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <h3 class="rtecenter">FOLLOW US</h3>
+<div class="clipwrapper rtecenter" style=" position: relative;height: 40px;width: 260px; margin:0 auto;">
+
+<a href="https://twitter.com/openconcept_ca" target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Twitter" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -41px; clip: rect(0 122px 50px 83px);"></a>
+
+<a href="https://www.linkedin.com/company/1703911?trk=prof-0-ovw-curr_pos"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on Linkedin" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -36px; clip: rect(0 162px 50px 130px);"></a>
+
+<a href="https://www.facebook.com/OpenConcept-Consulting-Inc-657846390931051/?fref=ts"  target="_blank" rel=”noopener noreferrer”>
+<img alt="Visit us on facebook" src="../../sites/openconcept/themes/oc2014/images/social-media-sprites-2.png" style="width: 260px; height: 45px; position: absolute; top: -5px; left: -69px; clip: rect(0 250px 50px 213px);"></a>
+
+<a href="https://github.com/OpenConceptConsulting"  target="_blank" rel=”noopener noreferrer”>
+<img alt="GitHub Logo" src="../../sites/openconcept/themes/oc2014/images/github.svg" style="width: 45px; height: 45px; position: absolute; top: -5px; left: 194px;" width="45px" height="45px"></a>
+
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+    </div>
+  </div>
+  </div>
+</div>
+  </div><div id="block-menu-menu-footer-menu" class="block block-menu no-title odd last block-count-5 block-region-footer block-menu-footer-menu"  role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-1264"><a href="../../about.html" title="">About</a></li><li class="leaf menu-depth-1 menu-item-1265"><a href="../../support.html" title="">Services</a></li><li class="leaf menu-depth-1 menu-item-1266"><a href="../../just-vision.html" title="">Our Work</a></li><li class="leaf menu-depth-1 menu-item-1267"><a href="../../drupal.html" title="">Drupal</a></li><li class="leaf menu-depth-1 menu-item-1582"><a href="../../blog.html" title="">Blog</a></li><li class="leaf menu-depth-1 menu-item-1269"><a href="../../contact.html" title="">Contact Us</a></li><li class="leaf menu-depth-1 menu-item-1270"><a href="../../accessibility-statement.html" title="">Accessibility</a></li><li class="leaf menu-depth-1 menu-item-1583"><a href="../../usage-policy.html" title="">Usage Policy</a></li><li class="last leaf menu-depth-1 menu-item-1614"><a href="../../privacy-policy.html" title="">Privacy</a></li></ul></div>
+  </div></div></div></div>    </footer>
+   </div>
+  
+</div>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>window.jQuery || document.write("<script src='../../sites/all/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js'>\x3C/script>")</script>
+<script src="../../sites/default/files/advagg_js/js__xMEFExRBeLF_Nnh2w42eON8oYCZVgn3_dmuWETzlD7o__YziG9O396nnc4ik7kSEjURf3zNFx-Gsbb51r1rYsccE__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="https://platform.linkedin.com/in.js?async=true"></script>
+<script src="../../sites/default/files/advagg_js/js__A52bEiaKhdkakCoe5501JI0YxDPSwTBJ-UFE-efNJb0__yf0_gufdxCt_YiSNmLRFk6O15VOLxNV0NN2NCDqVc-w__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script src="../../sites/default/files/advagg_js/js__TtR0f7kt8CNg-hMiSmtY5rrY3UtYDvihouuIR-zgvjo__eZvC1evgHOLlh_llWv-9amB8lWXb0LoA26aAILv2Q1M__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"oc2014","theme_token":"JRT27CuAntUIv5KI1m9a596qfJ7roN-cN-k66an7Iqk"},"ws_fs":{"type":"button","app_id":"150123828484431","css":"","locale":"en_US"},"ws_gpo":{"size":"medium","annotation":"","lang":"","callback":"","width":300},"ws_lsb":{"countmode":""},"better_exposed_filters":{"views":{"profile_picture":{"displays":{"default":{"filters":[]}}},"posts_by_same_author":{"displays":{"default":{"filters":[]}}},"related_posts":{"displays":{"default":{"filters":[]}}}}},"ckeditor":{"input_formats":{"filtered_html":{"customConfig":"\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.config.js?","defaultLanguage":"en","toolbar":"[\n    [\u0027Bold\u0027,\u0027Italic\u0027,\u0027NumberedList\u0027,\u0027BulletedList\u0027,\u0027Link\u0027,\u0027Blockquote\u0027,\u0027PasteText\u0027,\u0027Source\u0027,\u0027Flash\u0027,\u0027Maximize\u0027]\n]","enterMode":1,"shiftEnterMode":2,"toolbarStartupExpanded":true,"width":"100%","skin":"moono-lisa","format_tags":"p;div;pre;address;h1;h2;h3;h4;h5;h6","show_toggle":"t","default":"t","ss":"2","loadPlugins":{"drupalbreaks":{"name":"drupalbreaks","desc":"Plugin for inserting Drupal teaser and page breaks.","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/drupalbreaks\/","buttons":{"DrupalBreak":{"label":"DrupalBreak","icon":"images\/drupalbreak.png"}},"default":"t"}},"entities":false,"entities_greek":false,"entities_latin":false,"scayt_autoStartup":true,"language":"en","scayt_sLang":"en_US","forcePasteAsPlainText":true,"stylesCombo_stylesSet":"drupal:\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.styles.js","contentsCss":["\/sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css?qinvx1","\/sites\/all\/libraries\/ckeditor\/contents.css?qinvx1"]},"full_html":{"customConfig":"\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.config.js?","defaultLanguage":"en","toolbar":"[\n    [\u0027Bold\u0027,\u0027Italic\u0027,\u0027Underline\u0027,\u0027Strike\u0027,\u0027JustifyLeft\u0027,\u0027JustifyCenter\u0027,\u0027JustifyRight\u0027,\u0027JustifyBlock\u0027,\u0027Table\u0027,\u0027NumberedList\u0027,\u0027Blockquote\u0027,\u0027Indent\u0027,\u0027Outdent\u0027,\u0027BulletedList\u0027,\u0027Link\u0027,\u0027Unlink\u0027,\u0027Anchor\u0027,\u0027Image\u0027,\u0027IMCE\u0027],\n    [\u0027TextColor\u0027,\u0027BGColor\u0027,\u0027Format\u0027,\u0027Font\u0027,\u0027FontSize\u0027,\u0027Styles\u0027],\n    [\u0027Maximize\u0027,\u0027SpellChecker\u0027,\u0027MediaEmbed\u0027,\u0027PageBreak\u0027],\n    [\u0027Source\u0027]\n]","enterMode":1,"shiftEnterMode":2,"toolbarStartupExpanded":true,"width":"100%","skin":"moono-lisa","format_tags":"p;div;pre;address;h1;h2;h3;h4;h5;h6","show_toggle":"t","default":"t","allowedContent":true,"ss":"2","loadPlugins":{"drupalbreaks":{"name":"drupalbreaks","desc":"Plugin for inserting Drupal teaser and page breaks.","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/drupalbreaks\/","buttons":{"DrupalBreak":{"label":"DrupalBreak","icon":"images\/drupalbreak.png"}},"default":"t"},"imce":{"name":"imce","desc":"Plugin for inserting files from IMCE without image dialog","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/imce\/","buttons":{"IMCE":{"label":"IMCE","icon":"images\/icon.png"}},"default":"f"},"mediaembed":{"name":"mediaembed","desc":"Plugin for inserting Drupal embeded media","path":"\/sites\/all\/modules\/contrib\/ckeditor\/plugins\/mediaembed\/","buttons":{"MediaEmbed":{"label":"MediaEmbed","icon":"images\/icon.png"}},"default":"f"}},"entities":false,"entities_greek":false,"entities_latin":false,"scayt_autoStartup":true,"forcePasteAsPlainText":true,"filebrowserBrowseUrl":"\/imce?app=ckeditor%7Csendto%40ckeditor_imceSendTo%7C","stylesCombo_stylesSet":"drupal:\/sites\/all\/modules\/contrib\/ckeditor\/ckeditor.styles.js","contentsCss":["\/sites\/all\/modules\/contrib\/ckeditor\/css\/ckeditor.css?qinvx1","\/sites\/all\/libraries\/ckeditor\/contents.css?qinvx1"]}},"plugins":[],"textarea_default_format":{"edit-comment-body-und-0-value":"plain_text"}},"urlIsAjaxTrusted":{"\/blog\/mikem\/adventures-glusterfs#comment-form":true,"\/search\/node":true},"responsive_menus":[{"selectors":"#primary-menu-bar","container":"body","trigger_txt":"\u003Cspan \/\u003E\u003Cspan \/\u003E\u003Cspan \/\u003E","close_txt":"X","close_size":"18px","position":"right","media_size":"480","show_children":"1","expand_children":"1","expand_txt":"+","contract_txt":"-","remove_attrs":"1","responsive_menus_style":"mean_menu"}],"eu_cookie_compliance":{"popup_enabled":1,"popup_agreed_enabled":0,"popup_hide_agreed":0,"popup_clicking_confirmation":1,"popup_scrolling_confirmation":0,"popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EBy clicking any link on this page you are giving your consent for us to set cookies.\u003C\/p\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","use_mobile_message":false,"mobile_popup_html_info":"\u003Cdiv class=\u0022eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--default\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n                    \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button\u0022\u003ENo, give me more info\u003C\/button\u003E\n          \u003C\/div\u003E\n    \n    \u003Cdiv id=\u0022popup-buttons\u0022 class=\u0022\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EOK, I agree\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","mobile_breakpoint":"768","popup_html_agreed":"\u003Cdiv\u003E\n  \u003Cdiv class=\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\n\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button eu-cookie-compliance-hide-button\u0022\u003EHide\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button-thank-you\u0022 \u003EMore info\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E","popup_use_bare_css":false,"popup_height":"auto","popup_width":"100%","popup_delay":1000,"popup_link":"\/privacy-policy","popup_link_new_window":1,"popup_position":null,"fixed_top_position":1,"popup_language":"en","store_consent":false,"better_support_for_screen_readers":0,"reload_page":0,"domain":"","domain_all_sites":null,"popup_eu_only_js":0,"cookie_lifetime":"100","cookie_session":false,"disagree_do_not_show_popup":0,"method":"default","whitelisted_cookies":"","withdraw_markup":"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003E\u0026lt;h2\u0026gt;We use cookies on this site to enhance your user experience\u0026lt;\/h2\u0026gt;\u0026lt;p\u0026gt;You have given your consent for us to set cookies.\u0026lt;\/p\u0026gt;\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n","withdraw_enabled":false,"withdraw_button_on_info_popup":false,"cookie_categories":[],"enable_save_preferences_button":true,"fix_first_cookie_category":true,"select_all_categories_by_default":false},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"}});</script>
+<script src="../../sites/default/files/advagg_js/js__F2qdh-1_GOHY85WJybNO3pprDd50KfMFbk-UcsLzh0Y___SeDJKIvrikPXIIr55mRB1jrZkJNqFYEnfX8AHNM0No__uNtay9YJwYTDKfp29_kPgazcGHUcn4IsOWjv8kqq3jk.js"></script>
+<script>var eu_cookie_compliance_cookie_name = "";</script>
+<script src="../../sites/openconcept/themes/oc2014/js/portfolio.js"></script>
+</body>
+
+<!-- Mirrored from openconcept.ca/blog/mikem/adventures-glusterfs by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Oct 2020 16:14:56 GMT -->
+</html>
