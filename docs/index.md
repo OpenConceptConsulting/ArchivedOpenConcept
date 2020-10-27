@@ -143,100 +143,49 @@
 
     </div>
   </div>
-  <div class="region region-two-50-second">
-    <div class="region-inner clearfix">
-      <section class="panel-pane pane-block pane-block-10 block">
-    
-  
-
-</div>
-
-    
-    
-  </div>
-
-    </div>
-  </div>
-  </div>
-    </div>
-
-    
-    
-  </div>
-
-<div class="panel-separator"></div><div class="panel-pane pane-node grey-background focus no-title block">
-  <div class="block-inner clearfix">
-    
-            
-    
-    <div class="block-content">
-      <article id="node-1653" class="node node-page article odd node-full clearfix" about="/front-page-clients-logos" typeof="schema:WebPage foaf:Document">
-  
-  
-  
-  <div class="node-content">
-    
-</div></div></div><span property="foaf:name" content="openconcept" class="rdf-meta element-hidden"></span>  </div>
-
-  
-  
-  <span property="dc:title" content="" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span></article>
-    </div>
-
-    
-    
-  </div>
-
-<div class="panel-separator"></div><div class="panel-pane pane-views pane-front-page-portfolio no-title block">
-  
-  
-  
-  
-  
-  
-  
-</div>    </div>
-
-    
-    
-  </div>
-
-
-
-    
-    
-  </div>
-
-    </div>
-  </div>
-  <div class="region region-three-33-second">
-    <div class="region-inner clearfix">
-      <section class="panel-pane pane-node block">
-  
-  <div class="region region-two-25-75-second">
-    <div class="region-inner clearfix">
-      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-homepage_drupal_block"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Drupal is a highly secure and scalable tools that powers some of the busiest sites and can be adapted to any visual design. </p>
-</div></div></div>    </div>
-  </div>
-  </div>
-    </div>
-
-    
-    
-  </div>
-    </div>
-  </div>
-  <div class="region region-three-33-third">
-    <div class="region-inner clearfix">
-      <section class="panel-pane pane-node block">
  
-  <div class="region region-two-25-75-second">
-    <div class="region-inner clearfix">
-      <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-homepage_drupal_block"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Drupal is constantly improved by a community of one million users that contribute to make it a cutting-edge platform.</p>
-</div></div></div>    </div>
+
+    </div>
   </div>
   </div>
-   </div>
+    </div>
+
+    
+    
+  </div>
+
+
+
+  
+  
+
+
+    
+    
+  </div>
+
+
+
+    
+    
+  </div>
+
+
+
+    
+    
+  </div>
+
+    </div>
+  </div>
+  
+
+    
+    
+  </div>
+    </div>
+  </div>
+  
 
     
     
@@ -254,119 +203,7 @@
 
     </div>
   </div>
-  <div class="region region-two-66-33-second">
-    <div class="region-inner clearfix">
-      <div class="panel-pane pane-views pane-site-tweets no-title block">
-  <div class="block-inner clearfix">
-    
-            
-    
-    <div class="block-content">
-      <div class="view view-site-tweets view-id-site_tweets view-display-id-block view-dom-id-d2d5c7f1579a8f465f453f2f5000a288">
-            <div class="view-header">
-      <p><a href="https://twitter.com/openconcept_ca" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @openconcept_ca</a></p>
-<script>
-function advagg_mod_1() {
-  // Count how many times this function is called.
-  advagg_mod_1.count = ++advagg_mod_1.count || 1;
-  try {
-    if (advagg_mod_1.count <= 40) {
-      
-<!--//--><![CDATA[// ><!--
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-//--><!]]>
-
-
-      // Set this to 100 so that this function only runs once.
-      advagg_mod_1.count = 100;
-    }
-  }
-  catch(e) {
-    if (advagg_mod_1.count >= 40) {
-      // Throw the exception if this still fails after running 40 times.
-      throw e;
-    }
-    else {
-      // Try again in 250 ms.
-      window.setTimeout(advagg_mod_1, 250);
-    }
-  }
-}
-
-function advagg_mod_1_check() {
-  if (window.jQuery && window.Drupal && window.Drupal.settings) {
-    advagg_mod_1();
-  }
-  else {
-    window.setTimeout(advagg_mod_1_check, 250);
-  }
-}
-advagg_mod_1_check();</script>    </div>
   
-  
-  
-      <div class="view-content">
-        <div class="views-row views-row-1 views-row-odd views-row-first">
-      
-  <span class="views-field views-field-profile-image-url">        <span class="field-content"><img typeof="foaf:Image" class="image-style-none" src="sites/openconcept.ca/files/oc-tweet.png"  title="OpenConcept on Twitter" alt="OC Twitter Icon"></span>  </span>  
-  <span class="views-field views-field-screen-name">        <span class="field-content">openconcept_ca</span>  </span>  
-  <div class="views-field views-field-created-time">        <em class="field-content">1 week 3 hours</em>  </div>  
-  <div class="views-field views-field-text">        <span class="field-content">RT <a target="_blank" rel="nofollow" class="twitter-timeline-link" href="http://twitter.com/mikeherchel" class="twitter-atreply">@mikeherchel</a>: I also want to give a big <a target="_blank" rel="nofollow" class="twitter-timeline-link" href="https://twitter.com//search?q=%23DrupalThanks" class="twitter-hashtag">#DrupalThanks</a> to the <a target="_blank" rel="nofollow" class="twitter-timeline-link" href="https://twitter.com//search?q=%23a11y" class="twitter-hashtag">#a11y</a> team who has been right there advocating throughout the whole… <a href="https://t.co/Z5EeaEJLeD">https://t.co/Z5EeaEJLeD</a></span>  </div>  </div>
-  <div class="views-row views-row-2 views-row-even">
-      
-  <span class="views-field views-field-profile-image-url">        <span class="field-content"><img typeof="foaf:Image" class="image-style-none" src="sites/openconcept.ca/files/oc-tweet.png"  title="OpenConcept on Twitter" alt="OC Twitter Icon"></span>  </span>  
-  <span class="views-field views-field-screen-name">        <span class="field-content">openconcept_ca</span>  </span>  
-  <div class="views-field views-field-created-time">        <em class="field-content">4 weeks 1 hour</em>  </div>  
-  <div class="views-field views-field-text">        <span class="field-content">RT <a target="_blank" rel="nofollow" class="twitter-timeline-link" href="http://twitter.com/accessibleweb" class="twitter-atreply">@accessibleweb</a>: Hot off the press - we have updated the Government Service Standard requirements for assistive technology testing -… <a href="https://t.co/vJQohN4KtU">https://t.co/vJQohN4KtU</a></span>  </div>  </div>
-  <div class="views-row views-row-3 views-row-odd views-row-last">
-      
-  <span class="views-field views-field-profile-image-url">        <span class="field-content"><img typeof="foaf:Image" class="image-style-none" src="sites/openconcept.ca/files/oc-tweet.png"  title="OpenConcept on Twitter" alt="OC Twitter Icon"></span>  </span>  
-  <span class="views-field views-field-screen-name">        <span class="field-content">openconcept_ca</span>  </span>  
-  <div class="views-field views-field-created-time">        <em class="field-content">1 month 5 days</em>  </div>  
-  <div class="views-field views-field-text">        <span class="field-content">RT <a target="_blank" rel="nofollow" class="twitter-timeline-link" href="http://twitter.com/drupal" class="twitter-atreply">@drupal</a>: The WE4Authors Cluster Project is performing innovative research on CMS accessibility by default in Drupal, Joomla!… <a href="https://t.co/tBE2xtmdXO">https://t.co/tBE2xtmdXO</a></span>  </div>  </div>
-    </div>
-  
-  
-  
-  
-      <div class="view-footer">
-      <p><a href="https://twitter.com/intent/tweet?screen_name=openconcept_ca" class="twitter-mention-button" data-related="openconcept_ca" data-dnt="true">Tweet to @openconcept_ca</a></p>
-<script>
-function advagg_mod_2() {
-  // Count how many times this function is called.
-  advagg_mod_2.count = ++advagg_mod_2.count || 1;
-  try {
-    if (advagg_mod_2.count <= 40) {
-      
-<!--//--><![CDATA[// ><!--
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-//--><!]]>
-
-
-      // Set this to 100 so that this function only runs once.
-      advagg_mod_2.count = 100;
-    }
-  }
-  catch(e) {
-    if (advagg_mod_2.count >= 40) {
-      // Throw the exception if this still fails after running 40 times.
-      throw e;
-    }
-    else {
-      // Try again in 250 ms.
-      window.setTimeout(advagg_mod_2, 250);
-    }
-  }
-}
-function advagg_mod_2_check() {
-  if (window.jQuery && window.Drupal && window.Drupal.settings) {
-    advagg_mod_2();
-  }
-  else {
-    window.setTimeout(advagg_mod_2_check, 250);
-  }
-}
-advagg_mod_2_check();</script>    </div>
   
   
    </div>
