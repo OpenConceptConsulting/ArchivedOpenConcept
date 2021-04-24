@@ -1,0 +1,11 @@
+title: Archived OpenConcept Consulting Inc.
+
+url: "https://archive.openconcept.ca/"
+
+theme: jekyll-theme-slate
+
+plugins:
+  - jekyll-redirect-from
+  
+whitelist:
+  - jekyll-redirect-from
